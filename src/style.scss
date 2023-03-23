@@ -1,0 +1,57 @@
+$color-slate-50: #f8fafc;
+$color-slate-300: #cbd5e1;
+$color-slate-400: #94a3b8;
+$color-slate-900: #0f172a;
+
+$shadow-lg: 0 10px 15px -3px rgb($color-slate-900, 0.1),
+            0 4px 6px -4px rgb($color-slate-900, 0.1);
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  gap: 16px;
+  margin: 0;
+  display: flex;
+  padding: 48px;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $color-slate-50;
+}
+
+.three-app {
+  width: 100%;
+  max-width: 1280px;
+  
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background-color: $color-slate-400;
+  canvas { }
+}
+
+.json-container {
+  width: 100%;
+  margin: 0;
+  border: 1px solid $color-slate-400;
+  max-width: 1280px;
+  box-shadow: $shadow-lg;
+  border-radius: 4px;
+  background-color: white;
+
+  #json-viewer {
+    display: block;
+    height: 500px;
+  }
+}
+
