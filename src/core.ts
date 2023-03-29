@@ -1,6 +1,6 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, Vector3 } from 'three'
 import type { ThreeAppParams, ThreeApp, ThreeAppState } from './models'
-import { onResize, getOnResizeCallbacks } from './hooks'
+import { onResize, getOnResizeCallbacks, getOnRenderCallbacks } from './hooks'
 import { getPixelRatio } from './utils'
 
 
@@ -33,16 +33,19 @@ function createThreeRenderer(initialWidth: number, initialHeight: number) {
   renderer.setSize(initialWidth, initialHeight)
   renderer.setPixelRatio(getPixelRatio())
 
+    // TODO: `ColorEncoding` & `ToneMapping`
+    // renderer.toneMapping = ACESFilmicToneMapping
+    // renderer.outputEncoding = sRGBEncoding
+    // renderer.toneMappingExposure = 1
+    // TODO: `shadows`
+    // renderer.shadowMap.enabled = props?.shadow || true
+    // renderer.shadowMap.type = PCFShadowMap
+    // renderer.shadowMap.type = PCFSoftShadowMap
+    // renderer.physicallyCorrectLights = true
+
   onResize(({ entry }) => {
     renderer.setSize(entry.contentRect.width, entry.contentRect.height)
   })
-
-  // TODO: `ColorEncoding` & `ToneMapping`
-  // renderer.outputEncoding = THREE.sRGBEncoding
-  // renderer.toneMapping = THREE.ACESFilmicToneMapping
-  // TODO: `shadows`
-  // renderer.shadowMap.enabled = props?.shadow || true
-  // renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
   return renderer
 }
@@ -69,7 +72,9 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
 
   /** Render fn */
   function render(time: number) {
-    if (onRender) onRender({ time, state })
+    if (onRender) onRender({ time, ...state })
+
+    getOnRenderCallbacks().forEach(renderCb => renderCb({ time, ...state }))
 
     renderer.render(scene, camera)
   }
@@ -79,16 +84,13 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   await (async function () {
     // ColorManagement
 
-
     // RESIZE
     const resizeObserver = new ResizeObserver(([entry]) =>
       getOnResizeCallbacks().forEach(resizeCb => resizeCb({ entry, ...state }))
     )
     resizeObserver.observe(container) // TODO: disconnect
 
-
     if (onInit) await onInit(state)
-    console.log('Three app initiated', state)
   })()
 
   return {

@@ -8,7 +8,7 @@ export interface ThreeAppParams {
   /** Initialize callback hook */
   onInit?: (state: ThreeAppState) => Promise<void> | void
   /** Render loop callback hook */
-  onRender?: (renderCtx: { state: ThreeAppState, time: number }) => void
+  onRender?: ThreeAppRenderCallback
 }
 
 /** */
@@ -36,9 +36,10 @@ export interface ThreeApp extends ThreeAppState {
 
 
 /** */
-export interface ThreeAppResizeCtx extends ThreeAppState {
-  entry: ResizeObserverEntry
-}
+export type ThreeAppHookCallback<T = {}> = (ctx: ThreeAppState & T) => void
 
 /** */
-export type ThreeAppResizeCallback = (ctx: ThreeAppResizeCtx) => void
+export type ThreeAppResizeCallback = ThreeAppHookCallback<{ entry: ResizeObserverEntry }>
+
+/** */
+export type ThreeAppRenderCallback = ThreeAppHookCallback<{ time: number }>
