@@ -7,25 +7,26 @@ Set of utility helpers to use `ThreeJs` in a functional and declarative way
   - [ ] scene
     - [ ] `components` to add on init
   - [ ] camera
-    - [ ] aspect ratio
+    - [x] aspect ratio
     - [ ] `OrthographicCamera`
-    - [ ] `PerspectiveCamera`
-  - [ ] renderer
-  - [ ] render loop
-    - [ ] `render()`
-    - [ ] `start()`
-    - [ ] `stop()`
+    - [x] `PerspectiveCamera`
+  - [x] renderer
+  - [x] render loop
+    - [x] `render()`
+    - [x] `start()`
+    - [x] `stop()`
   - [ ] `initialValues`
 
-  - [ ] resize event
-  - [ ] render `hook`
+  - [x] `onResize` hook
+  - [ ] `onRender` hook
   - [ ] `ColorManagement`
   - [ ] `shadows`
   - [ ] `fullScreenMode`
 
 - [ ] multiple `threeApp` instances
   - [ ] `getThreeAppInstance` | `resolveDispatcher`
-- [ ] `onDestroy`
+
+- [ ] `onDestroy` hook
   - [ ] remove element from `toRender` if needed
   - [ ] remove element from `toIntersect` if needed
 

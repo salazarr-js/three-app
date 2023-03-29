@@ -4,18 +4,17 @@ import { createThreeApp } from './core'
 import './style.scss'
 
 
-
 /** DEMO */
 const geometry = new BoxGeometry( 1, 1, 1 );
 const material = new MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new Mesh( geometry, material );
 
-const app = createThreeApp({
+const app = await createThreeApp({
   container: document.getElementById('three-app')!,
   onInit({ scene }) {
     scene.add(cube)
   },
-  onRender(renderCtx) {
+  onRender(_) {
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.01;
   }

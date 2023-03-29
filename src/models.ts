@@ -14,22 +14,31 @@ export interface ThreeAppParams {
 /** */
 export interface ThreeAppState {
   /** Root `scene` object */
-  scene: Scene
+  readonly scene: Scene
   /** Default `camera` object */
-  camera: Camera
+  readonly camera: Camera
   /** Render `engine` object */
-  renderer: WebGLRenderer
+  readonly renderer: WebGLRenderer
 }
 
 /** */
 export interface ThreeApp extends ThreeAppState {
   /** Render a frame */
-  render: (time: number) => void
+  readonly render: (time: number) => void
   /**
    * Start render loop using
    * [`.setAnimationLoop`](https://threejs.org/docs/index.html?q=WebGLRenderer#api/en/renderers/WebGLRenderer.setAnimationLoop)
    */
-  start: () => void
+  readonly start: () => void
   /** Stop render loop */
-  stop: () => void
+  readonly stop: () => void
 }
+
+
+/** */
+export interface ThreeAppResizeCtx extends ThreeAppState {
+  entry: ResizeObserverEntry
+}
+
+/** */
+export type ThreeAppResizeCallback = (ctx: ThreeAppResizeCtx) => void
