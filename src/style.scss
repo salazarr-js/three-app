@@ -31,7 +31,7 @@ body {
 .three-app {
   width: 100%;
   max-width: 1280px;
-  
+
   overflow: hidden;
   box-shadow: $shadow-lg;
   aspect-ratio: 16 / 9;
@@ -39,19 +39,3 @@ body {
   background-color: $color-slate-400;
   canvas { }
 }
-
-.json-container {
-  width: 100%;
-  margin: 0;
-  border: 1px solid $color-slate-400;
-  max-width: 1280px;
-  box-shadow: $shadow-lg;
-  border-radius: 4px;
-  background-color: white;
-
-  #json-viewer {
-    display: block;
-    height: 500px;
-  }
-}
-
