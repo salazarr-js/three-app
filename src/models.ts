@@ -24,11 +24,13 @@ export interface ThreeAppState {
   camera: Camera
   /** Render `engine` object */
   renderer: WebGLRenderer
-
   /** */
   isFullscreenMode: boolean
+
   /** Returns container client sizes or windows inner sizes if is in fullscreen mode, as `{ width, height }` obj */
   getContainerSizes: () => ThreeAppSizes
+  /** Toggle fullscreen mode */
+  toggleFullscreenMode: () => void
 }
 
 /** */
@@ -42,9 +44,6 @@ export interface ThreeApp extends ThreeAppState {
   start: () => void
   /** Stop render loop */
   stop: () => void
-
-  /** Toggle fullscreen mode */
-  toggleFullscreenMode: () => void
 }
 
 

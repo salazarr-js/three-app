@@ -3,8 +3,8 @@ $color-slate-300: #cbd5e1;
 $color-slate-400: #94a3b8;
 $color-slate-900: #0f172a;
 
-$shadow-lg: 0 10px 15px -3px rgb($color-slate-900, 0.1),
-            0 4px 6px -4px rgb($color-slate-900, 0.1);
+$shadow-lg: 0 10px 15px -3px rgb($color-slate-900, 0.25),
+            0 4px 6px -4px rgb($color-slate-900, 0.25);
 
 html {
   margin: 0;
@@ -36,6 +36,6 @@ body {
   box-shadow: $shadow-lg;
   aspect-ratio: 16 / 9;
   border-radius: 8px;
-  background-color: $color-slate-400;
+  // background-color: $color-slate-300;
   canvas { }
 }

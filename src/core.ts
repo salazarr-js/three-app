@@ -1,4 +1,5 @@
-import { Scene, PerspectiveCamera, WebGLRenderer, Vector3 } from 'three'
+import * as THREE from 'three'
+import { Scene, PerspectiveCamera, WebGLRenderer, Vector3, sRGBEncoding, } from 'three'
 import type { ThreeAppParams, ThreeApp, ThreeAppState, ThreeAppSizes } from './models'
 import {
   onResize, onFullscreenModeChange,
@@ -32,19 +33,18 @@ function createThreeCamera(initialWidth: number, initialHeight: number) {
 /** Create a `renderer` with defaults and props */
 function createThreeRenderer(initialWidth: number, initialHeight: number) {
   const renderer = new WebGLRenderer({
-    antialias: true,
     alpha: true,
+    antialias: true,
     powerPreference: 'high-performance'
   })
   renderer.setSize(initialWidth, initialHeight)
   renderer.setPixelRatio(getPixelRatio())
 
-    // TODO: `ColorEncoding` & `ToneMapping`
+    // `ColorEncoding` & `ToneMapping`
     // renderer.toneMapping = ACESFilmicToneMapping
-    // renderer.outputEncoding = sRGBEncoding
-    // renderer.toneMappingExposure = 1
-    // TODO: `shadows`
-    // renderer.shadowMap.enabled = props?.shadow || true
+    renderer.outputEncoding = sRGBEncoding
+    // `shadows`
+    // renderer.shadowMap.enabled = true
     // renderer.shadowMap.type = PCFShadowMap
     // renderer.shadowMap.type = PCFSoftShadowMap
     // renderer.physicallyCorrectLights = true
@@ -79,6 +79,12 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
       if (state.isFullscreenMode)
         return { width: window.innerWidth, height: window.innerHeight }
       return { width: container.clientWidth, height: container.clientHeight }
+    },
+    toggleFullscreenMode() {
+      if (document.fullscreenElement !== null)
+        document.exitFullscreen()
+      else
+        renderer.domElement.requestFullscreen()
     }
   }
 
@@ -99,17 +105,11 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
       .forEach(fsModeCb => fsModeCb({ ...state }))
   }
 
-  /** */
-  function toggleFullscreenMode() {
-    if (document.fullscreenElement !== null)
-      document.exitFullscreen()
-    else
-      renderer.domElement.requestFullscreen()
-  }
 
   /** */
   await (async function () {
     // ColorManagement
+    THREE.ColorManagement.enabled = true
 
     // RESIZE
     const resizeObserver = new ResizeObserver(([entry]) => {
@@ -127,7 +127,6 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   return {
     ...state,
     render,
-    toggleFullscreenMode,
     start: () => renderer.setAnimationLoop(render),
     stop: () => renderer.setAnimationLoop(null),
   }

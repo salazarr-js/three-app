@@ -64,6 +64,13 @@ app.start()
   - [ ] `shadows`
   - [x] `fullScreenMode`
 
+- [ ] `applyProps`
+- [ ] three components
+
+- [ ] `onHover`
+- [ ] `onClick`
+
+
 - [ ] multiple `threeApp` instances
   - [ ] `getThreeAppInstance` | `resolveDispatcher`
 
