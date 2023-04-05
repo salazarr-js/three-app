@@ -1,5 +1,83 @@
+import type { Object3D } from "three"
+import { Color, Layers, RGBAFormat, sRGBEncoding, Texture, UnsignedByteType } from "three"
+import type { OmitKeys } from "./models"
 
-/** Get device pixel ratio */
-export function getPixelRatio() {
+
+/** Returns device pixel ratio */
+export function getPixelRatio(): number {
   return Math.min(window.devicePixelRatio, 2)
+}
+
+
+/**
+ * Apply a set of props to Three object instance, heavily inspired on
+ * [R3F implementation](https://github.com/pmndrs/react-three-fiber/blob/master/packages/fiber/src/core/utils.ts)
+*/
+export function applyProps<T extends Object3D>(obj: T, props: Partial<Record<keyof T, any>>): void {
+  Object.keys(props).forEach(prop => {
+    if ( !(prop in (obj as any)) ) {
+      console.warn(`${obj?.constructor?.name || 'Object'} doesn't have a '${prop}' property`)
+      return
+    }
+
+    const value = props[prop as keyof T] as any
+    let targetProp = obj[prop as keyof T] as any
+
+    // TODO: ignore events?
+
+    // Special treatment for objects with support for set/copy, and layers
+    if ( targetProp && targetProp.set && (targetProp.copy || targetProp instanceof Layers)) {
+      // If value is an array
+      if ( Array.isArray(value) ) {
+        const valueWithDefaults = [value[0] ?? targetProp.x, value[1] ?? targetProp.y, value[2] ?? targetProp.z]
+        // TODO: check props with different array size
+
+        if ( targetProp.fromArray ) targetProp.fromArray(valueWithDefaults)
+        else targetProp.set(...valueWithDefaults)
+      }
+      // Test again target.copy(class) next ...
+      else if (
+        targetProp.copy &&
+        value &&
+        value.constructor &&
+        targetProp.constructor === value.constructor
+      ) {
+        targetProp.copy(value)
+      }
+      // If nothing else fits, just set the single value, ignore undefined
+      else if (value !== undefined) {
+        const isColor = targetProp instanceof Color
+        // Allow setting array scalars
+        if (!isColor && targetProp.setScalar) targetProp.setScalar(value)
+        // Layers have no copy function, we must therefore copy the mask property
+        else if (targetProp instanceof Layers && value instanceof Layers) targetProp.mask = value.mask
+        // Otherwise just set ...
+        else targetProp.set(value)
+
+        if ( isColor ) targetProp.convertSRGBToLinear()
+      }
+      // Else, just overwrite the value
+    } else {
+      targetProp = value
+      // Auto-convert sRGB textures, for now ...
+      if (
+        targetProp instanceof Texture &&
+        targetProp.format === RGBAFormat &&
+        targetProp.type === UnsignedByteType
+      )
+        targetProp.encoding = sRGBEncoding
+    }
+  })
+}
+
+
+/** Omit a set of keys from object */
+export function omit<T extends object, K extends keyof T>(obj: T, keysToOmit: K[]): OmitKeys<T, K> {
+  const result: Partial<T> = { ...obj }
+
+  for (const key of keysToOmit) {
+    delete result[key]
+  }
+
+  return result as OmitKeys<T, K>;
 }

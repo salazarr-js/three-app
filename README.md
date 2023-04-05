@@ -10,6 +10,7 @@ Set of utility helpers to use `ThreeJs` in a functional and declarative way
 ```
 
 ### Create components and use `hooks`
+
 ```ts
 import { onRender } from '@slzr/three-app'
 
@@ -60,16 +61,19 @@ app.start()
   - [ ] `initialValues`
   - [x] `onResize` hook
   - [x] `onRender` hook
-  - [ ] `ColorManagement`
+    - [ ] `clock`
+  - [x] `ColorManagement`
   - [ ] `shadows`
   - [x] `fullScreenMode`
 
-- [ ] `applyProps`
-- [ ] three components
+- [x] `applyProps`
+  - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`
+  - [ ] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
+- [ ] Basic three components
+- [ ] `createWithProps` fn
 
 - [ ] `onHover`
 - [ ] `onClick`
-
 
 - [ ] multiple `threeApp` instances
   - [ ] `getThreeAppInstance` | `resolveDispatcher`

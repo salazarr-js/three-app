@@ -1,20 +1,24 @@
-import { BoxGeometry, Mesh, Color, AmbientLight, MeshStandardMaterial, SpotLight, PointLight } from 'three'
-import { createThreeApp, onRender } from './index'
+import {
+  BoxGeometry, Mesh, Color,
+  AmbientLight, MeshStandardMaterial, SpotLight,
+  PointLight, ColorRepresentation
+} from 'three'
+import { createThreeApp, onRender, applyProps, omit, ThreeProps } from './index'
 // DEMO STYLES
 import './style.scss'
 
 
+
 /** DEMO */
-(async function() {
+;(async function() {
 
   /** */
-  function createCube(props: Record<string, any>) {
-    const geometry = new BoxGeometry( 1, 1, 1 )
+  function createCube(props: ThreeProps<Mesh<BoxGeometry, MeshStandardMaterial> & { color: ColorRepresentation }>) {
+    const geometry = new BoxGeometry(1, 1, 1)
     const material = new MeshStandardMaterial({ color: new Color(props.color ?? 'orange') })
     const cube = new Mesh( geometry, material )
 
-    const [x, y, z] = props.position
-    cube.position.set(x, y, z)
+    applyProps(cube, omit(props, ['color']))
 
     onRender(_ => {
       cube.rotation.x += 0.01
@@ -23,36 +27,30 @@ import './style.scss'
     return cube
   }
 
-  function createSpotlight(props: any) {
+  function createSpotlight(props: ThreeProps<SpotLight>) {
     const light = new SpotLight()
 
-    const [x, y, z] = props.position
-    light.position.set(x, y, z)
-
-    light.angle = props.angle ?? light.angle
-    light.penumbra = props.penumbra ?? light.penumbra
-
+    applyProps(light, props)
     return light
   }
 
-  function createPointLight(position: number[]) {
+  function createPointLight(props: ThreeProps<PointLight>){
     const light = new PointLight()
 
-    const [x, y, z] = position
-    light.position.set(x,y,z)
+    applyProps(light, props)
     return light
   }
 
   const app = await createThreeApp({
     container: document.getElementById('three-app')!,
     onInit({ scene }) {
-      const cube1 = createCube({ color: 'orange', position: [1.2, 0, 0] })
-      const cube2 = createCube({ color: 'hotpink', position: [-1.2, 0, 0] })
+      const cube1 = createCube({ position: [1.2, 0, 0], })
+      const cube2 = createCube({ color: 'hotpink', position: [-1.2, 0, 0], })
 
       scene.add(
-        new AmbientLight(new Color('white'), 1),
+        new AmbientLight('white', .75),
         createSpotlight({ position: [10, 10, 10], angle: 0.15, penumbra: 1 }),
-        createPointLight([-10, -10, -10]),
+        createPointLight({ position: [-10, -10, -10] }),
         cube1, cube2,
       )
     }

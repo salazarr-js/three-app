@@ -22,6 +22,21 @@ function createThreeCamera(initialWidth: number, initialHeight: number) {
   function update({ width, height }: ThreeAppSizes) {
     camera.aspect = width / height
     camera.updateProjectionMatrix()
+
+
+    // if (!camera.manual) {
+    //   if (isOrthographicCamera(camera)) {
+    //     camera.left = size.width / -2
+    //     camera.right = size.width / 2
+    //     camera.top = size.height / 2
+    //     camera.bottom = size.height / -2
+    //   } else {
+    //     camera.aspect = size.width / size.height
+    //   }
+    //   camera.updateProjectionMatrix()
+    //   // https://github.com/pmndrs/react-three-fiber/issues/178
+    //   // Update matrix world since the renderer is a frame late
+    //   camera.updateMatrixWorld()
   }
 
   onResize(({ getContainerSizes }) => update( getContainerSizes() ))
@@ -63,6 +78,7 @@ function createThreeRenderer(initialWidth: number, initialHeight: number) {
 export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> {
   const { container, onInit, onRender } = params
 
+  // TODO: accept custom `scene`, `camera` and `renderer`
   const scene = new Scene()
   const camera = createThreeCamera(container.clientWidth, container.clientHeight)
   const renderer = createThreeRenderer(container.clientWidth, container.clientHeight)
