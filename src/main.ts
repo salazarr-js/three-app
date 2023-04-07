@@ -3,26 +3,22 @@ import {
   AmbientLight, MeshStandardMaterial, SpotLight,
   PointLight, ColorRepresentation
 } from 'three'
-import { createThreeApp, onRender, applyProps, omit, ThreeProps } from './index'
+import { createThreeApp, onRender, applyProps, ThreeProps } from './index'
 // DEMO STYLES
 import './style.scss'
-
 
 
 /** DEMO */
 ;(async function() {
 
   /** */
-  function createCube(props: ThreeProps<Mesh<BoxGeometry, MeshStandardMaterial> & { color: ColorRepresentation }>) {
+  function createCube(color: ColorRepresentation, props: ThreeProps<Mesh<BoxGeometry, MeshStandardMaterial>>) {
     const geometry = new BoxGeometry(1, 1, 1)
-    const material = new MeshStandardMaterial({ color: new Color(props.color ?? 'orange') })
+    const material = new MeshStandardMaterial({ color: new Color(color) })
     const cube = new Mesh( geometry, material )
 
-    applyProps(cube, omit(props, ['color']))
-
-    onRender(_ => {
-      cube.rotation.x += 0.01
-    })
+    applyProps(cube, props)
+    onRender(_ => cube.rotation.x += 0.01)
 
     return cube
   }
@@ -44,8 +40,8 @@ import './style.scss'
   const app = await createThreeApp({
     container: document.getElementById('three-app')!,
     onInit({ scene }) {
-      const cube1 = createCube({ position: [1.2, 0, 0], })
-      const cube2 = createCube({ color: 'hotpink', position: [-1.2, 0, 0], })
+      const cube1 = createCube('orange', { position: [1.2, 0, 0], })
+      const cube2 = createCube('hotpink', { position: [-1.2, 0, 0], })
 
       scene.add(
         new AmbientLight('white', .75),

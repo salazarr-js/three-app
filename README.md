@@ -49,16 +49,16 @@ app.start()
 
 - [ ] `createThreeApp`
   - [x] scene
-  - [ ] camera
+  - [x] camera
     - [x] aspect ratio
-    - [ ] `OrthographicCamera`
+    - [x] `OrthographicCamera`
     - [x] `PerspectiveCamera`
   - [x] renderer
   - [x] render loop
     - [x] `render()`
     - [x] `start()`
     - [x] `stop()`
-  - [ ] `initialValues`
+  - [x] `initialValues`
   - [x] `onResize` hook
   - [x] `onRender` hook
     - [ ] `clock`
@@ -68,9 +68,11 @@ app.start()
 
 - [x] `applyProps`
   - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`
-  - [ ] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
+  - [x] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
+  - [ ] accept functions like `camera.lookAt()`
 - [ ] Basic three components
 - [ ] `createWithProps` fn
+- [ ] map `ColorLikeProps`
 
 - [ ] `onHover`
 - [ ] `onClick`

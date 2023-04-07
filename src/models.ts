@@ -1,4 +1,7 @@
-import type { Scene, Camera, WebGLRenderer, Object3D } from 'three'
+import type {
+  Scene, Camera, WebGLRenderer,
+  Object3D, PerspectiveCamera, OrthographicCamera
+} from 'three'
 
 /** */
 export interface ThreeAppSizes {
@@ -15,11 +18,16 @@ export interface ThreeAppParams {
   /** Render loop callback hook */
   onRender?: ThreeAppRenderCallback
 
+  /** */
+  orthographic?: boolean
+  /** */
+  camera?: ThreeProps<PerspectiveCamera | OrthographicCamera>
+  /** */
+  scene?: ThreeProps<Scene>
+  /** */
+  renderer?: ThreeProps<WebGLRenderer>
+
   // TODO:
-  // orthographic: boolean
-  // camera: Camera // defaults: { fov: 75, near: 0.1, far: 1000, position: [0, 0, 5] }
-  // scene: Scene
-  // Renderer: Scene
   // shadows: ``
 }
 
@@ -28,11 +36,13 @@ export interface ThreeAppState {
   /** Root `scene` object */
   scene: Scene
   /** Default `camera` object */
-  camera: Camera
+  camera: PerspectiveCamera | OrthographicCamera | Camera
   /** Render `engine` object */
   renderer: WebGLRenderer
   /** */
   isFullscreenMode: boolean
+  /** */
+  isOrthographic: boolean
 
   /** Returns container client sizes or windows inner sizes if is in fullscreen mode, as `{ width, height }` obj */
   getContainerSizes: () => ThreeAppSizes
@@ -67,11 +77,12 @@ export type ThreeAppRenderCallback = ThreeAppHookCallback<{ time: number }>
  * Array like props that are compatible with `applyProps` fn
  *
  * TODO: `rotation`, `quaternion`, `scale`, `modelViewMatrix`, `normalMatrix`
+ * TODO: map functions params
 */
 type ArrayLikeProps = 'position'
 
 /** Type mapping for `applyProps` fn compability */
-export type ThreeProps<T extends Object3D, E extends Record<string, any> = {}> = {
+export type ThreeProps<T extends Object3D | Record<string, any>, E extends Record<string, any> = {}> = {
   [P in keyof T]?: P extends ArrayLikeProps ? T[P] | number[] : T[P]
 } & E
 
