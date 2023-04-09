@@ -1,6 +1,6 @@
 import type {
-  Scene, Camera, WebGLRenderer,
-  Object3D, PerspectiveCamera, OrthographicCamera
+  Camera, Object3D, OrthographicCamera,
+  PerspectiveCamera, Scene, WebGLRenderer,
 } from 'three'
 
 /** */
@@ -63,7 +63,6 @@ export interface ThreeApp extends ThreeAppState {
   stop: () => void
 }
 
-
 /** */
 export type ThreeAppHookCallback<T = {}> = (ctx: Readonly<ThreeAppState & T>) => void
 
@@ -86,7 +85,6 @@ export type ThreeProps<T extends Object3D | Record<string, any>, E extends Recor
   [P in keyof T]?: P extends ArrayLikeProps ? T[P] | number[] : T[P]
 } & E
 
-
 // ======================================== UTILITY TYPES ======================================== //
 
 /** Return type for `omit` fn that omits a set of keys from a object */
@@ -102,10 +100,9 @@ export type OmitKeys<T, K extends keyof T> = {
  */
 export type ReadonlyKeys<T extends Object> = {
   [K in keyof T]:
-    (<S>() => S extends { [Z in K]: T[Z] } ? 2 : 1) extends
-    (<S>() => S extends { -readonly [Z in K]: T[Z] } ? 2 : 1) ? never : K
+  (<S>() => S extends { [Z in K]: T[Z] } ? 2 : 1) extends
+  (<S>() => S extends { -readonly [Z in K]: T[Z] } ? 2 : 1) ? never : K
 }[keyof T]
-
 
 /**
  * **ReadonlyKeys<T>**

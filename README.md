@@ -1,6 +1,10 @@
 # Three App
 Set of utility helpers to use `ThreeJs` in a functional and declarative way
 
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+
 ## Get started
 
 ### Add the container element to your markup
@@ -15,11 +19,11 @@ Set of utility helpers to use `ThreeJs` in a functional and declarative way
 import { onRender } from '@slzr/three-app'
 
 function createCube() {
-  const geometry = new BoxGeometry( 1, 1, 1 );
-  const material = new MeshBasicMaterial({ color: 0x00ff00 });
-  const cube = new Mesh( geometry, material );
+  const geometry = new BoxGeometry(1, 1, 1)
+  const material = new MeshBasicMaterial({ color: 0x00FF00 })
+  const cube = new Mesh(geometry, material)
 
-  onRender(_ => {
+  onRender((_) => {
     cube.rotation.x += 0.01
     cube.rotation.y += 0.01
   })
@@ -70,21 +74,23 @@ app.start()
   - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`
   - [x] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
   - [ ] accept functions like `camera.lookAt()`
-- [ ] Basic three components
 - [ ] `createWithProps` fn
 - [ ] map `ColorLikeProps`
-
+- [ ] Basic Three components
+  - [ ] Lights
+  - [ ] Camera Controls
 - [ ] `onHover`
 - [ ] `onClick`
+- [ ] `useThreeApp`
 
+- [ ] `tweakpane`
 - [ ] multiple `threeApp` instances
   - [ ] `getThreeAppInstance` | `resolveDispatcher`
-
 - [ ] `onDestroy` hook
   - [ ] remove element from `toRender` if needed
   - [ ] remove element from `toIntersect` if needed
-
 - [ ] Accept `.gltf` files
   > https://github.com/edwinwebb/three-seed
   > https://whsjs.readme.io/docs
 - [ ] Generate documentation
+- [x] eslint + antfu

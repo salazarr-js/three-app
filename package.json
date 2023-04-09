@@ -1,20 +1,24 @@
 {
   "name": "@slzr/three-app",
-  "version": "0.0.1",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "@types/node": "^18.15.5",
-    "@types/three": "^0.150.0",
-    "sass": "^1.59.3",
-    "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "three": "^0.151.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.38.4",
+    "@types/node": "^18.15.5",
+    "@types/three": "^0.150.0",
+    "eslint": "^8.38.0",
+    "sass": "^1.59.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
   }
 }

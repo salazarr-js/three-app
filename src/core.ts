@@ -1,22 +1,21 @@
 import * as THREE from 'three'
 import {
-  Scene, PerspectiveCamera, WebGLRenderer,
-  Vector3, sRGBEncoding, Camera,
-  OrthographicCamera
+  Camera, OrthographicCamera, PerspectiveCamera,
+  Scene, Vector3, WebGLRenderer,
+  sRGBEncoding,
 } from 'three'
 
-import type { ThreeAppParams, ThreeApp, ThreeAppState, ThreeAppSizes, ThreeProps } from './models'
+import type { ThreeApp, ThreeAppParams, ThreeAppSizes, ThreeAppState, ThreeProps } from './models'
 import {
-  onResize, onFullscreenModeChange,
-  getOnResizeCallbacks, getOnFullscreenModeChangeCallbacks, getOnRenderCallbacks,
+  getOnFullscreenModeChangeCallbacks, getOnRenderCallbacks,
+  getOnResizeCallbacks, onFullscreenModeChange, onResize,
 } from './hooks'
 import { applyProps, getPixelRatio, isPlainObject } from './utils'
-
 
 /** Create a `camera` with defaults and props */
 function createThreeCamera(
   cameraProps: ThreeProps<PerspectiveCamera | OrthographicCamera>,
-  extraProps: { initialSizes: ThreeAppSizes, orthographic?: boolean }
+  extraProps: { initialSizes: ThreeAppSizes; orthographic?: boolean },
 ) {
   const { orthographic, initialSizes: { width, height } } = extraProps
 
@@ -26,13 +25,13 @@ function createThreeCamera(
   const camera = !orthographic
     ? new PerspectiveCamera()
     : new OrthographicCamera(
-      frustum * aspect / - 2,
+      frustum * aspect / -2,
       frustum * aspect / 2,
       frustum / 2,
-      frustum / - 2
+      frustum / -2,
     )
 
-  if ( camera.type === 'PerspectiveCamera' ) {
+  if (camera.type === 'PerspectiveCamera') {
     camera.fov = 75
     camera.aspect = width / height
   }
@@ -45,13 +44,14 @@ function createThreeCamera(
   function update({ width, height }: ThreeAppSizes) {
     const aspect = width / height
 
-    if ( camera.type === 'PerspectiveCamera' ) {
+    if (camera.type === 'PerspectiveCamera') {
       camera.aspect = aspect
-    } else {
-      camera.left = frustum * aspect / - 2
+    }
+    else {
+      camera.left = frustum * aspect / -2
       camera.right = frustum * aspect / 2
       camera.top = frustum / 2
-      camera.bottom = frustum / - 2
+      camera.bottom = frustum / -2
     }
 
     camera.updateProjectionMatrix()
@@ -60,8 +60,8 @@ function createThreeCamera(
     camera.updateMatrixWorld()
   }
 
-  onResize(({ getContainerSizes }) => update( getContainerSizes() ))
-  onFullscreenModeChange(({ getContainerSizes }) => update( getContainerSizes() ))
+  onResize(({ getContainerSizes }) => update(getContainerSizes()))
+  onFullscreenModeChange(({ getContainerSizes }) => update(getContainerSizes()))
 
   return camera
 }
@@ -69,14 +69,14 @@ function createThreeCamera(
 /** Create a `renderer` with defaults and props */
 function createThreeRenderer(
   rendererProps: ThreeProps<WebGLRenderer>,
-  extraProps: { initialSizes: ThreeAppSizes }
+  extraProps: { initialSizes: ThreeAppSizes },
 ) {
-  const { width, height }  = extraProps.initialSizes
+  const { width, height } = extraProps.initialSizes
 
   const renderer = new WebGLRenderer({
     alpha: true,
     antialias: true,
-    powerPreference: 'high-performance'
+    powerPreference: 'high-performance',
   })
   renderer.setSize(width, height)
   renderer.setPixelRatio(getPixelRatio())
@@ -96,8 +96,8 @@ function createThreeRenderer(
     renderer.setSize(width, height)
   }
 
-  onResize(({ getContainerSizes }) => update( getContainerSizes() ))
-  onFullscreenModeChange(({ getContainerSizes }) => update( getContainerSizes() ))
+  onResize(({ getContainerSizes }) => update(getContainerSizes()))
+  onFullscreenModeChange(({ getContainerSizes }) => update(getContainerSizes()))
 
   return renderer
 }
@@ -111,10 +111,14 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   /** Three app API State */
   const state: ThreeAppState = {
     scene: scene instanceof Scene ? scene : applyProps(new Scene(), { ...scene }),
-    camera: camera instanceof Camera ? camera : createThreeCamera({ ...camera }, {
-      orthographic, initialSizes
-    }),
-    renderer: renderer && !isPlainObject(renderer) ? renderer as WebGLRenderer : createThreeRenderer({ ...renderer }, { initialSizes }),
+    camera: camera instanceof Camera
+      ? camera
+      : createThreeCamera({ ...camera }, {
+        orthographic, initialSizes,
+      }),
+    renderer: (renderer && !isPlainObject(renderer))
+      ? renderer as WebGLRenderer
+      : createThreeRenderer({ ...renderer }, { initialSizes }),
 
     isOrthographic: orthographic ?? false,
     isFullscreenMode: false,
@@ -125,16 +129,18 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
       return { width: container.clientWidth, height: container.clientHeight }
     },
     toggleFullscreenMode() {
-      if (document.fullscreenElement !== null) document.exitFullscreen()
+      if (document.fullscreenElement !== null)
+        document.exitFullscreen()
       else state.renderer.domElement.requestFullscreen()
-    }
+    },
   }
 
   container.append(state.renderer.domElement)
 
   /** Render fn */
   function render(time: number) {
-    if (onRender) onRender({ time, ...state })
+    if (onRender)
+      onRender({ time, ...state })
 
     // Run all `onRenderCallbacks` functions
     getOnRenderCallbacks().forEach(renderCb => renderCb({ time, ...state }))
@@ -148,7 +154,6 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     getOnFullscreenModeChangeCallbacks()
       .forEach(fsModeCb => fsModeCb({ ...state }))
   }
-
 
   /** */
   await (async function () {
@@ -165,7 +170,8 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     // FULLSCREEN
     container.addEventListener('fullscreenchange', _ => updateFullscreenMode())
 
-    if (onInit) await onInit(state)
+    if (onInit)
+      await onInit(state)
   })()
 
   return {
@@ -175,5 +181,3 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     stop: () => state.renderer.setAnimationLoop(null),
   }
 }
-
-

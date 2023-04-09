@@ -1,5 +1,4 @@
-import { ThreeAppResizeCallback, ThreeAppRenderCallback, ThreeAppHookCallback } from "./models"
-
+import type { ThreeAppHookCallback, ThreeAppRenderCallback, ThreeAppResizeCallback } from './models'
 
 /** Internal list of callbacks to be run on every `onResize` call */
 const _onResizeCallbacks = new Set<ThreeAppResizeCallback>()
@@ -15,7 +14,6 @@ export function getOnResizeCallbacks() {
   return _onResizeCallbacks
 }
 
-
 /** Internal list of callbacks to be run on every `onFullscreenModeChange` call */
 const _onFullscreenModeChangeCallbacks = new Set<ThreeAppHookCallback>()
 
@@ -29,7 +27,6 @@ export function onFullscreenModeChange(cb: ThreeAppHookCallback) {
 export function getOnFullscreenModeChangeCallbacks() {
   return _onFullscreenModeChangeCallbacks
 }
-
 
 /** Internal list of callbacks to be run on every `onRender` call */
 const _onRenderCallbacks = new Set<ThreeAppRenderCallback>()
