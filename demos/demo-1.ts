@@ -4,8 +4,8 @@ import {
   Mesh, MeshStandardMaterial, PointLight,
   SpotLight,
 } from 'three'
-import type { ThreeProps } from './index'
-import { applyProps, createThreeApp, onRender } from './index'
+import type { ThreeProps } from '../src/index'
+import { applyProps, createThreeApp, onRender } from '../src/index'
 // DEMO STYLES
 import './style.scss';
 
@@ -53,9 +53,4 @@ import './style.scss';
   })
 
   app.start()
-
-  document.getElementById('toogleFullscreen')
-    ?.addEventListener('click', (_) => {
-      app.toggleFullscreenMode()
-    })
 })()

@@ -74,6 +74,9 @@ app.start()
   - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`
   - [x] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
   - [ ] accept functions like `camera.lookAt()`
+- [ ] handdle `color`, `scale`, `vector2`, `rotation`
+
+
 - [ ] `createWithProps` fn
 - [ ] map `ColorLikeProps`
 - [ ] Basic Three components
@@ -94,3 +97,10 @@ app.start()
   > https://whsjs.readme.io/docs
 - [ ] Generate documentation
 - [x] eslint + antfu
+- [ ] `#threejsJorney` en twitter
+
+- [ ] tests
+  -[ ] `applyProps`
+ - [ ] test changing 1, 2 and 3 axis for
+
+- [ ] Publish `beta` version

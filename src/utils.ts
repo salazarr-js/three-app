@@ -15,8 +15,6 @@ export function isPlainObject(value: unknown) {
 /**
  * Apply a set of props to Three object instance, heavily inspired on
  * [R3F implementation](https://github.com/pmndrs/react-three-fiber/blob/master/packages/fiber/src/core/utils.ts)
- *
- * TODO: accept functions like `lookAt`
 */
 export function applyProps<T extends Object3D | Record<string, any>>(
   obj: T,

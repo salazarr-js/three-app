@@ -67,16 +67,16 @@ export interface ThreeApp extends ThreeAppState {
 export type ThreeAppHookCallback<T = {}> = (ctx: Readonly<ThreeAppState & T>) => void
 
 /** */
-export type ThreeAppResizeCallback = ThreeAppHookCallback<{ entry: ResizeObserverEntry }>
+export type ThreeAppResizeCallback = ThreeAppHookCallback<{ readonly entry: ResizeObserverEntry }>
 
 /** */
-export type ThreeAppRenderCallback = ThreeAppHookCallback<{ time: number }>
+export type ThreeAppRenderCallback = ThreeAppHookCallback<{ readonly time: number }>
 
 /**
  * Array like props that are compatible with `applyProps` fn
  *
- * TODO: `rotation`, `quaternion`, `scale`, `modelViewMatrix`, `normalMatrix`
- * TODO: map functions params
+ * TODO: `✅ position`, `scale`, `rotation`,  `quaternion`
+ * TODO: map `✅ ArrayLikeProps` `FnLikeProps`
 */
 type ArrayLikeProps = 'position'
 
