@@ -1,0 +1,11 @@
+{
+  "name": "@slzr/three-app",
+  "version": "0.0.1",
+  "description": "Set of utility helpers to use `ThreeJs` in a functional and declarative way",
+  "engines": {
+    "node": "^20.15.x"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": ""
+}
