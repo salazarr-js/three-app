@@ -1,7 +1,7 @@
 {
   "name": "@slzr/three-app",
   "description": "Set of utility helpers to use `ThreeJs` in a functional and declarative way",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "MIT",
   "homepage": "https://three.salazarjs.dev",
   "repository": "(https://github.com/salazarr-js/three-app)",
@@ -26,7 +26,18 @@
       }
     }
   },
-  "keywords": "",
+  "keywords": [
+    "three",
+    "three.js",
+    "javascript",
+    "typescript",
+    "3d",
+    "webgl",
+    "webgl2",
+    "webgpu",
+    "canvas",
+    "svg"
+  ],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
