@@ -3,9 +3,9 @@
   "description": "Set of utility helpers to use `ThreeJs` in a functional and declarative way",
   "version": "0.0.1",
   "license": "MIT",
-  "homepage": "https://github.com/salazarr-js/three-app",
+  "homepage": "https://three.salazarjs.dev",
   "repository": "(https://github.com/salazarr-js/three-app)",
-  "author": "Jose Salazar",
+  "author": "José Salazar <jsalazar3300@gmail.com> (https://www.salazarjs.dev/)",
   "type": "module",
   "files": [
     "dist",
