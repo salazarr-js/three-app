@@ -6,7 +6,8 @@
   "homepage": "https://three.salazarjs.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/salazarr-js/three-app.git"
+    "url": "git+https://github.com/salazarr-js/three-app.git",
+    "directory": "packages/core"
   },
   "author": "José Salazar <jsalazar3300@gmail.com> (https://www.salazarjs.dev/)",
   "type": "module",

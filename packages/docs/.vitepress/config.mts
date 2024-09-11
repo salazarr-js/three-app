@@ -1,11 +1,14 @@
 import { defineConfig } from 'vitepress'
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
+  srcDir: './src',
   title: "Three App",
   description: "Set of utility helpers to use `ThreeJs` in a functional and declarative way",
+  head: [
+    ['link', { rel: 'icon', href: '/logo-simple.png' }]
+  ],
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    logo: '/logo-simple.png',
     nav: [
       { text: 'Guide', link: '/guide/01-introduction' },
       { text: 'API', link: '/api/01-createThreeApp' },
