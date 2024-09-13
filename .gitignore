@@ -23,6 +23,3 @@ cache
 *.njsproj
 *.sln
 *.sw?
-
-# TODO: remove this folder
-old/

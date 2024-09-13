@@ -4,48 +4,64 @@
   <h1 align="center">Three App</h1>
 </p>
 
-<p align="center">Set of utility helpers to use <a href="https://threejs.org/">ThreeJs</a> in a functional and declarative way</p>
+<p align="center"><a href="https://threejs.org/">ThreeJs</a> but functional and declarative.</p>
 
-> [!WARNING]
-> This project/package was created for learning purposes. Do not use in production
+> ⚠️ **Warning** <br/>
+> This project/package was created for learning purposes. Do not use in production.
 
-## Features
 
-- Fast and easy to start
-- Component based
-- Functional and declarative
+## 🚀 Features
+
+`ThreeApp` is simply a set of functions and helpers designed to speed up your `ThreeJs` development
+
+- 🍦 Vanilla and framework agnostic
 - 🔑 Type Safe
-- ⚡ Batteries included
+- ⚡ Batteries included (Default Camera and Renderer, render loop and common event handling)
 - 📦 Lightweight
 - 🔌 `ESM` & ` CommonJs` compatible
 
-## Installation
+---
+
+## 🛸 Getting Started
+
+### Installation
 
 ```sh
 npm install three @slzr/three-app
 npm install -D @types/three
 ```
 
-## Basic Usage
+### Add the container element to your markup
 
-```js
-import { Cube } from 'three'
-import { createThreeApp } from '@slzr/three-app'
-
-document.addEventListener("DOMContentLoaded", async () => {
-  const app = await createThreeApp({
-    container: '#container',
-    onInit({ scene }) {
-      const cube = new Cube()
-      scene.add(cube)
-    }
-  })
-
-  app.start();
-})
+```html
+<div id="three-app"></div>
 ```
 
+### Basic Usage
 
-## Documentation
+```ts
+import { BoxGeometry, MeshBasicMaterial, Mesh } from 'three'
+import { createThreeApp } from '@slzr/three-app'
 
-To learn more about `Three App`, check the [documentation](https://three.salazarjs.dev/).
+// It can be composed into `components`
+const geometry = new BoxGeometry(1, 1, 1);
+const material = new MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new Mesh(geometry, material);
+
+const app = await createThreeApp({
+  container: '#container',
+  onInit({ scene }) {
+    scene.add(cube)
+  },
+  onRender({ time, }) {
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+  }
+})
+
+app.start();
+```
+
+## 🗃️ Documentation
+
+To learn more about `Three App`, check the [documentation](https://slzr-three-app.vercel.app).

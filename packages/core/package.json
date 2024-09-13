@@ -1,15 +1,18 @@
 {
   "name": "@slzr/three-app",
-  "description": "Set of utility helpers to use `ThreeJs` in a functional and declarative way",
-  "version": "0.0.6",
+  "description": "ThreeJs but functional and declarative.",
+  "version": "0.0.8",
+  "engines": {
+    "node": "^20.17.0"
+  },
   "license": "MIT",
-  "homepage": "https://three.salazarjs.dev",
+  "homepage": "https://slzr-three-app.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/salazarr-js/three-app.git",
     "directory": "packages/core"
   },
-  "author": "José Salazar <jsalazar3300@gmail.com> (https://www.salazarjs.dev/)",
+  "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs-dev.vercel.app/)",
   "type": "module",
   "files": [
     "dist",
