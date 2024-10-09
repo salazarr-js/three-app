@@ -20,7 +20,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "types": ["node", /*"vitest/globals"*/],
+
+    "paths": {
+      "@/*": ["./src/*"],
+    }
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": ["node_modules","dist"]
 }

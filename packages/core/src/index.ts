@@ -1,1 +1,1 @@
-export * from './core'
+export { applyProps } from './utils'
