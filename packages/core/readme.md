@@ -9,7 +9,6 @@
 > ⚠️ **Warning** <br/>
 > This project/package was created for learning purposes. Do not use in production.
 
-
 ## 🚀 Features
 
 `ThreeApp` is simply a set of functions and helpers designed to speed up your `ThreeJs` development
@@ -40,13 +39,13 @@ npm install -D @types/three
 ### Basic Usage
 
 ```ts
-import { BoxGeometry, MeshBasicMaterial, Mesh } from 'three'
 import { createThreeApp } from '@slzr/three-app'
+import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
 
 // It can be composed into `components`
-const geometry = new BoxGeometry(1, 1, 1);
-const material = new MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new Mesh(geometry, material);
+const geometry = new BoxGeometry(1, 1, 1)
+const material = new MeshBasicMaterial({ color: 0x00FF00 })
+const cube = new Mesh(geometry, material)
 
 const app = await createThreeApp({
   container: '#container',
@@ -54,12 +53,12 @@ const app = await createThreeApp({
     scene.add(cube)
   },
   onRender({ time, }) {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    cube.rotation.x += 0.01
+    cube.rotation.y += 0.01
   }
 })
 
-app.start();
+app.start()
 ```
 
 ## 🗃️ Documentation

@@ -1,34 +1,15 @@
 {
   "name": "@slzr/three-app",
-  "description": "ThreeJs but functional and declarative.",
+  "type": "module",
   "version": "0.0.8",
+  "description": "ThreeJs but functional and declarative.",
+  "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
   "license": "MIT",
   "homepage": "https://three.salazarjs.dev",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/salazarr-js/three-app.git",
     "directory": "packages/core"
-  },
-  "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
-  "type": "module",
-  "files": [
-    "dist",
-    "package.json"
-  ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    }
   },
   "keywords": [
     "three",
@@ -42,6 +23,25 @@
     "canvas",
     "svg"
   ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
@@ -49,14 +49,14 @@
     "tsc": "tsc",
     "publish": "npm publish"
   },
+  "peerDependencies": {
+    "three": "^0.169.0"
+  },
   "devDependencies": {
     "@types/node": "^22.5.4",
     "@types/three": "^0.169.0",
     "tsup": "^8.2.4",
     "typescript": "^5.6.2",
     "vitest": "^2.1.2"
-  },
-  "peerDependencies": {
-    "three": "^0.169.0"
   }
 }

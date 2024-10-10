@@ -11,10 +11,16 @@ export default antfu(
   },
   {
     files: ['**/*.ts'],
-    rules: {}
+    rules: {},
   },
   {
     files: ['**/*.vue'],
-    rules: {}
-  }
+    rules: {},
+  },
+  {
+    files: ['**/*.test.*'],
+    rules: {
+      'test/consistent-test-it': ['error', { fn: 'test', withinDescribe: 'test' }],
+    },
+  },
 )

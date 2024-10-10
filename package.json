@@ -1,10 +1,10 @@
 {
   "name": "root",
+  "type": "module",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
-  "type": "module",
   "engines": {
     "node": "^20.17.0"
   },

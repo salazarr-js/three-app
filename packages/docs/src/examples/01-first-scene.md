@@ -1,8 +1,8 @@
 # First Scene
 
 ```js
-import { Cube } from 'three'
 import { createThreeApp } from '@slzr/three-app'
+import { Cube } from 'three'
 
 const app = await createThreeApp({
   container: '#container',
@@ -12,5 +12,5 @@ const app = await createThreeApp({
   }
 })
 
-app.start();
+app.start()
 ```

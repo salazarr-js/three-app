@@ -16,7 +16,6 @@ export function createCube() {
 }
 ```
 
-
 ## Add Components to scene
 
 ```js
@@ -26,9 +25,9 @@ import { createCube } from './cube'
 const app = await createThreeApp({
   container: '#container',
   onInit({ scene }) {
-    scene.add(new createCube())
+    scene.add(createCube())
   }
 })
 
-app.start();
+app.start()
 ```

@@ -7,5 +7,5 @@ export default defineConfig({
   external: ['three'],
   clean: true,
   target: 'esnext',
-  dts: true
+  dts: true,
 })
