@@ -1,13 +1,10 @@
-
 # TODOs
 
 ## Project
 - [x] use [fnm](https://github.com/Schniz/fnm)
 - [ ] Auto Generated Changelogs
-- [ ] Linting
-  - [ ] eslint + antfu
-  - [ ] Biome - https://biomejs.dev/linter/
-  - [ ] oxc Lint - https://oxc.rs/docs/guide/usage/linter.html
+- [x] Linting
+  - [x] eslint + antfu
 - [x] Docs using [vitepress](https://vitepress.dev/)
   - Injected `.ts` examples
   - https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start
@@ -48,12 +45,11 @@
   - [ ] `shadows`
   - [ ] `fullScreenMode`
 
-- [ ] `applyProps`
+- [x] `applyProps`
   - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`
   - [ ] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
   - [ ] accept functions like `camera.lookAt()`
   - [ ] handle `color`, `scale`, `vector2`, `rotation`
-
 
 - [ ] `createWithProps` fn
 - [ ] map `ColorLikeProps`

@@ -9,7 +9,6 @@
 > [!WARNING]
 > This project/package is a **Work In Progress** and was created for learning purposes. Do not use in production.
 
-
 ## 🚀 Features
 
 `ThreeApp` is simply a set of functions and helpers designed to speed up your `ThreeJs` development
@@ -31,7 +30,6 @@ The way all hooks were written limit the amount of instances that can be created
 - [Threlte](https://github.com/threlte/threlte)
 - [Spline](https://spline.design/)
 
-
 ## 📚 References
 
 ### Tutorials
@@ -51,7 +49,6 @@ The way all hooks were written limit the amount of instances that can be created
 ### Logo
 
 [![Oscar Reutersvärd](https://finelinegd.com/wp-content/uploads/2014/05/or_header.jpg)](https://finelinegd.com/oscar-reutersvard-the-father-of-impossible-figures/)
-[]()
 
 The `Three App` logo design was heavily inspired by [Oscar Reutersvärd](https://wikipedia.org/wiki/Oscar_Reutersv%C3%A4rd) work.
 
@@ -94,13 +91,13 @@ npm install -D @types/three
 ### Basic Usage
 
 ```ts
-import { BoxGeometry, MeshBasicMaterial, Mesh } from 'three'
 import { createThreeApp } from '@slzr/three-app'
+import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
 
 // It can be composed into `components`
-const geometry = new BoxGeometry(1, 1, 1);
-const material = new MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new Mesh(geometry, material);
+const geometry = new BoxGeometry(1, 1, 1)
+const material = new MeshBasicMaterial({ color: 0x00FF00 })
+const cube = new Mesh(geometry, material)
 
 const app = await createThreeApp({
   container: '#container',
@@ -108,12 +105,12 @@ const app = await createThreeApp({
     scene.add(cube)
   },
   onRender({ time, }) {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    cube.rotation.x += 0.01
+    cube.rotation.y += 0.01
   }
 })
 
-app.start();
+app.start()
 ```
 
 ## 🗃️ Documentation
