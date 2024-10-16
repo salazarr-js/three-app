@@ -17,8 +17,13 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
+    "@types/node": "^22.7.5",
+    "@types/three": "^0.169.0",
     "concurrently": "^8.2.2",
     "eslint": "^9.12.0"
   }
