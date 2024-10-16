@@ -7,7 +7,7 @@ export default antfu(
     typescript: true,
     vue: true,
 
-    ignores: ['**/.vitepress', '**/old'],
+    ignores: ['**/old'],
   },
   {
     files: ['**/*.ts'],

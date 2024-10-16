@@ -7,7 +7,7 @@
 <p align="center"><a href="https://threejs.org/">ThreeJs</a> but functional and declarative.</p>
 
 > ⚠️ **Warning** <br/>
-> This project/package was created for learning purposes. Do not use in production.
+> This project/package was created for learning purposes. **Do not use in production**.
 
 ## 🚀 Features
 
