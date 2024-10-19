@@ -7,7 +7,7 @@ export default antfu(
     typescript: true,
     vue: true,
 
-    ignores: ['**/old'],
+    ignores: [],
   },
   {
     files: ['**/*.ts'],

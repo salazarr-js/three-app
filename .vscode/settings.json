@@ -1,9 +1,10 @@
 {
   /**
-   * Since VS Code doesn't allow multiple .vscode/settings.json files, we need to place this in the root directory (which will affect the entire project).
+   * Since VS Code doesn't allow multiple `.vscode/settings.json` files, we need to place this in the root directory (which will affect the entire project).
    * https://github.com/microsoft/vscode/issues/15909
    */
   "vue.server.includeLanguages": ["vue", "markdown"],
+
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
