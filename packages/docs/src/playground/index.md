@@ -30,7 +30,7 @@ function animate() {
 ```
 
 <div id="three-app"></div>
-<button type="button" @click="toggleFullScreen">fullscreen</button>
+<button type="button" @click="toggleFullScreen">Toggle Fullscreen</button>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
