@@ -1,4 +1,4 @@
-import type { OmitKeys, ThreeObj, ThreeProps } from '@/types'
+import type { ThreeAppObj, ThreeProps } from '@/types'
 import { Color, Layers } from 'three'
 
 /** Checks if value is `null` or `undefined`. */
@@ -63,7 +63,7 @@ export function getPixelRatio(): number {
  *
  * Heavily inspired on [R3F implementation](https://github.com/pmndrs/react-three-fiber/blob/master/packages/fiber/src/core/utils.ts#L303)
  */
-export function applyProps<T extends ThreeObj>(obj: T, props: ThreeProps<T>): T {
+export function applyProps<T extends ThreeAppObj>(obj: T, props: ThreeProps<T>): T {
   Object.keys(props).forEach((propKey) => {
     if (!(propKey in obj)) {
       console.warn(`${obj?.constructor?.name || 'Object'} doesn't have a '${propKey}' property`)
@@ -145,14 +145,4 @@ export function applyProps<T extends ThreeObj>(obj: T, props: ThreeProps<T>): T 
   })
 
   return obj
-}
-
-/** Omit a set of keys from object */
-export function omit<T extends object, K extends keyof T>(obj: T, keysToOmit: K[]): OmitKeys<T, K> {
-  const result: Partial<T> = { ...obj }
-
-  for (const key of keysToOmit)
-    delete result[key]
-
-  return result as OmitKeys<T, K>
 }
