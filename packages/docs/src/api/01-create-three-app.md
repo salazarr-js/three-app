@@ -1,4 +1,4 @@
-# `createThreeApp`
+# `createThreeApp()`
 
 ```ts
 const app = await createThreeApp({})

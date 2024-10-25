@@ -15,7 +15,11 @@ export default antfu(
   },
   {
     files: ['**/*.vue'],
-    rules: {},
+    rules: {
+      'vue/block-order': ['error', {
+        order: [['script', 'template'], 'style'],
+      }],
+    },
   },
   {
     files: ['**/*.test.*'],

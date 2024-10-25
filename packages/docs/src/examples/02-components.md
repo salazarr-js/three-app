@@ -1,33 +1,29 @@
-# Components
+---
+aside: false
+---
 
-## Create components using hooks
+<ExampleTitle :scripts>Reusable Components</ExampleTitle>
 
-```js
-export function createCube() {
-  const cube = new Cube()
-  applyProps(cube, {})
+<ThreeApp />
 
-  return {
-    ...cube,
-    onRender(delta) {
-      cube.position.y++
-    }
-  }
-}
-```
+::: code-group
+<<< ./scripts/02-components/index.ts
 
-## Add Components to scene
+<<< ./scripts/02-components/cube.ts
+:::
 
-```js
-import { createThreeApp } from '@slzr/three-app'
-import { createCube } from './cube'
+<script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+import { data } from './examples.data'
 
-const app = await createThreeApp({
-  container: '#container',
-  onInit({ scene }) {
-    scene.add(createCube())
-  }
+const scripts = data['02-components']
+
+onMounted(async () => {
+  await import('./scripts/02-components/index')
 })
 
-app.start()
-```
+onUnmounted(() => {
+  /** 💀 TODO: refactor - stop/remove scripts | Scripts keep running on bg since they're on memory */
+  window.location.reload()
+})
+</script>

@@ -8,7 +8,8 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@slzr/three-app": "^0.1.0",
+    "@slzr/three-app": "^0.1.3",
+    "@stackblitz/sdk": "^1.11.0",
     "three": "^0.169.0"
   },
   "devDependencies": {

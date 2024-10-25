@@ -12,13 +12,13 @@ hero:
   actions:
     - theme: brand
       text: Guide
-      link: /guide/01-introduction
+      link: /guide/introduction
     - theme: alt
       text: API
-      link: /api/01-createThreeApp
+      link: /api/create-three-app
     - theme: alt
       text: Examples
-      link: /examples/01-first-scene
+      link: /examples/first-scene
 
 features:
   - title: Feature A

@@ -6,7 +6,8 @@
 - [x] Linting
   - [x] eslint + antfu
 - [x] Docs using [vitepress](https://vitepress.dev/)
-  - Injected `.ts` examples
+  - [x]Injected `.ts` examples
+  - [ ] spanish version
   - https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start
 
 - Vite lib mode + ts types declarations `.d.ts`
@@ -14,7 +15,7 @@
   - [tsup](https://github.com/egoist/tsup)
   - `tsc --emitDeclarationOnly `
 - [x] Publish scoped/organization package (@slzr)
-- [] Auto generated `stackblitz` examples
+- [x] Auto generated `stackblitz` examples
 - [] Semantic commits + Semver
   - [semantic-release](https://github.com/semantic-release/semantic-release)
   - [changeset](https://github.com/changesets/changesets)
@@ -23,33 +24,37 @@
   - [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog)
 - [] Github pipeline/workflow
 - [] Set Github Project
-- [] Add License, Author, Keywords to package
+- [x] Add License, Author, Keywords to package
 
 ## Features
-- [ ] `createThreeApp`
-  - [ ] scene
-  - [ ] camera
-    - [ ] aspect ratio
-    - [ ] `OrthographicCamera`
-    - [ ] `PerspectiveCamera`
-  - [ ] renderer
-  - [ ] render loop
-    - [ ] `render()`
-    - [ ] `start()`
-    - [ ] `stop()`
-  - [ ] `initialValues`
-  - [ ] `onResize` hook
-  - [ ] `onRender` hook
+- [x] `createThreeApp`
+  - [x] scene
+  - [x]camera
+    - [x] aspect ratio
+    - [x] `OrthographicCamera`
+    - [x] `PerspectiveCamera`
+  - [x] renderer
+  - [x] render loop
+    - [x] `render()`
+    - [x] `start()`
+    - [x] `stop()`
+  - [x] `onResize` hook
+  - [x] `onRender` hook
     - [ ] `clock`
   - [ ] `ColorManagement`
   - [ ] `shadows`
-  - [ ] `fullScreenMode`
+  - [x] `fullScreenMode`
 
 - [x] `applyProps`
   - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`
   - [ ] Can extends `ThreeProps` like `ThreeProps<T, { color: string }>`
   - [ ] accept functions like `camera.lookAt()`
-  - [ ] handle `color`, `scale`, `vector2`, `rotation`
+    - [ ] map function types to receive params and call func
+  - [ ] handle prop types
+    - [x] Vector 2,3,4 like props [position]
+    - [ ] Scale
+    - [ ] color
+    - [ ] rotation
 
 - [ ] `createWithProps` fn
 - [ ] map `ColorLikeProps`
@@ -71,8 +76,7 @@
   > https://whsjs.readme.io/docs
 
 - [ ] tests
-  -[ ] `applyProps`
- - [ ] test changing 1, 2 and 3 axis for
+  -[x] `applyProps`
 
-- [ ] Publish `beta` version
+- [x] Publish `beta` version
 - [ ] `#threeJsJourney` en twitter

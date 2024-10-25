@@ -7,12 +7,16 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/logo-simple.png' }],
   ],
+  cleanUrls: true,
+  rewrites: {
+    ':folder/:number([0-9]+)-:slug(.*)': ':folder/:slug', // guide/01-introduction -> guide/introduction
+  },
   themeConfig: {
     logo: '/logo-simple.png',
     nav: [
-      { text: 'Guide', link: '/guide/01-introduction' },
-      { text: 'API', link: '/api/01-createThreeApp' },
-      { text: 'Examples', link: '/examples/01-first-scene' },
+      { text: 'Guide', link: '/guide/introduction' },
+      { text: 'API', link: '/api/create-three-app' },
+      { text: 'Examples', link: '/examples/first-scene' },
     ],
 
     sidebar: {
@@ -22,8 +26,8 @@ export default defineConfig({
           {
             text: 'Guide',
             items: [
-              { text: 'Introduction', link: '/01-introduction' },
-              { text: 'Getting Started', link: '/02-getting-started' },
+              { text: 'Introduction', link: '/introduction' },
+              { text: 'Getting Started', link: '/getting-started' },
             ],
           },
         ],
@@ -31,15 +35,15 @@ export default defineConfig({
       api: {
         base: '/api',
         items: [
-          { text: 'createThreeApp', link: '/01-createThreeApp' },
-          { text: 'applyProps', link: '/02-applyProps' },
+          { text: 'createThreeApp', link: '/create-three-app' },
+          { text: 'applyProps', link: '/apply-props' },
         ],
       },
       examples: {
         base: '/examples',
         items: [
-          { text: 'First Scene', link: '/01-first-scene' },
-          { text: 'Usable Components', link: '/02-components' },
+          { text: 'First Scene', link: '/first-scene' },
+          { text: 'Reusable Components', link: '/components' },
         ],
       },
     },

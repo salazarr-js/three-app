@@ -25,7 +25,7 @@
 
 ### Installation
 
-```sh
+```bash
 npm install three @slzr/three-app
 npm install -D @types/three
 ```
