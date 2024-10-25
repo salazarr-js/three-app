@@ -63,4 +63,4 @@ app.start()
 
 ## 🗃️ Documentation
 
-To learn more about `Three App`, check the [documentation](https://slzr-three-app.vercel.app).
+To learn more about `Three App`, check the [documentation](https://three.salazarjs.dev/).
