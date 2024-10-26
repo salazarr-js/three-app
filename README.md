@@ -46,6 +46,8 @@ The way all hooks were written limit the amount of instances that can be created
 - [TABLEROS DE PROYECTOS | GITHUB BÁSICO | GITHUB PROJECTS | EPPR CLASE 205](https://www.youtube.com/watch?v=Oul3wLKpx04)
 - [GitHub Projects: finding clarity in the chaos - Universe 2022](https://www.youtube.com/watch?v=vqbcNXtHgvg)
 
+- [Web.dev - Sandboxed Iframes](https://web.dev/articles/sandboxed-iframes)
+
 ### Logo
 
 [![Oscar Reutersvärd](https://finelinegd.com/wp-content/uploads/2014/05/or_header.jpg)](https://finelinegd.com/oscar-reutersvard-the-father-of-impossible-figures/)

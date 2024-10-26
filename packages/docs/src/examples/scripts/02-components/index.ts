@@ -5,7 +5,7 @@ import { createCube } from './cube'
   const cube = createCube({ color: 'red' })
 
   const threeApp = await createThreeApp({
-    container: document.getElementById('three-app'),
+    container: document.getElementById('three-app')!,
     onInit({ scene }) {
       scene.add(cube)
     },

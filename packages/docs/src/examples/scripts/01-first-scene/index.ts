@@ -7,7 +7,7 @@ import * as THREE from 'three'
   const cube = new THREE.Mesh(geometry, material)
 
   const threeApp = await createThreeApp({
-    container: document.getElementById('three-app'),
+    container: document.getElementById('three-app')!,
     onInit({ scene }) {
       scene.add(cube)
     },
