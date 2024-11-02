@@ -4,7 +4,7 @@ import { getOnFullscreenModeChangeCallbacks, getOnRenderCallbacks, getOnResizeCa
 import { applyProps, getPixelRatio } from './utils'
 
 /** */
-export function createThreeCamera(cameraParams: ThreeCameraParams) {
+function createThreeCamera(cameraParams: ThreeCameraParams) {
   const { width, height, props, orthographic } = cameraParams
 
   const aspect = width / height
@@ -43,14 +43,14 @@ export function createThreeCamera(cameraParams: ThreeCameraParams) {
     camera.updateMatrixWorld()
   }
 
-  onResize(({ getContainerSizes }) => updateCamera(getContainerSizes()))
-  onFullscreenModeChange(({ getContainerSizes }) => updateCamera(getContainerSizes()))
+  onResize(({ getContainerSize }) => updateCamera(getContainerSize()))
+  onFullscreenModeChange(({ getContainerSize }) => updateCamera(getContainerSize()))
 
   return camera
 }
 
 /** */
-export function createThreeRenderer(rendererParams: ThreeRendererParams) {
+function createThreeRenderer(rendererParams: ThreeRendererParams) {
   const { width, height, props } = rendererParams
 
   const renderer = new WebGLRenderer({
@@ -61,7 +61,7 @@ export function createThreeRenderer(rendererParams: ThreeRendererParams) {
   renderer.setSize(width, height)
   renderer.setPixelRatio(getPixelRatio())
 
-  // `ColorEncoding` & `ToneMapping`
+  /* `ColorEncoding` & `ToneMapping` */
   // renderer.toneMapping = ACESFilmicToneMapping
   // renderer.outputEncoding = sRGBEncoding
   // `shadows`
@@ -78,8 +78,8 @@ export function createThreeRenderer(rendererParams: ThreeRendererParams) {
     renderer.setSize(width, height)
   }
 
-  onResize(({ getContainerSizes }) => updateRenderer(getContainerSizes()))
-  onFullscreenModeChange(({ getContainerSizes }) => updateRenderer(getContainerSizes()))
+  onResize(({ getContainerSize }) => updateRenderer(getContainerSize()))
+  onFullscreenModeChange(({ getContainerSize }) => updateRenderer(getContainerSize()))
 
   return renderer
 }
@@ -106,7 +106,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     isOrthographic: orthographic ?? false,
     isFullscreenMode: false,
 
-    getContainerSizes() {
+    getContainerSize() {
       if (state.isFullscreenMode)
         return { width: window.innerWidth, height: window.innerHeight }
       return { width: container.clientWidth, height: container.clientHeight }

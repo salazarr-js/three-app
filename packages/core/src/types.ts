@@ -38,7 +38,7 @@ export interface ThreeAppState {
   isOrthographic: boolean
 
   /** Returns container client sizes or windows inner sizes if is in fullscreen mode, as `{ width, height }` obj */
-  getContainerSizes: () => ThreeAppSize
+  getContainerSize: () => ThreeAppSize
   /** Toggle fullscreen mode */
   toggleFullscreenMode: () => void
 }
