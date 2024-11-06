@@ -15,6 +15,8 @@ const dependencies = {
 function getHTMLTemplate(styles?: string) {
   const styleTag = styles ? `<style>${styles}</style>` : ''
 
+  // TODO: add to head
+  // <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   return /* html */`
 ${styleTag}
 
