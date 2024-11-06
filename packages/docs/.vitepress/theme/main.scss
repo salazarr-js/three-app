@@ -2,6 +2,27 @@
   // https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
 }
 
+// GLOBAL STYLES
+.rounded-lg {
+  border-radius: 8px;
+}
+
+.block {
+  display: block;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.p-0 {
+  padding: 0px !important;
+}
+
+.list-none {
+  list-style-type: none !important;
+}
+
 // TRANSITIONS
 .fade-enter-active,
 .fade-leave-active {
@@ -23,3 +44,4 @@
     background-position: -50%;
   }
 }
+

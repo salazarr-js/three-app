@@ -1,10 +1,14 @@
 # TODOs
 
+- [ ] update todo list
+- [ ] update core readme.md and root readme.md
+
 ## Project
 - [x] use [fnm](https://github.com/Schniz/fnm)
 - [ ] Auto Generated Changelogs
 - [x] Linting
   - [x] eslint + antfu
+  - [ ] diy eslint config
 - [x] Docs using [vitepress](https://vitepress.dev/)
   - [x]Injected `.ts` examples
   - [ ] spanish version
@@ -26,7 +30,7 @@
 - [] Set Github Project
 - [x] Add License, Author, Keywords to package
 
-## Features
+## Core Features
 - [x] `createThreeApp`
   - [x] scene
   - [x]camera
@@ -72,8 +76,30 @@
   - [ ] remove element from `toRender` if needed
   - [ ] remove element from `toIntersect` if needed
 - [ ] Accept `.gltf` files
-  > https://github.com/edwinwebb/three-seed
   > https://whsjs.readme.io/docs
+- [ ] render-mode="on-demand"
+
+## Components
+[three-stdlib](https://github.com/pmndrs/three-stdlib)
+[drei](https://github.com/pmndrs/drei)
+
+- [ ] Grid helper - https://github.com/pmndrs/drei/blob/master/src/core/Grid.tsx
+- [ ] Camera Controls - https://github.com/yomotsu/camera-controls?tab=readme-ov-file
+- [ ] Lights with helpers
+- [ ] notion-like bookmark/link component
+- [ ] ContactShadows?
+  https://threejs.org/examples/#webgl_shadow_contact
+- [ ]
+
+## Demos
+- [ ] Base example
+ - [ ] orbitcontrols animated
+ - [ ] hover event
+ - [ ] click events
+ - [ ] shadows
+ - [ ] Lights
+ - [ ] grid
+- [ ] [Three Seed](https://github.com/edwinwebb/three-seed)
 
 - [ ] tests
   -[x] `applyProps`

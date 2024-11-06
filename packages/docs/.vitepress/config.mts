@@ -9,12 +9,16 @@ export default defineConfig({
   ],
   cleanUrls: true,
   rewrites: {
-    ':folder/:number([0-9]+)-:slug(.*)': ':folder/:slug', // guide/01-introduction -> guide/introduction
+    'guide/:subfolder/:number([0-9]+)-:slug(.*)': 'guide/:slug', // guide/01-introduction/01-about -> guide/about
+    ':folder(.*)/:number([0-9]+)-:slug(.*)': ':folder/:slug', // api/01-create-three-app -> api/create-three-app
   },
   themeConfig: {
     logo: '/logo-simple.png',
+    search: {
+      provider: 'local',
+    },
     nav: [
-      { text: 'Guide', link: '/guide/introduction' },
+      { text: 'Guide', link: '/guide/about' },
       { text: 'API', link: '/api/create-three-app' },
       { text: 'Examples', link: '/examples/first-scene' },
     ],
@@ -24,10 +28,28 @@ export default defineConfig({
         base: '/guide',
         items: [
           {
-            text: 'Guide',
+            text: 'Introduction',
             items: [
-              { text: 'Introduction', link: '/introduction' },
-              { text: 'Getting Started', link: '/getting-started' },
+              { text: '✨ About the project', link: '/about' },
+              { text: '🚀 Getting Started', link: '/getting-started' },
+              { text: '🎬 First Scene', link: '/first-scene' },
+            ],
+          },
+          {
+            text: 'Core',
+            items: [
+              { text: '🧬 Core Functionalities', link: '/core-functionalities' },
+              { text: '🧠 Functional Composition', link: '/functional-composition' },
+              { text: '🪝 "Hooks"', link: '/hooks' },
+            ],
+          },
+          {
+            text: 'Components',
+            collapsed: true,
+            items: [
+              { text: '📏 Grid', link: '/grid' },
+              { text: '🕹️ Controls', link: '/controls' },
+              { text: '💡 Lights', link: '/lights' },
             ],
           },
         ],
@@ -35,8 +57,13 @@ export default defineConfig({
       api: {
         base: '/api',
         items: [
-          { text: 'createThreeApp', link: '/create-three-app' },
-          { text: 'applyProps', link: '/apply-props' },
+          {
+            text: 'Core',
+            items: [
+              { text: 'createThreeApp', link: '/create-three-app' },
+              { text: 'applyProps', link: '/apply-props' },
+            ],
+          },
         ],
       },
       examples: {
@@ -44,6 +71,7 @@ export default defineConfig({
         items: [
           { text: 'First Scene', link: '/first-scene' },
           { text: 'Reusable Components', link: '/components' },
+          { text: 'Three Seed', link: '/three-seed' },
         ],
       },
     },

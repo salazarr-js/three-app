@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: Guide
-      link: /guide/introduction
+      link: /guide/about
     - theme: alt
       text: API
       link: /api/create-three-app
