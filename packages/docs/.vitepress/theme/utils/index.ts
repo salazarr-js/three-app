@@ -4,9 +4,9 @@ import { loadSandpackClient } from '@codesandbox/sandpack-client'
 /** */
 export type Scripts = Record<`${string}.ts`, string>
 
-/** */
+/** TODO: get dependencies from package */
 const dependencies = {
-  '@slzr/three-app': '^0.1.6',
+  '@slzr/three-app': '^0.1.7',
   'three': '^0.170.0',
   '@types/three': '^0.169.0',
 }
