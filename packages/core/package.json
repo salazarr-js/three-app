@@ -1,7 +1,7 @@
 {
   "name": "@slzr/three-app",
   "type": "module",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "ThreeJs but functional and declarative.",
   "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
   "license": "MIT",
@@ -25,14 +25,14 @@
   ],
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js",
+      "require": "./dist/components.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -50,9 +50,13 @@
     "publish": "npm publish"
   },
   "peerDependencies": {
-    "three": "^0.169.0"
+    "three": "^0.170.0"
+  },
+  "dependencies": {
+    "three-stdlib": "^2.34.0"
   },
   "devDependencies": {
+    "@types/three": "^0.169.0",
     "tsup": "^8.2.4",
     "typescript": "^5.6.2",
     "vitest": "^2.1.2"

@@ -4,7 +4,7 @@
   <ThreeAppSandbox :scripts  />
 </ClientOnly>
 
-> This is a port of the [three.js - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial.
+> This is based on the [three.js - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial.
 
 ## 📝 Setup your template
 
@@ -53,7 +53,7 @@ import * as THREE from 'three'
     },
   })
 
-  threeApp.start() // Start the rendering loop
+  threeApp.start() // Start the render loop
 })()
 ```
 :::

@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig({
   name: 'three-app',
-  entry: ['src/index.ts'],
+  entry: ['src/index.ts', 'src/components.ts'],
   format: ['cjs', 'esm'],
   external: ['three'],
   clean: true,

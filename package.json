@@ -18,7 +18,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "three": "^0.169.0"
+    "three": "^0.170.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
