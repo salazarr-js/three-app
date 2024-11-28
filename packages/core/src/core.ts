@@ -100,6 +100,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
 
   /** Three app API State */
   const state: ThreeAppState = {
+    container,
     scene: scene instanceof Scene ? scene : applyProps(new Scene(), { ...scene }),
     camera: getCamera(),
     renderer: renderer instanceof WebGLRenderer ? renderer : createThreeRenderer({ width, height, props: renderer }),

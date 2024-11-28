@@ -3,6 +3,8 @@
 - [ ] update todo list
 - [ ] update core readme.md and root readme.md
 
+https://sbcode.net/threejs/
+
 ## Project
 - [x] use [fnm](https://github.com/Schniz/fnm)
 - [ ] Auto Generated Changelogs
@@ -44,10 +46,26 @@
     - [x] `stop()`
   - [x] `onResize` hook
   - [x] `onRender` hook
-    - [ ] `clock`
+    - [ ] `clock` delta, elapsed
   - [ ] `ColorManagement`
   - [ ] `shadows`
   - [x] `fullScreenMode`
+
+  - [ ] stopPropagation by default
+
+  - [ ] Extend app state
+  - [ ] Create three app component
+
+  ```ts
+  const cube = defineThreeAppComponent((ctx) => {
+
+    return {
+      object: cube,
+      onRender() { }
+      onClick() { }
+    }
+  })
+  ```
 
 - [x] `applyProps`
   - [ ] accept `-` separated props like `position-y: 2` | `rotation-x: -Math.PI / 2`

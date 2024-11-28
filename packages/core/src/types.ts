@@ -36,6 +36,8 @@ export interface ThreeAppState {
   isFullscreenMode: boolean
   /** */
   isOrthographic: boolean
+  /** */
+  container: HTMLElement
 
   /** Returns container client sizes or windows inner sizes if is in fullscreen mode, as `{ width, height }` obj */
   getContainerSize: () => ThreeAppSize

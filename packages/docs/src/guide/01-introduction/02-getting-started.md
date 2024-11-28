@@ -54,6 +54,8 @@ npm i -D @types/three
 - [Discover three.js](https://discoverthreejs.com)
 - [Bruno Simon's three.js Journey](https://threejs-journey.com)
 
+- [SB Code - Three.js and TypeScript Tutorials](https://sbcode.net/threejs/)
+
 ### 🌟 Inspiration
 
 - [Three.js - Showcase](https://threejs.org)
