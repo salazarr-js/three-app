@@ -1,4 +1,4 @@
-import type { ThreeAppObj, ThreeProps } from '@/types'
+import type { ThreeAppObj, ThreeAppProps } from '@/types'
 import { Color, Layers } from 'three'
 
 /** Checks if value is `null` or `undefined`. */
@@ -63,7 +63,7 @@ export function getPixelRatio(): number {
  *
  * Heavily inspired on [R3F implementation](https://github.com/pmndrs/react-three-fiber/blob/master/packages/fiber/src/core/utils.ts#L303)
  */
-export function applyProps<T extends ThreeAppObj>(obj: T, props: ThreeProps<T>): T {
+export function applyProps<T extends ThreeAppObj>(obj: T, props: ThreeAppProps<T>): T {
   Object.keys(props).forEach((propKey) => {
     if (!(propKey in obj)) {
       console.warn(`${obj?.constructor?.name || 'Object'} doesn't have a '${propKey}' property`)

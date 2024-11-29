@@ -16,13 +16,13 @@ export type ThreeAppResizeCallback = ThreeAppHookCallback<{ readonly entry: Resi
 export type ThreeAppRenderCallback = ThreeAppHookCallback<{ readonly time: number }>
 
 /** */
-export type ThreeCameraParams = ThreeAppSize & {
-  props?: ThreeProps<PerspectiveCamera | OrthographicCamera>
+export type ThreeAppCameraParams = ThreeAppSize & {
+  props?: ThreeAppProps<PerspectiveCamera | OrthographicCamera>
   orthographic?: boolean
 }
 
 /** */
-export type ThreeRendererParams = ThreeAppSize & { props?: ThreeProps<WebGLRenderer> }
+export type ThreeAppRendererParams = ThreeAppSize & { props?: ThreeAppProps<WebGLRenderer> }
 
 /** */
 export interface ThreeAppState {
@@ -57,11 +57,11 @@ export interface ThreeAppParams {
   /** */
   orthographic?: boolean
   /** */
-  camera?: ThreeProps<PerspectiveCamera | OrthographicCamera>
+  camera?: ThreeAppProps<PerspectiveCamera | OrthographicCamera>
   /** */
-  scene?: ThreeProps<Scene>
+  scene?: ThreeAppProps<Scene>
   /** */
-  renderer?: ThreeProps<WebGLRenderer>
+  renderer?: ThreeAppProps<WebGLRenderer>
 
   // TODO: shadows
 }
@@ -76,7 +76,7 @@ export interface ThreeApp extends ThreeAppState {
   stop: () => void
 }
 
-/** Union of all `Vector` types */
+/** Union of all Three `Vector` types */
 type VectorLike = Vector2 | Vector3 | Vector4
 
 /** `Vector2` object representation */
@@ -102,6 +102,6 @@ type ThreeVectorProp<T extends VectorLike> = T extends Vector2 ? Vector2Prop : T
  * ✅ Mapped `Vector{2, 3, 4}` type props
  * TODO: `Euler`, `Quaternion`, `Matrix3`, `Matrix4`
  */
-export type ThreeProps<T extends ThreeAppObj> = {
+export type ThreeAppProps<T extends ThreeAppObj> = {
   [P in keyof T]?: T[P] extends VectorLike ? ThreeVectorProp<T[P]> : T[P]
 }

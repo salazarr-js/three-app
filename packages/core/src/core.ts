@@ -1,10 +1,10 @@
-import type { ThreeApp, ThreeAppParams, ThreeAppSize, ThreeAppState, ThreeCameraParams, ThreeRendererParams } from './types'
+import type { ThreeApp, ThreeAppCameraParams, ThreeAppParams, ThreeAppRendererParams, ThreeAppSize, ThreeAppState } from './types'
 import { OrthographicCamera, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three'
 import { getOnFullscreenModeChangeCallbacks, getOnRenderCallbacks, getOnResizeCallbacks, onFullscreenModeChange, onResize } from './hooks'
 import { applyProps, getPixelRatio } from './utils'
 
 /** */
-function createThreeCamera(cameraParams: ThreeCameraParams) {
+function createThreeCamera(cameraParams: ThreeAppCameraParams) {
   const { width, height, props, orthographic } = cameraParams
 
   const aspect = width / height
@@ -50,7 +50,7 @@ function createThreeCamera(cameraParams: ThreeCameraParams) {
 }
 
 /** */
-function createThreeRenderer(rendererParams: ThreeRendererParams) {
+function createThreeRenderer(rendererParams: ThreeAppRendererParams) {
   const { width, height, props } = rendererParams
 
   const renderer = new WebGLRenderer({
