@@ -11,7 +11,7 @@ Every available hook will help you to run code in different states of the lifecy
 Every hook will expose the `ThreeAppState`
 :::
 
-## 🖌️ `onRender()`
+## 🖌️ `useRender()`
 
 Add a callback function to the render loop call stack to be called on every rendered frame.
 
@@ -27,9 +27,13 @@ function someComponent() {
 }
 ```
 
-## 📐 `onResize()`
+## 📐 `useResize()`
 
-## 🖥️ `onFullscreenModeChange`
+This hooks use the [ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) and the callback will have access to the entries and the `Three App State`
+
+### 🖥️ Handle fullscreen mode
+
+> After a `fullscreenchange` event this hook is triggered
 
 ## 🖱️ 👆 `onClick`
 

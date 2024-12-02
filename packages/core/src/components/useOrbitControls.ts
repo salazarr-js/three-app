@@ -1,5 +1,5 @@
 import type { ThreeAppProps, ThreeAppState } from '@/types'
-import { onRender } from '@/hooks'
+import { useRender } from '@/hooks'
 import { applyProps } from '@/utils'
 import { OrbitControls } from 'three-stdlib'
 
@@ -13,10 +13,12 @@ interface OrbitControlsParams {
 export function useOrbitControls(params: OrbitControlsParams, props?: ThreeAppProps<OrbitControls>) {
   const controls = new OrbitControls(params.camera, params.renderer.domElement)
 
+  // TODO: `useThreeApp` to get camera and renderer
+
   if (props)
     applyProps(controls, props)
 
-  onRender(() => {
+  useRender(() => {
     controls.update()
   })
 

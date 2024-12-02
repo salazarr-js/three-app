@@ -7,13 +7,10 @@ export type ThreeAppObj = Record<string, any> | Object3D
 export interface ThreeAppSize { width: number, height: number }
 
 /** */
-export type ThreeAppHookCallback<T = object> = (ctx: Readonly<ThreeAppState & T>) => void
+export type ThreeAppRenderCallback = (ctx: { state: ThreeAppState, time: number }) => void
 
 /** */
-export type ThreeAppResizeCallback = ThreeAppHookCallback<{ readonly entry: ResizeObserverEntry }>
-
-/** */
-export type ThreeAppRenderCallback = ThreeAppHookCallback<{ readonly time: number }>
+export type ThreeAppResizeCallback = (ctx: { state: ThreeAppState, entry: ResizeObserverEntry }) => void
 
 /** */
 export type ThreeAppCameraParams = ThreeAppSize & {
@@ -33,7 +30,7 @@ export interface ThreeAppState {
   /** Render `engine` object */
   renderer: WebGLRenderer
   /** */
-  isFullscreenMode: boolean
+  isFullscreen: boolean
   /** */
   isOrthographic: boolean
   /** */
@@ -41,8 +38,8 @@ export interface ThreeAppState {
 
   /** Returns container client sizes or windows inner sizes if is in fullscreen mode, as `{ width, height }` obj */
   getContainerSize: () => ThreeAppSize
-  /** Toggle fullscreen mode */
-  toggleFullscreenMode: () => void
+  /** Toggle fullscreen */
+  toggleFullscreen: () => void
 }
 
 /** */
@@ -100,6 +97,7 @@ type ThreeVectorProp<T extends VectorLike> = T extends Vector2 ? Vector2Prop : T
  * Type mapping for `applyProps` fn compatibility
  *
  * ✅ Mapped `Vector{2, 3, 4}` type props
+ *
  * TODO: `Euler`, `Quaternion`, `Matrix3`, `Matrix4`
  */
 export type ThreeAppProps<T extends ThreeAppObj> = {

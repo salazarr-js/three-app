@@ -44,9 +44,6 @@ https://sbcode.net/threejs/
     - [x] `render()`
     - [x] `start()`
     - [x] `stop()`
-  - [x] `onResize` hook
-  - [x] `onRender` hook
-    - [ ] `clock` delta, elapsed
   - [ ] `ColorManagement`
   - [ ] `shadows`
   - [x] `fullScreenMode`
@@ -55,6 +52,19 @@ https://sbcode.net/threejs/
 
   - [ ] Extend app state
   - [ ] Create three app component
+  ### Hooks
+  - [x] `useResize`
+    - [x] `observe`/`disconnect` on `start`/`stop`
+  - [x] `useFullscreen`
+  - [x] `useRender`
+    - [ ] delta, elapsed, clock
+  - [] `useThreeApp`
+
+  ### Events
+  - [ ] `onClick`
+  - [ ] `onPointerEnter`
+  - [ ] `onPointerLeave`
+  - [ ] `onPointerMove`
 
   ```ts
   const cube = defineThreeAppComponent((ctx) => {
