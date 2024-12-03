@@ -29,3 +29,5 @@ export function createCube(props: CubeProps = {}) {
   return cube
 }
 ```
+
+## 🧩 Components

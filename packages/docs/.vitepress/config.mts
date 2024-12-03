@@ -41,6 +41,7 @@ export default defineConfig({
               { text: '🧬 Core Functionalities', link: '/core-functionalities' },
               { text: '🧠 Functional Composition', link: '/functional-composition' },
               { text: '🪝 "Hooks"', link: '/hooks' },
+              { text: '🎉 Events', link: '/events' },
             ],
           },
           {

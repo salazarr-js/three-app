@@ -9,10 +9,10 @@ import * as THREE from 'three'
 
   const threeApp = await createThreeApp({
     container: document.getElementById('three-app')!,
-    onInit({ camera, renderer, scene }) {
+    onInit({ camera, scene }) {
       camera.position.y = 2
 
-      useOrbitControls({ camera, renderer }, { autoRotate: true })
+      useOrbitControls({ autoRotate: true })
 
       scene.add(cube)
     },

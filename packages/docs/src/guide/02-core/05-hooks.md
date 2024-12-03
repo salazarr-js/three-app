@@ -11,6 +11,20 @@ Every available hook will help you to run code in different states of the lifecy
 Every hook will expose the `ThreeAppState`
 :::
 
+## ✨ `useThreeApp`
+
+Useful when creating `components` and need access to the three app state to set tup initial values.
+
+```ts
+import { useRender, useThreeApp } from '@/hooks'
+
+const state = useThreeApp()
+```
+
+:::warning
+Be sure that the `useThreeApp` hook is called inside the `onInit` function.
+:::
+
 ## 🖌️ `useRender()`
 
 Add a callback function to the render loop call stack to be called on every rendered frame.
@@ -31,14 +45,4 @@ function someComponent() {
 
 This hooks use the [ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) and the callback will have access to the entries and the `Three App State`
 
-### 🖥️ Handle fullscreen mode
-
-> After a `fullscreenchange` event this hook is triggered
-
-## 🖱️ 👆 `onClick`
-
-## ➡️ `onPointerEnter`
-
-## ⬅️ `onPointerLeave`
-
-## ✋ `onPointerMove`
+## 🖥️ `useFullscreen`

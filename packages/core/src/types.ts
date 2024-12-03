@@ -7,6 +7,9 @@ export type ThreeAppObj = Record<string, any> | Object3D
 export interface ThreeAppSize { width: number, height: number }
 
 /** */
+export type ThreeAppFullscreenCallback = (ctx: { state: ThreeAppState, event: Event }) => void
+
+/** */
 export type ThreeAppRenderCallback = (ctx: { state: ThreeAppState, time: number }) => void
 
 /** */

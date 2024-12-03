@@ -1,6 +1,6 @@
 import type { ThreeApp, ThreeAppCameraParams, ThreeAppParams, ThreeAppRendererParams, ThreeAppSize, ThreeAppState } from './types'
 import { OrthographicCamera, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three'
-import { getRenderCallbacks, getResizeCallbacks, useResize } from './hooks'
+import { getFullscreenCallbacks, getRenderCallbacks, getResizeCallbacks, updateThreeAppState, useFullscreen, useResize } from './hooks'
 import { applyProps, getPixelRatio } from './utils'
 
 /** */
@@ -44,6 +44,7 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
   }
 
   useResize(({ state: { getContainerSize } }) => updateCamera(getContainerSize()))
+  useFullscreen(({ state: { getContainerSize } }) => updateCamera(getContainerSize()))
 
   return camera
 }
@@ -78,6 +79,7 @@ function createThreeAppRenderer(rendererParams: ThreeAppRendererParams) {
   }
 
   useResize(({ state: { getContainerSize } }) => updateRenderer(getContainerSize()))
+  useFullscreen(({ state: { getContainerSize } }) => updateRenderer(getContainerSize()))
 
   return renderer
 }
@@ -120,7 +122,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   /** */
   const resizeObserver = new ResizeObserver(([entry]) => {
     getResizeCallbacks()
-      .forEach(resizeCb => resizeCb({ entry, state }))
+      .forEach(resizeCb => resizeCb({ state, entry }))
   })
 
   /**
@@ -137,9 +139,11 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     state.renderer.render(state.scene, state.camera)
   }
 
-  /** Update `fullScreen` state and run all `` callbacks */
-  function onFullscreenChange() {
+  /** Update `fullScreen` state and run all stored callbacks */
+  function onFullscreenChange(event: Event) {
     state.isFullscreen = !!document.fullscreenElement
+    getFullscreenCallbacks()
+      .forEach(fullscreenCb => fullscreenCb({ state, event }))
   }
 
   /** */
@@ -160,6 +164,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
 
   /** */
   await (async function () {
+    updateThreeAppState(state)
     container.append(state.renderer.domElement)
 
     // ColorManagement
