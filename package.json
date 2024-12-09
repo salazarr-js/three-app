@@ -2,21 +2,19 @@
   "name": "root",
   "type": "module",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "packageManager": "pnpm@9.14.4",
   "engines": {
     "node": "22.x"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev:core\" \"npm run dev:docs\"",
-    "dev:core": "npm run dev --workspace=@slzr/three-app",
-    "dev:docs": "npm run dev --workspace=docs",
-    "build": "concurrently \"npm run build:core\" \"npm run build:docs\"",
-    "build:core": "npm run build --workspace=@slzr/three-app",
-    "build:docs": "npm run build --workspace=docs",
-    "test": "npm run test --workspace=@slzr/three-app",
-    "publish": "npm run publish --workspace=@slzr/three-app",
+    "dev": "pnpm -r --parallel run dev",
+    "dev:core": "pnpm --filter @slzr/three-app run dev",
+    "dev:docs": "pnpm --filter docs run dev",
+    "build": "pnpm -r run build",
+    "build:core": "pnpm --filter @slzr/three-app run build",
+    "build:docs": "pnpm --filter docs run build",
+    "test": "pnpm -r run test",
+    "release:patch": "pnpm --filter @slzr/three-app run release:patch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -27,7 +25,6 @@
     "@antfu/eslint-config": "^3.7.3",
     "@types/node": "^22.7.5",
     "@types/three": "^0.169.0",
-    "concurrently": "^8.2.2",
     "eslint": "^9.12.0"
   }
 }

@@ -1,21 +1,19 @@
 # TODOs
 
 ## Project
+
 - [x] use [fnm](https://github.com/Schniz/fnm) as NodeJs version manager
-- [ ] use `PNPM` as package manager with [workspaces](https://pnpm.io/workspaces)
+- [x] use `PNPM` as package manager with [workspaces](https://pnpm.io/workspaces)
 - [x] Linting using `eslint`
   - [x] antfu config
   - [ ] DIY eslint config
 - [x] Docs using [vitepress](https://vitepress.dev/)
-  - [x] Injected `.ts` examples
-  - [x] Auto generated `stackblitz`/`codesanbox` examples
-  - [ ] Auto generated API Reference using [Typedoc Vitepress Plugin](https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
-  - [ ] Spanish version
 - [x] Bundle typescript library with types declarations `.d.ts` using [tsup](https://github.com/egoist/tsup)
   - [x] Publish scoped/organization package (@slzr)
-- [] Semantic commits + Semver
-  - [semantic-release](https://github.com/semantic-release/semantic-release)
+  - [ ] https://github.com/sindresorhus/np
+- [ ] Semantic commits + Semver
   - [changeset](https://github.com/changesets/changesets)
+  - [semantic-release](https://github.com/semantic-release/semantic-release)
   - [release-it](https://github.com/release-it/release-it)
   - [release-please](https://github.com/googleapis/release-please)
   - [conventional-changelog-cli](https://github.com/conventional-changelog/conventional-changelog)
@@ -58,7 +56,7 @@
     - [ ] `Quaternion`
   - [ ] map `ColorLikeProps`
 
-## Hooks
+### Hooks
 - [x] `useResize`
   - [x] `observe`/`disconnect` on `start`/`stop`
 - [x] `useFullscreen`
@@ -67,14 +65,14 @@
 - [x] `useThreeApp`
 - [ ] `tweakpane`
 
-## Events
+### Events
 
 - [ ] `onClick`
 - [ ] `onPointerEnter`
 - [ ] `onPointerLeave`
 - [ ] `onPointerMove`
 
-## Components
+### Components
 
 > [three-stdlib](https://github.com/pmndrs/three-stdlib)
 > [drei](https://github.com/pmndrs/drei)
@@ -86,16 +84,24 @@
 - [ ] [contact shadows](https://threejs.org/examples/webgl_shadow_contact.html)
 - [ ] Camera Controls - https://github.com/yomotsu/camera-controls?tab=readme-ov-file
 
-## Demos/Examples
+### Demos/Examples
 
 - [ ] Base example
 - [x] orbit controls animated
 - [ ] pointer events
 - [ ] [Three Seed](https://github.com/edwinwebb/three-seed)
 
+### Tests
+- [ ] `applyProps`
+
 ## Docs
 
 - [ ] notion-like bookmark/link component
+- [x] Injected `.ts` examples
+- [x] Auto generated `stackblitz`/`codesanbox` examples
+- [ ] Auto generated API Reference using [Typedoc Vitepress Plugin](https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
+- [ ] Spanish version
+- [ ] Add footer
 
 ## Version **2.0**
 

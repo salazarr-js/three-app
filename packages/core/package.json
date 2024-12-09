@@ -1,7 +1,7 @@
 {
   "name": "@slzr/three-app",
   "type": "module",
-  "version": "0.1.7",
+  "version": "0.1.17",
   "description": "ThreeJs but functional and declarative.",
   "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
   "license": "MIT",
@@ -47,7 +47,7 @@
     "build": "tsup",
     "test": "vitest",
     "tsc": "tsc",
-    "publish": "npm publish"
+    "release:patch": "npm version patch && npm publish --access public"
   },
   "peerDependencies": {
     "three": "^0.170.0"

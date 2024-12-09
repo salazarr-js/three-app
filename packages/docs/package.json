@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-client": "^2.19.8",
-    "@slzr/three-app": "^0.1.7",
+    "@slzr/three-app": "workspace:*",
     "three": "^0.170.0"
   },
   "devDependencies": {
