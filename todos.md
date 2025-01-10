@@ -60,6 +60,8 @@
     - [ ] `Quaternion`
   - [ ] map `ColorLikeProps`
 
+> `r152` minimum version
+
 ### Hooks
 - [x] `useResize`
   - [x] `observe`/`disconnect` on `start`/`stop`
