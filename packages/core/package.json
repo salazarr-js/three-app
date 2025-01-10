@@ -1,7 +1,7 @@
 {
   "name": "@slzr/three-app",
   "type": "module",
-  "version": "0.1.17",
+  "version": "0.2.0",
   "description": "ThreeJs but functional and declarative.",
   "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
   "license": "MIT",

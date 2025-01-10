@@ -10,7 +10,7 @@ aside: false
 import { onMounted } from 'vue'
 
 onMounted(async () => {
-  await import('./examples/scripts/03-controls')
+  await import('./playground-script')
 })
 </script>
 
@@ -20,6 +20,7 @@ onMounted(async () => {
   margin: 16px 0;
   height: auto;
   overflow: hidden;
+  user-select: none;
   aspect-ratio: 16 / 9;
   border-radius: 8px;
   background-color: var(--vp-code-block-bg);

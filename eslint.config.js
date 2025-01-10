@@ -11,7 +11,11 @@ export default antfu(
   },
   {
     files: ['**/*.ts'],
-    rules: {},
+    rules: {
+      stylistic: {
+        'ts/brace-style': ['error', '1tbs', { allowSingleLine: true }],
+      },
+    },
   },
   {
     files: ['**/*.vue'],

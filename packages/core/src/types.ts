@@ -1,4 +1,4 @@
-import type { Object3D, OrthographicCamera, PerspectiveCamera, Scene, Vector2, Vector3, Vector4, WebGLRenderer } from 'three'
+import type { Intersection, Object3D, OrthographicCamera, PerspectiveCamera, Raycaster, Scene, Vector2, Vector3, Vector4, WebGLRenderer } from 'three'
 
 /** Three object base type */
 export type ThreeAppObj = Record<string, any> | Object3D
@@ -15,13 +15,38 @@ export type ThreeAppRenderCallback = (ctx: { state: ThreeAppState, time: number 
 /** */
 export type ThreeAppResizeCallback = (ctx: { state: ThreeAppState, entry: ResizeObserverEntry }) => void
 
-/** */
+/** Supported mouse events handled by the raycaster. */
+export type ThreeAppMouseEvent = 'click'
+/** Supported pointer events handled by the raycaster. */
+export type ThreeAppPointerEvent = 'pointermove' | 'pointerenter' | 'pointerleave'
+/** All Supported events */
+export type ThreeAppEvent = ThreeAppMouseEvent | ThreeAppPointerEvent
+
+/** Unique ID for raycaster related event handlers using `@<eventType>:<objectUUID>` format. */
+export type ThreeAppEventHandlerId = `@${ThreeAppEvent}:${string}`
+
+/**
+ * Parameters for raycaster event handlers.
+ * - `event`: `PointerEvent` or `MouseEvent` based on the event type.
+ * - `intersection`: Raycaster intersection details.
+ * - `object`: The three.js object associated with the event.
+ */
+export interface ThreeAppEventHandlerParams<EventType extends ThreeAppEvent = ThreeAppMouseEvent> {
+  event: EventType extends ThreeAppPointerEvent ? PointerEvent : MouseEvent
+  intersection: Intersection
+  object: Object3D
+}
+
+/** Raycaster related event handler. */
+export type ThreeAppEventHandler<EventType extends ThreeAppEvent = ThreeAppMouseEvent> = (params: ThreeAppEventHandlerParams<EventType>) => void
+
+/** Initial width, height */
 export type ThreeAppCameraParams = ThreeAppSize & {
   props?: ThreeAppProps<PerspectiveCamera | OrthographicCamera>
   orthographic?: boolean
 }
 
-/** */
+/** Initial width, height */
 export type ThreeAppRendererParams = ThreeAppSize & { props?: ThreeAppProps<WebGLRenderer> }
 
 /** */
@@ -38,6 +63,14 @@ export interface ThreeAppState {
   isOrthographic: boolean
   /** */
   container: HTMLElement
+  /** */
+  stopPropagation: boolean
+  /** */
+  raycaster: Raycaster
+  /** */
+  pointer: Vector2
+  /** */
+  intersections: Intersection[]
 
   /** Returns container client sizes or windows inner sizes if is in fullscreen mode, as `{ width, height }` obj */
   getContainerSize: () => ThreeAppSize
@@ -62,6 +95,9 @@ export interface ThreeAppParams {
   scene?: ThreeAppProps<Scene>
   /** */
   renderer?: ThreeAppProps<WebGLRenderer>
+
+  /** */
+  stopPropagation?: boolean
 
   // TODO: shadows
 }
@@ -104,5 +140,7 @@ type ThreeVectorProp<T extends VectorLike> = T extends Vector2 ? Vector2Prop : T
  * TODO: `Euler`, `Quaternion`, `Matrix3`, `Matrix4`
  */
 export type ThreeAppProps<T extends ThreeAppObj> = {
-  [P in keyof T]?: T[P] extends VectorLike ? ThreeVectorProp<T[P]> : T[P]
+  [P in keyof T]?: T[P] extends VectorLike
+    ? ThreeVectorProp<T[P]> // TODO: or number
+    : T[P] // TODO: Other type maps
 }

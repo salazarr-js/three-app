@@ -55,6 +55,7 @@ export function isFunction(value: unknown): boolean {
 
 /** Returns device pixel ratio */
 export function getPixelRatio(): number {
+  // Math.min(Math.max(1, window.devicePixelRatio), 2)
   return Math.min(window.devicePixelRatio, 2)
 }
 
@@ -82,6 +83,9 @@ export function applyProps<T extends ThreeAppObj>(obj: T, props: ThreeAppProps<T
 
       // Special treatment for objects with support for set/copy, and layers
       if (targetProp.set && (targetProp.copy || targetProp instanceof Layers)) {
+
+        // TODO: if `targetProp` is `VectorLike` & `propValue` is number,
+
         // If `propValue` is array use `.fromArray()` or `.set()` functions
         if (Array.isArray(propValue)) {
           if (targetProp.toArray().length !== propValue.length)

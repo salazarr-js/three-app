@@ -1,6 +1,24 @@
-import type { ThreeApp, ThreeAppCameraParams, ThreeAppParams, ThreeAppRendererParams, ThreeAppSize, ThreeAppState } from './types'
-import { OrthographicCamera, PerspectiveCamera, Scene, Vector3, WebGLRenderer } from 'three'
-import { getFullscreenCallbacks, getRenderCallbacks, getResizeCallbacks, updateThreeAppState, useFullscreen, useResize } from './hooks'
+import * as THREE from 'three'
+//
+import {
+  executeThreeAppEventHandler,
+  getFullscreenCallbacks,
+  getIntersectedObjects,
+  getObjectsToIntersect,
+  getRenderCallbacks,
+  getResizeCallbacks,
+  updateThreeAppState,
+  useFullscreen,
+  useResize,
+} from './hooks'
+import type {
+  ThreeApp,
+  ThreeAppCameraParams,
+  ThreeAppParams,
+  ThreeAppRendererParams,
+  ThreeAppSize,
+  ThreeAppState
+} from './types'
 import { applyProps, getPixelRatio } from './utils'
 
 /** */
@@ -11,8 +29,8 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
   const frustum = 6.71 // TODO: add to API?
 
   const camera = !orthographic
-    ? new PerspectiveCamera(75, aspect, 0.1, 1000)
-    : new OrthographicCamera(
+    ? new THREE.PerspectiveCamera(75, aspect, 0.1, 1000)
+    : new THREE.OrthographicCamera(
       frustum * aspect / -2,
       frustum * aspect / 2,
       frustum / 2,
@@ -20,7 +38,7 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
     )
 
   camera.position.z = 5
-  camera.lookAt(new Vector3())
+  camera.lookAt(new THREE.Vector3())
 
   if (props)
     applyProps(camera, props)
@@ -29,10 +47,10 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
   function updateCamera({ width, height }: ThreeAppSize) {
     const updatedAspect = width / height
 
-    if (camera.type === 'PerspectiveCamera' && camera instanceof PerspectiveCamera) {
+    if (camera.type === 'PerspectiveCamera' && camera instanceof THREE.PerspectiveCamera) {
       camera.aspect = updatedAspect
     }
-    if (camera.type === 'OrthographicCamera' && camera instanceof OrthographicCamera) {
+    if (camera.type === 'OrthographicCamera' && camera instanceof THREE.OrthographicCamera) {
       camera.left = frustum * updatedAspect / -2
       camera.right = frustum * updatedAspect / 2
       camera.top = frustum / 2
@@ -53,22 +71,19 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
 function createThreeAppRenderer(rendererParams: ThreeAppRendererParams) {
   const { width, height, props } = rendererParams
 
-  const renderer = new WebGLRenderer({
+  const renderer = new THREE.WebGLRenderer({
     alpha: true,
     antialias: true,
     powerPreference: 'high-performance',
   })
   renderer.setSize(width, height)
   renderer.setPixelRatio(getPixelRatio())
-
-  /* `ColorEncoding` & `ToneMapping` */
-  // renderer.toneMapping = ACESFilmicToneMapping
-  // renderer.outputEncoding = sRGBEncoding
+  // `ColorEncoding` & `ToneMapping`
+  renderer.toneMapping = THREE.ACESFilmicToneMapping
+  renderer.outputColorSpace = THREE.SRGBColorSpace
   // `shadows`
-  // renderer.shadowMap.enabled = true
-  // renderer.shadowMap.type = PCFShadowMap
-  // renderer.shadowMap.type = PCFSoftShadowMap
-  // renderer.physicallyCorrectLights = true
+  renderer.shadowMap.enabled = true
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
   if (props)
     applyProps(renderer, props)
@@ -87,25 +102,35 @@ function createThreeAppRenderer(rendererParams: ThreeAppRendererParams) {
 /** Create a `ThreeJs` app object */
 export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> {
   /** */
-  const { container, onInit, onRender, scene, camera, renderer, orthographic } = params
+  const { container, onInit, onRender, scene, camera, renderer, orthographic, stopPropagation } = params
   /** */
-  const { clientWidth: width, clientHeight: height } = container
+  const { clientWidth: initialWidth, clientHeight: initialHeight } = container
 
   /** Get camera from props */
   function getCamera() {
-    if (!!camera && (camera instanceof PerspectiveCamera || camera instanceof OrthographicCamera))
+    if (!!camera && (camera instanceof THREE.PerspectiveCamera || camera instanceof THREE.OrthographicCamera))
       return camera
-    return createThreeAppCamera({ width, height, orthographic, props: camera })
+
+    return createThreeAppCamera({
+      width: initialWidth,
+      height: initialHeight,
+      orthographic,
+      props: camera,
+    })
   }
 
   /** Three app API State */
   const state: ThreeAppState = {
     container,
-    scene: scene instanceof Scene ? scene : applyProps(new Scene(), { ...scene }),
+    scene: scene instanceof THREE.Scene ? scene : applyProps(new THREE.Scene(), { ...scene }),
     camera: getCamera(),
-    renderer: renderer instanceof WebGLRenderer ? renderer : createThreeAppRenderer({ width, height, props: renderer }),
+    renderer: renderer instanceof THREE.WebGLRenderer ? renderer : createThreeAppRenderer({ width: initialWidth, height: initialHeight, props: renderer }),
     isOrthographic: orthographic ?? false,
     isFullscreen: false,
+    stopPropagation: stopPropagation ?? true,
+    raycaster: new THREE.Raycaster(),
+    pointer: new THREE.Vector2(),
+    intersections: [],
 
     getContainerSize() {
       if (state.isFullscreen)
@@ -127,16 +152,18 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
 
   /**
    * Render function
-   * TODO: delta/elapsed tme
+   * TODO: delta/elapsed time
    */
   function render(time: number) {
+    const { renderer, scene, camera } = state
+
     if (onRender)
       onRender({ state, time })
 
     // Run all `renderCallbacks` functions
     getRenderCallbacks().forEach(renderCb => renderCb({ state, time }))
 
-    state.renderer.render(state.scene, state.camera)
+    renderer.render(scene, camera)
   }
 
   /** Update `fullScreen` state and run all stored callbacks */
@@ -147,9 +174,77 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   }
 
   /** */
+  function onPointerMove(event: PointerEvent) {
+    event.preventDefault()
+    const { raycaster, pointer, camera, isFullscreen } = state
+
+    // Update `pointer` position with normalized coordinates, (-1 to +1) for both components
+    if (isFullscreen) {
+      pointer.x = (event.clientX / container.clientWidth) * 2 - 1
+      pointer.y = -(event.clientY / container.clientHeight) * 2 + 1
+    }
+    else {
+      const rect = container.getBoundingClientRect()
+      pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
+      pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
+    }
+
+    // Update raycaster interceptions
+    raycaster.setFromCamera(pointer, camera)
+    const intersections = raycaster.intersectObjects(getObjectsToIntersect())
+    state.intersections = intersections
+
+    const intersectionByIds = new Map(intersections.map(hit => [hit.object.uuid, hit]))
+    const intersectedObjs = getIntersectedObjects()
+
+    /** */
+    for (const [uuid, { intersection, object }] of intersectedObjs) {
+      if (!intersectionByIds.has(uuid)) {
+        executeThreeAppEventHandler('pointerleave', { event, intersection, object })
+
+        intersectedObjs.delete(uuid)
+      }
+    }
+
+    /** */
+    intersections.forEach((intersection) => {
+      const object = intersection.object
+
+      if (!intersectedObjs.has(object.uuid)) {
+        intersectedObjs.set(object.uuid, { intersection, object })
+
+        executeThreeAppEventHandler('pointerenter', { event, intersection, object })
+      }
+
+      executeThreeAppEventHandler('pointermove', { event, intersection, object })
+    })
+  }
+
+  /** */
+  function onClick(event: MouseEvent) {
+    const { intersections, stopPropagation } = state
+    if (!intersections.length) return
+
+    if (stopPropagation) {
+      executeThreeAppEventHandler('click', { event, intersection: intersections[0], object: intersections[0].object })
+    } else {
+      let stopPropagationFlag = false
+      event.stopPropagation = () => (stopPropagationFlag = true)
+
+      for (const intersection of intersections) {
+        if (stopPropagationFlag) return
+        executeThreeAppEventHandler('click', { event, intersection, object: intersection.object })
+      }
+    }
+  }
+
+  /** */
   function start() {
     resizeObserver.observe(container)
     container.addEventListener('fullscreenchange', onFullscreenChange)
+
+    container.addEventListener('pointermove', onPointerMove)
+    container.addEventListener('click', onClick)
 
     state.renderer.setAnimationLoop(render)
   }
@@ -159,6 +254,9 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     resizeObserver.disconnect()
     container.removeEventListener('fullscreenchange', onFullscreenChange)
 
+    container.removeEventListener('pointermove', onPointerMove)
+    container.removeEventListener('click', onClick)
+
     state.renderer.setAnimationLoop(null)
   }
 
@@ -166,9 +264,6 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   await (async function () {
     updateThreeAppState(state)
     container.append(state.renderer.domElement)
-
-    // ColorManagement
-    // THREE.ColorManagement.enabled = true
 
     if (onInit)
       await onInit(state)

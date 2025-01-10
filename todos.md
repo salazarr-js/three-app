@@ -38,10 +38,13 @@
     - [x] `render()`
     - [x] `start()`
     - [x] `stop()`
-  - [ ] `ColorManagement`
-  - [ ] `shadows`
+  - [x] `ColorManagement`
+    - [ ] flat, linear props
+    - https://discourse.threejs.org/t/updates-to-color-management-in-three-js-r152/50791
+  - [x] `shadows`
+     - [ ] props
   - [x] handle `resize`/`fullScreen` events
-  - [ ] `stopPropagation` event option
+  - [x] `stopPropagation` event option
   - [ ] render-modes - `on-demand`
 
 - [x] `applyProps`
@@ -51,7 +54,8 @@
     - [ ] map function types to receive params and call func
   - [ ] handle prop types
     - [x] Vector like props
-    - [ ] Matrix like props
+     - [ ] map 1 prop to the 3 components (scale: 1)
+    - [ ] `Matrix` like props
     - [ ] `Euler`
     - [ ] `Quaternion`
   - [ ] map `ColorLikeProps`
@@ -65,12 +69,16 @@
 - [x] `useThreeApp`
 - [ ] `tweakpane`
 
+https://github.com/drcmda
+[basic-threejs-example-with-re-use-dsrvn](https://www.reddit.com/r/threejs/comments/w71x9b/do_you_guys_use_oop_for_your_threejs_projects/)
+https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
+
 ### Events
 
-- [ ] `onClick`
-- [ ] `onPointerEnter`
-- [ ] `onPointerLeave`
-- [ ] `onPointerMove`
+- [x] `onClick`
+- [x] `onPointerEnter`
+- [x] `onPointerLeave`
+- [x] `onPointerMove`
 
 ### Components
 
@@ -102,6 +110,7 @@
 - [ ] Auto generated API Reference using [Typedoc Vitepress Plugin](https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
 - [ ] Spanish version
 - [ ] Add footer
+- [ ] compile examples out of `vitepress` and import them
 
 ## Version **2.0**
 
