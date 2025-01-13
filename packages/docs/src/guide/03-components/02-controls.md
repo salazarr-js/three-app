@@ -12,7 +12,7 @@ const threeApp = await createThreeApp({
   onInit({ camera, renderer, scene }) {
     camera.position.y = 2
 
-    const controls = useOrbitControls({ camera, renderer }, { autoRotate: true })
+    const controls = useOrbitControls({ autoRotate: true })
 
     // ...
   },

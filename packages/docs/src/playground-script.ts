@@ -36,8 +36,8 @@ function box(props: ThreeAppProps<THREE.Mesh>) {
 (async () => {
   const threeApp = await createThreeApp({
     container: document.getElementById('three-app')!,
-    onInit({ camera, renderer, scene }) {
-      useOrbitControls(camera, renderer)
+    onInit({ scene }) {
+      useOrbitControls()
 
       scene.add(
         applyProps(new THREE.AmbientLight(), { intensity: Math.PI / 2 }),

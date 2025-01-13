@@ -14,7 +14,8 @@
     "build:core": "pnpm --filter @slzr/three-app run build",
     "build:docs": "pnpm --filter docs run build",
     "test": "pnpm -r run test",
-    "release": "pnpm --filter @slzr/three-app run release",
+    "publish": "pnpm --filter @slzr/three-app run publish",
+    "publish:patch": "pnpm --filter @slzr/three-app run publish:patch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
