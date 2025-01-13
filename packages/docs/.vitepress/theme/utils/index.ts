@@ -70,8 +70,6 @@ export async function createSandpackClient(iframeRef, scripts: Scripts) {
       entry: 'index.ts',
       files: {
         'index.html': { code: getHTMLTemplate(getStyleTemplate(true)) },
-
-        'asd': { }
         ...scriptsSandpack,
       },
       dependencies,
@@ -109,8 +107,6 @@ export function defineCodeSandbox(scripts: Scripts): Promise<{ id: string }> {
           },
         },
         'index.html': { content: getHTMLTemplate(getStyleTemplate()) },
-        '': {}
-
         ...codeSandboxScripts,
       },
     }),
