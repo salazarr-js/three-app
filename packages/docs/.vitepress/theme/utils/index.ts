@@ -1,5 +1,4 @@
-import type { SandpackBundlerFiles } from '@codesandbox/sandpack-client'
-import { loadSandpackClient } from '@codesandbox/sandpack-client'
+// import { format } from 'prettier'
 
 /** */
 export type Scripts = Record<`${string}.ts`, string>
@@ -54,32 +53,6 @@ function getStyleTemplate(sandboxed = false) {
   }\n`
 }
 
-/** */
-export async function createSandpackClient(iframeRef, scripts: Scripts) {
-  /** */
-  const scriptsSandpack: SandpackBundlerFiles = Object.keys(scripts).reduce((prev, scriptKey) => {
-    return {
-      ...prev,
-      [scriptKey]: { code: scripts[scriptKey] },
-    }
-  }, {})
-
-  return await loadSandpackClient(
-    iframeRef.value!,
-    {
-      entry: 'index.ts',
-      files: {
-        'index.html': { code: getHTMLTemplate(getStyleTemplate(true)) },
-        ...scriptsSandpack,
-      },
-      dependencies,
-    },
-    {
-      showLoadingScreen: true,
-      showOpenInCodeSandbox: false,
-    },
-  )
-}
 
 /**
  * https://codesandbox.io/docs/learn/sandboxes/cli-api#xhr-request

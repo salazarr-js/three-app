@@ -8,8 +8,8 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@codesandbox/sandpack-client": "^2.19.8",
     "@slzr/three-app": "workspace:*",
+    "prettier": "^3.4.2",
     "three": "catalog:"
   },
   "devDependencies": {

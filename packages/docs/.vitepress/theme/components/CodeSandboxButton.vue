@@ -25,13 +25,9 @@ import { computed, defineProps } from 'vue'
 
 const { sandboxId } = defineProps<{ sandboxId?: string }>()
 
-const disabled = computed(() => {
-  return !sandboxId
-})
+const disabled = computed(() => !sandboxId)
 
-const codeSandboxLink = computed(() => {
-  return sandboxId ? `https://codesandbox.io/p/sandbox/${sandboxId}` : ''
-})
+const codeSandboxLink = computed(() => sandboxId ? `https://codesandbox.io/p/sandbox/${sandboxId}` : '')
 </script>
 
 <style scoped lang="scss">

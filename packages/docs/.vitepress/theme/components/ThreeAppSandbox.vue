@@ -13,37 +13,23 @@
 </template>
 
 <script setup lang="ts">
-import type { SandpackClient } from '@codesandbox/sandpack-client'
 import { defineProps, onMounted, onUnmounted, ref, useTemplateRef } from 'vue'
-import { createSandpackClient, defineCodeSandbox, type Scripts } from '../utils'
+import { defineCodeSandbox, type Scripts } from '../utils'
 
 const { scripts } = defineProps<{ scripts: Scripts }>()
 const iframeRef = useTemplateRef('iframe-ref')
 // Flags
 const isSandboxReady = ref(false)
 const sandboxId = ref<string>()
-//
-let sandpackClient: SandpackClient
 
 /** */
 onMounted(async () => {
-  sandpackClient = await createSandpackClient(iframeRef, scripts)
-
-  sandpackClient.listen(async (msg) => {
-    if (msg.type === 'done') {
-      isSandboxReady.value = true
-
-      const { id } = await defineCodeSandbox(scripts)
-      sandboxId.value = id
-    }
-  })
+  const { id } = await defineCodeSandbox(scripts)
+  sandboxId.value = id
 })
 
 /** */
-onUnmounted(() => {
-  if (sandpackClient)
-    sandpackClient.destroy()
-})
+onUnmounted(() => {})
 </script>
 
 <style setup lang="scss">

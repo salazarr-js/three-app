@@ -10,7 +10,6 @@
 - [x] Docs using [vitepress](https://vitepress.dev/)
 - [x] Bundle typescript library with types declarations `.d.ts` using [tsup](https://github.com/egoist/tsup)
   - [x] Publish scoped/organization package (@slzr)
-  - [ ] https://github.com/sindresorhus/np
 - [ ] Semantic commits + Semver
   - [changeset](https://github.com/changesets/changesets)
   - [semantic-release](https://github.com/semantic-release/semantic-release)
@@ -71,16 +70,16 @@
 - [x] `useThreeApp`
 - [ ] `tweakpane`
 
-https://github.com/drcmda
-[basic-threejs-example-with-re-use-dsrvn](https://www.reddit.com/r/threejs/comments/w71x9b/do_you_guys_use_oop_for_your_threejs_projects/)
-https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
-
 ### Events
 
 - [x] `onClick`
 - [x] `onPointerEnter`
 - [x] `onPointerLeave`
 - [x] `onPointerMove`
+> https://github.com/drcmda
+> [basic-threejs-example-with-re-use-dsrvn](https://www.reddit.com/r/threejs/comments/w71x9b/do_you_guys_use_oop_for_your_threejs_projects/)
+> Atjf3236
+https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
 
 ### Components
 
