@@ -10,7 +10,7 @@ aside: false
 import { onMounted } from 'vue'
 
 onMounted(async () => {
-  await import('./playground-script')
+  await import('../scripts/playground-script')
 })
 </script>
 

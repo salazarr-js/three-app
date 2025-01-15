@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  srcDir: './src',
+  srcDir: './src/content',
   title: 'Three App',
   description: 'Set of utility helpers to use `ThreeJs` in a functional and declarative way',
   head: [

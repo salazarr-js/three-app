@@ -10,7 +10,7 @@ title: First Scene - Three App Example
 </ClientOnly>
 
 ::: code-group
-<<< ./scripts/01-first-scene/index.ts
+<<< ../../scripts/01-first-scene/index.ts
 :::
 
 > Based on [ThreeJs - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) example

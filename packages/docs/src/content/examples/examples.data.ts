@@ -11,7 +11,7 @@ function getFolderFilename(path: string) {
 
 /** */
 export default {
-  watch: ['./scripts/**/*.ts'],
+  watch: ['../../scripts/**/*.ts'],
   load(watchedFiles) {
     return watchedFiles.reduce((acc, filePath) => {
       const { folder, filename } = getFolderFilename(filePath)

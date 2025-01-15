@@ -109,9 +109,10 @@ https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
 - [x] Injected `.ts` examples
 - [x] Auto generated `stackblitz`/`codesanbox` examples
 - [ ] Auto generated API Reference using [Typedoc Vitepress Plugin](https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
-- [ ] Spanish version
 - [ ] Add footer
 - [ ] compile examples out of `vitepress` and import them
+- [ ] Spanish version
+  - [ ] https://lunaria.dev/getting-started/
 
 ## Version **2.0**
 
