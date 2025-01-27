@@ -1,5 +1,15 @@
-import * as THREE from 'three'
-//
+import {
+  ACESFilmicToneMapping,
+  OrthographicCamera,
+  PCFSoftShadowMap,
+  PerspectiveCamera,
+  Raycaster,
+  Scene,
+  SRGBColorSpace,
+  Vector2,
+  Vector3,
+  WebGLRenderer
+} from 'three'
 import {
   executeThreeAppEventHandler,
   getFullscreenCallbacks,
@@ -29,8 +39,8 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
   const frustum = 6.71 // TODO: add to API?
 
   const camera = !orthographic
-    ? new THREE.PerspectiveCamera(75, aspect, 0.1, 1000)
-    : new THREE.OrthographicCamera(
+    ? new PerspectiveCamera(75, aspect, 0.1, 1000)
+    : new OrthographicCamera(
       frustum * aspect / -2,
       frustum * aspect / 2,
       frustum / 2,
@@ -38,7 +48,7 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
     )
 
   camera.position.z = 5
-  camera.lookAt(new THREE.Vector3())
+  camera.lookAt(new Vector3())
 
   if (props)
     applyProps(camera, props)
@@ -47,10 +57,10 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
   function updateCamera({ width, height }: ThreeAppSize) {
     const updatedAspect = width / height
 
-    if (camera.type === 'PerspectiveCamera' && camera instanceof THREE.PerspectiveCamera) {
+    if (camera.type === 'PerspectiveCamera' && camera instanceof PerspectiveCamera) {
       camera.aspect = updatedAspect
     }
-    if (camera.type === 'OrthographicCamera' && camera instanceof THREE.OrthographicCamera) {
+    if (camera.type === 'OrthographicCamera' && camera instanceof OrthographicCamera) {
       camera.left = frustum * updatedAspect / -2
       camera.right = frustum * updatedAspect / 2
       camera.top = frustum / 2
@@ -71,7 +81,7 @@ function createThreeAppCamera(cameraParams: ThreeAppCameraParams) {
 function createThreeAppRenderer(rendererParams: ThreeAppRendererParams) {
   const { width, height, props } = rendererParams
 
-  const renderer = new THREE.WebGLRenderer({
+  const renderer = new WebGLRenderer({
     alpha: true,
     antialias: true,
     powerPreference: 'high-performance',
@@ -79,11 +89,11 @@ function createThreeAppRenderer(rendererParams: ThreeAppRendererParams) {
   renderer.setSize(width, height)
   renderer.setPixelRatio(getPixelRatio())
   // `ColorEncoding` & `ToneMapping`
-  renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.outputColorSpace = THREE.SRGBColorSpace
+  renderer.toneMapping = ACESFilmicToneMapping
+  renderer.outputColorSpace = SRGBColorSpace
   // `shadows`
   renderer.shadowMap.enabled = true
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap
+  renderer.shadowMap.type = PCFSoftShadowMap
 
   if (props)
     applyProps(renderer, props)
@@ -108,7 +118,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
 
   /** Get camera from props */
   function getCamera() {
-    if (!!camera && (camera instanceof THREE.PerspectiveCamera || camera instanceof THREE.OrthographicCamera))
+    if (!!camera && (camera instanceof PerspectiveCamera || camera instanceof OrthographicCamera))
       return camera
 
     return createThreeAppCamera({
@@ -122,14 +132,14 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   /** Three app API State */
   const state: ThreeAppState = {
     container,
-    scene: scene instanceof THREE.Scene ? scene : applyProps(new THREE.Scene(), { ...scene }),
+    scene: scene instanceof Scene ? scene : applyProps(new Scene(), { ...scene }),
     camera: getCamera(),
-    renderer: renderer instanceof THREE.WebGLRenderer ? renderer : createThreeAppRenderer({ width: initialWidth, height: initialHeight, props: renderer }),
+    renderer: renderer instanceof WebGLRenderer ? renderer : createThreeAppRenderer({ width: initialWidth, height: initialHeight, props: renderer }),
     isOrthographic: orthographic ?? false,
     isFullscreen: false,
     stopPropagation: stopPropagation ?? true,
-    raycaster: new THREE.Raycaster(),
-    pointer: new THREE.Vector2(),
+    raycaster: new Raycaster(),
+    pointer: new Vector2(),
     intersections: [],
 
     getContainerSize() {

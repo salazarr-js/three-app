@@ -1,4 +1,15 @@
-import type { Intersection, Object3D, OrthographicCamera, PerspectiveCamera, Raycaster, Scene, Vector2, Vector3, Vector4, WebGLRenderer } from 'three'
+import type {
+  Intersection,
+  Object3D,
+  OrthographicCamera,
+  PerspectiveCamera,
+  Raycaster,
+  Scene,
+  Vector2,
+  Vector3,
+  Vector4,
+  WebGLRenderer
+} from 'three'
 
 /** Three object base type */
 export type ThreeAppObj = Record<string, any> | Object3D
