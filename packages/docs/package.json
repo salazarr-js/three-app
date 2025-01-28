@@ -3,8 +3,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
+    "dev": "pnpm run /dev:/",
+    "dev:vitepress": "vitepress dev",
+    "dev:examples": "tsup --watch",
+
+    "build": "pnpm run /build:/",
+    "build:vitepress": "vitepress build",
+    "build:examples": "tsup",
+
     "preview": "vitepress preview"
   },
   "dependencies": {
@@ -15,6 +21,7 @@
   "devDependencies": {
     "@types/three": "catalog:",
     "sass-embedded": "^1.83.1",
+    "tsup": "catalog:",
     "vitepress": "^1.5.0"
   }
 }

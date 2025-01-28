@@ -21,3 +21,6 @@ cache
 *.njsproj
 *.sln
 *.sw?
+
+# Docs examples builds
+packages/docs/src/content/public/examples/

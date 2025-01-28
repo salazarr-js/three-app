@@ -7,7 +7,7 @@ export default antfu(
     typescript: true,
     vue: true,
 
-    ignores: [],
+    ignores: ['**/*.js'],
   },
   {
     files: ['**/*.ts'],
@@ -23,6 +23,12 @@ export default antfu(
       'vue/block-order': ['error', {
         order: [['script', 'template'], 'style'],
       }],
+    },
+  },
+  {
+    files: ['**/*.json'],
+    rules: {
+      'jsonc/sort-keys': 'off', // TODO: improve [package.json]
     },
   },
   {
