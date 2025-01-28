@@ -5,11 +5,10 @@ aside: false
 # Three Seed
 
 <ClientOnly>
-  <ThreeAppSandbox :scripts  />
 </ClientOnly>
 
 ::: code-group
-<<< ../../scripts/01-first-scene/index.ts
+<!-- <<< ../../scripts/01-first-scene/index.ts -->
 :::
 
 > Based on [Edwin Webb - Three Seed](https://github.com/edwinwebb/three-seed) project.

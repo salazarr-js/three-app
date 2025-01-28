@@ -89,3 +89,27 @@ export function defineCodeSandbox(scripts: Scripts): Promise<{ id: string }> {
       id: x.sandbox_id,
     }))
 }
+
+/** Return example template to use as iframe `srcdoc` */
+export function getExampleTemplate(scriptUrl: string): string {
+  return /* html */`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, body { margin: 0; padding: 0; background: none; }
+    body { height: 100vh; }
+    #three-app { height: 100%; width: 100%; }
+  </style>
+</head>
+<body>
+  <div id="three-app"></div>
+
+  <script type="module" src="${scriptUrl}"></script>
+</body>
+</html>
+  `
+}

@@ -11,8 +11,10 @@ function getFolderFilename(path: string) {
 
 /** */
 export default {
-  watch: ['../../scripts/**/*.ts'],
+  watch: ['../../examples/**/*.ts'],
   load(watchedFiles) {
+    console.warn('watched works')
+
     return watchedFiles.reduce((acc, filePath) => {
       const { folder, filename } = getFolderFilename(filePath)
       const scriptContent = readFileSync(filePath, 'utf-8')

@@ -1,7 +1,6 @@
 # 🕹️ Controls
 
 <ClientOnly>
-  <ThreeAppSandbox :scripts  />
 </ClientOnly>
 
 ```ts

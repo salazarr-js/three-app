@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "types": ["node"],
+
+    "paths": {
+      "@theme/*": [".vitepress/theme/*"]
+    },
+
+    /* Bundler mode */
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+    // "experimentalDecorators": true, // ❌
+  },
+  // "include": ["./.vitepress/**/*.ts", "./.vitepress/**/*.vue", "./src/**/*.ts"],
+  "exclude": ["**/dist/**", "**/node_modules/**"]
+}

@@ -1,7 +1,6 @@
 # 🌄 Creating your first scene
 
 <ClientOnly>
-  <ThreeAppSandbox :scripts  />
 </ClientOnly>
 
 > This is based on the [three.js - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial.
