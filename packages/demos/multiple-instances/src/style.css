@@ -1,0 +1,43 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  user-select: none;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f3f4f6;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  max-width: 768px;
+}
+
+.three-app {
+  width: 100%;
+  border: none;
+  margin: 32px 0;
+  display: block;
+  overflow: hidden;
+  max-height: calc(100vh - 32px);
+  user-select: none;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background-color: white;
+}

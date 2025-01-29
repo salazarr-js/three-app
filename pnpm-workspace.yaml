@@ -1,6 +1,9 @@
 packages:
   - packages/*
+  - packages/demos/*
 catalog:
   three: '^0.172.0'
   '@types/three': '^0.172.0'
   tsup: '^8.3.5'
+  typescript: '^5.7.3'
+

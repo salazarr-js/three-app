@@ -1,0 +1,21 @@
+import { createThreeApp } from '@slzr/three-app';
+import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three';
+
+(async () => {
+  const geometry = new BoxGeometry(1, 1, 1);
+  const material = new MeshBasicMaterial({ color: 0x00ff00 });
+  const cube = new Mesh(geometry, material);
+
+  const threeApp = await createThreeApp({
+    container: document.getElementById('three-app')!,
+    onInit({ scene }) {
+      scene.add(cube);
+    },
+    onRender() {
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+    },
+  });
+
+  threeApp.start();
+})();

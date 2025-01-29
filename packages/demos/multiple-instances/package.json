@@ -1,0 +1,25 @@
+{
+  "name": "three-app-multiple",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm run /dev:/",
+    "dev:vite": "vite dev",
+    "dev:apps": "tsup --watch",
+    "build": "pnpm run /build:/",
+    "build:vite": "tsc && vite build",
+    "build:apps": "tsup",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@slzr/three-app": "workspace:*",
+    "three": "catalog:"
+  },
+  "devDependencies": {
+    "@types/three": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:",
+    "vite": "^6.0.11"
+  }
+}
