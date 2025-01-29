@@ -7,10 +7,10 @@
     "node": "22.x"
   },
   "scripts": {
-    "dev": "pnpm -r --parallel run dev",
+    "dev": "pnpm -r --parallel --filter !./packages/demos/** run dev",
     "dev:core": "pnpm --filter @slzr/three-app run dev",
     "dev:docs": "pnpm --filter docs run dev",
-    "build": "pnpm -r run build",
+    "build": "pnpm -r --filter !./packages/demos/** run build",
     "build:core": "pnpm --filter @slzr/three-app run build",
     "build:docs": "pnpm --filter docs run build",
     "test": "pnpm -r run test",

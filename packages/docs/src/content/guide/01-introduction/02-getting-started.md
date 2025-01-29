@@ -31,7 +31,7 @@ $ npm create vite@latest my-three-app -- --template vanilla-ts
 npm i three @slzr/three-app
 ```
 
-> `Three App` is compatible and tested with three.js `r169`.
+> `Three App` is compatible and tested with three.js [r172](https://github.com/mrdoob/three.js/releases/tag/r172).
 
 ## 🔷 Typescript Support
 
@@ -53,7 +53,6 @@ npm i -D @types/three
 - [Three.js - Fundamentals ](https://threejs.org/manual/#en/fundamentals)
 - [Discover three.js](https://discoverthreejs.com)
 - [Bruno Simon's three.js Journey](https://threejs-journey.com)
-
 - [SB Code - Three.js and TypeScript Tutorials](https://sbcode.net/threejs/)
 
 ### 🌟 Inspiration

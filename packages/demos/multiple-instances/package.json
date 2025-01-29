@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "pnpm run /dev:/",
     "dev:vite": "vite dev",
-    "dev:apps": "tsup --watch",
+    "dev:three": "tsup --watch",
     "build": "pnpm run /build:/",
     "build:vite": "tsc && vite build",
-    "build:apps": "tsup",
+    "build:three": "tsup",
     "preview": "vite preview"
   },
   "dependencies": {

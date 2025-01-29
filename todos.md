@@ -100,6 +100,8 @@ https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
 - [ ] pointer events
 - [ ] [Three Seed](https://github.com/edwinwebb/three-seed)
 
+- [ ] separate styles from template
+
 ### Tests
 - [ ] `applyProps`
 
@@ -110,7 +112,7 @@ https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
 - [x] Auto generated `stackblitz`/`codesanbox` examples
 - [ ] Auto generated API Reference using [Typedoc Vitepress Plugin](https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
 - [ ] Add footer
-- [ ] compile examples out of `vitepress` and import them
+- [x] compile examples out of `vitepress` and import them
 - [ ] Spanish version
   - [ ] https://lunaria.dev/getting-started/
 

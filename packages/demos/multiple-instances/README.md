@@ -2,18 +2,21 @@
 
 This demo shows how to have multiple `three-app` instances running safely using iframes.
 
+> [!NOTE]
+> This is just a temporal workaround.
+
 ## 📌 Considerations
 
-- This project uses [PNPM](https://pnpm.io) as package manager
-- ✅ This is a scaffolded [vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) project using the `vanilla-ts` template
-- ✅ `src/three-apps` folder is where all the three app related code will be located
-- ✅ [tsup](https://tsup.egoist.dev) is configured via `tsup.config.ts` config file
-- ✅ The content of the iframes is set via the `srcdoc` attribute
-- ✅ `getHTMLTemplate()` util function help to generate the template
+✅ This project uses [PNPM](https://pnpm.io) as package manager
+✅ This is a scaffolded [vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) project using the `vanilla-ts` template
+✅ `src/three-apps` folder is where all the three app related code is located
+✅ [tsup](https://tsup.egoist.dev) is configured via `tsup.config.ts` config file
+✅ The content of the iframes is set via the `srcdoc` attribute
+✅ `getHTMLTemplate()` util function help to generate the template
 
 > Read more at [Three App - 🚨 Limitations](https://three.salazarjs.dev/guide/about#%F0%9F%9A%A8-limitations)
 
-## Scripts
+## 🚀 Scripts
 
 ```bash
 pnpm run dev   # Start `tsup` in watch mode and `vite` dev server

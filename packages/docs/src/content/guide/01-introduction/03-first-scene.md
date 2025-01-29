@@ -1,7 +1,6 @@
 # 🌄 Creating your first scene
 
-<ClientOnly>
-</ClientOnly>
+<ThreeAppExample :path :scripts />
 
 > This is based on the [three.js - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) tutorial.
 
@@ -17,7 +16,7 @@
 ```
 :::
 
-## 🎨 Add your styles
+## 🎨 Add some styles
 
 ::: code-group
 ```css [styles.css]
@@ -32,12 +31,12 @@
 ::: code-group
 ```ts [main.ts]
 import { createThreeApp } from '@slzr/three-app'
-import * as THREE from 'three'
+import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
 
 (async () => {
-  const geometry = new THREE.BoxGeometry(1, 1, 1)
-  const material = new THREE.MeshBasicMaterial({ color: 0x00FF00 })
-  const cube = new THREE.Mesh(geometry, material)
+  const geometry = new BoxGeometry(1, 1, 1)
+  const material = new MeshBasicMaterial({ color: 0x00FF00 })
+  const cube = new Mesh(geometry, material)
 
   // Create three app instance
   const threeApp = await createThreeApp({
@@ -59,7 +58,7 @@ import * as THREE from 'three'
 
 ## 🧊 Let it rip
 
-And that is pretty much of it
+And that is pretty much of it.
 
 <img class="rounded-lg"
   src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp0M2RtbHg1YTI3cm5rd3d5bjNmMTY5emZkeTEzZW0yNzhtcmx5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ui1hpJSyBDWlG/giphy.gif"
@@ -68,5 +67,6 @@ And that is pretty much of it
 <script setup lang="ts">
 import { data } from '../../examples/examples.data'
 
-const scripts = data['01-first-scene']
+const path= '01-first-scene'
+const scripts = data[path]
 </script>

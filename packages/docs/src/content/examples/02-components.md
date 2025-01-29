@@ -2,13 +2,12 @@
 aside: false
 ---
 
-<ClientOnly>
-</ClientOnly>
+<ThreeAppExample :path :scripts />
 
 ::: code-group
-<!-- <<< ../../scripts/02-components/index.ts -->
+<<< ../../examples/02-components/index.ts
 
-<!-- <<< ../../scripts/02-components/cube.ts -->
+<<< ../../examples/02-components/box.ts
 :::
 
 > Based on [React Three Fiber - Basic Demo](https://codesandbox.io/p/sandbox/rrppl0y8l4?file=%2Fsrc%2FApp.js).
@@ -16,5 +15,6 @@ aside: false
 <script setup lang="ts">
 import { data } from './examples.data'
 
-const scripts = data['02-components']
+const path= '02-components'
+const scripts = data[path]
 </script>

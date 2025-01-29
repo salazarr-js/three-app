@@ -1,36 +1,32 @@
 # ✨ About the project
 
-`Three App` is a side project aimed at learning and experimenting with various development tools and tech stacks.
+`Three App` is a side project created to explore and experiment with different development tools and tech stacks for learning purposes.
 
 > [!WARNING]
-> This project/package is a **Work In Progress** and was created only for learning purposes. Do not use in production.
+> This project/package is a **Work In Progress**. Do not use in production.
 
 ## 📂 Project scope
 
-The main tasks and goals for this project include:
+The main goals for this project include:
 
-- Set up a monorepo using [NPM Workspaces](https://docs.npmjs.com/cli/using-npm/workspaces)
-- Create a TypeScript library with type declarations using [tsup](https://tsup.egoist.dev)
-- Publish on NPM under my personal [scope](https://docs.npmjs.com/creating-and-publishing-an-organization-scoped-package)
-- Test with [Vitest](https://vitest.dev)
-- Build a documentation site using [Vitepress](https://vitepress.dev)
-  - Auto-generate examples using [Stackblitz](https://developer.stackblitz.com/platform/api/javascript-sdk#generate-and-embed-new-projects) and[Code Sandbox](https://codesandbox.io/docs/learn/sandboxes/cli-api#xhr-request) APIs
-- Implement linting with [Eslint](https://eslint.org)
-- Use semantic commits and Semver
-  - Auto-generate changelogs
-- Use [fnm](https://github.com/Schniz/fnm) as the Node.js version manager
+✅ Set up a monorepo using [PNPM](https://pnpm.io) <br/>
+✅ Create a TypeScript library with type declarations using [tsup](https://tsup.egoist.dev) <br/>
+✅ Publish on NPM under my personal [scope](https://docs.npmjs.com/creating-and-publishing-an-organization-scoped-package) <br/>
+✅ Test with [Vitest](https://vitest.dev) <br/>
+✅ Build a documentation site using [Vitepress](https://vitepress.dev) <br/>
+&emsp; ✅ Auto-generate examples using [Stackblitz](https://developer.stackblitz.com/platform/api/javascript-sdk#generate-and-embed-new-projects) or [Code Sandbox](https://codesandbox.io/docs/learn/sandboxes/cli-api#xhr-request) APIs <br/>
+✅ Implement linting with [Eslint](https://eslint.org) <br/>
+✅ Use semantic commits and Semver <br/>
+&emsp; ✅ Auto-generate changelogs <br/>
+✅ Use [fnm](https://github.com/Schniz/fnm) as the Node.js version manager <br/>
 
 > You can check the full [TODO](https://github.com/salazarr-js/three-app/blob/main/todos.md) list to see the project's progress.
 
 ## 🚀 `Three App` library
 
-<iframe class="rounded-lg" src='https://my.spline.design/cubeaxiswebsiteupdatedinprod-c7eb2ea95c5e22c50b14b5333ee86583/' frameborder='0' width='100%' height='520px'></iframe>
-
-If you've used the [Spline Design](https://spline.design) tool before, you'll notice that even the most basic scene looks smooth and visually appealing by default. Achieving a similar look with vanilla three.js requires knowledge of advanced concepts, as `three.js` doesn't enforce an opinionated way of doing things.
-
 After starting Bruno Simon's [Three.js Journey course](https://threejs-journey.com), I came up with the idea of creating a wrapper or set of functions to help compose `three.js` applications. The goal was to bring a developer experience similar to that of [React Three Fiber](https://r3f.docs.pmnd.rs), but in a framework-agnostic and native way, without relying on frameworks like `React`, `Vue`, or `Svelte`, encapsulating concepts and minimizing the boilerplate needed to create three.js apps.
 
-Three App includes a default [rendered](/guide/core-functionalities#%F0%9F%96%A5%EF%B8%8F-default-renderer) and [camera](/guide/core-functionalities#%F0%9F%8E%A5-default-camera), already pre-configured, handles common pointer events, offers hooks to run code at different stages of the app lifecycle, and provides useful utilities to easily compose 3D scenes.
+Three App includes a default [rendered](/guide/core-functionalities#%F0%9F%96%A5%EF%B8%8F-default-renderer) and [camera](/guide/core-functionalities#%F0%9F%8E%A5-default-camera), already pre-configured, handles common [pointer events](/guide/events), offers ["hooks"](/guide/hooks) to run code at different stages of the app lifecycle, and provides useful [utilities](/guide/functional-composition) to easily compose 3D scenes.
 
 > For more details, check out the [Core functionalities](/guide/core-functionalities) page in the guide.
 
@@ -38,11 +34,14 @@ Three App includes a default [rendered](/guide/core-functionalities#%F0%9F%96%A5
 
 One of the key features of Three App is its use of `"Hooks"` (essentially, callbacks stored in **global variables** 😬). This was the simplest way I found to replicate the hook experience similar to [React](https://react.dev/reference/react/hooks) or [Vue](https://vuejs.org/guide/essentials/lifecycle.html).
 
-However, this solution isn't perfect. Once the script loads, the hooks can't distinguish which Three App instance triggered a callback. So, if you have multiple Three App instances, all callbacks stored in this global variable will run on shared events like `onRender` or `onClick`.
+However, this solution isn't perfect. Once the script loads, the hooks can't distinguish which Three App instance triggered a callback. So, if you have multiple Three App instances, all callbacks stored in those global variable will triggered.
 
-This hook setup limits you to creating just one instance per page. This shouldn't be an issue if you're working on an [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), or [`MPA`](https://medium.com/@julianneagu/multi-page-application-mpa-a-good-business-fit-36029c7be9f0) project.
+This hook setup limits you to create one instance per page. This shouldn't be an issue if you're working on an [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), or [`MPA`](https://medium.com/@julianneagu/multi-page-application-mpa-a-good-business-fit-36029c7be9f0) project or just have only one instance.
 
-> For more details, check out the [🪝 "Hooks"](/guide/hooks) page in the guide.
+::: info
+If you need multiple three app instances running on the same page, you can overcome this limitation by compiling your code with a building tool like [tsup](https://tsup.egoist.dev) and inject yours three apps on iframes with the `srcdoc` attribute.
+> Check the [multiple-instances demo](https://github.com/salazarr-js/three-app/tree/main/packages/demos/multiple-instances) in the source code.
+:::
 
 ## ⭐ Inspired on
 

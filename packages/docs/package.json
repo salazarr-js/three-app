@@ -6,11 +6,9 @@
     "dev": "pnpm run /dev:/",
     "dev:vitepress": "vitepress dev",
     "dev:examples": "tsup --watch",
-
     "build": "pnpm run /build:/",
     "build:vitepress": "vitepress build",
     "build:examples": "tsup",
-
     "preview": "vitepress preview"
   },
   "dependencies": {
