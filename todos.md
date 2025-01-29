@@ -76,9 +76,10 @@
 - [x] `onPointerEnter`
 - [x] `onPointerLeave`
 - [x] `onPointerMove`
-> https://github.com/drcmda
-> [basic-threejs-example-with-re-use-dsrvn](https://www.reddit.com/r/threejs/comments/w71x9b/do_you_guys_use_oop_for_your_threejs_projects/)
-https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
+
+> https://github.com/drcmda <br />
+> [basic-threejs-example-with-re-use-dsrvn](https://www.reddit.com/r/threejs/comments/w71x9b/do_you_guys_use_oop_for_your_threejs_projects/) <br />
+> https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn <br />
 
 ### Components
 
@@ -112,6 +113,7 @@ https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
 - [ ] Auto generated API Reference using [Typedoc Vitepress Plugin](https://typedoc-plugin-markdown.org/plugins/vitepress/quick-start)
 - [ ] Add footer
 - [x] compile examples out of `vitepress` and import them
+  - [ ] `onLoaded` event
 - [ ] Spanish version
   - [ ] https://lunaria.dev/getting-started/
 

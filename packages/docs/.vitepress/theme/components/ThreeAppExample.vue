@@ -20,6 +20,8 @@ onMounted(async () => {
   const { id } = await defineCodeSandbox(scripts)
   sandboxId.value = id
 })
+
+// TODO: 'onLoaded' event
 </script>
 
 <style scoped lang="scss">
