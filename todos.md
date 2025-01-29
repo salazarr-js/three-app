@@ -78,7 +78,6 @@
 - [x] `onPointerMove`
 > https://github.com/drcmda
 > [basic-threejs-example-with-re-use-dsrvn](https://www.reddit.com/r/threejs/comments/w71x9b/do_you_guys_use_oop_for_your_threejs_projects/)
-> Atjf3236
 https://codesandbox.io/p/sandbox/basic-threejs-example-with-re-use-dsrvn
 
 ### Components

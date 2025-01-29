@@ -101,7 +101,7 @@ export function getExampleTemplate(scriptUrl: string): string {
 
   <style>
     html, body { margin: 0; padding: 0; background: none; }
-    body { height: 100vh; }
+    body { height: 100vh; overflow: hidden; }
     #three-app { height: 100%; width: 100%; }
   </style>
 </head>
