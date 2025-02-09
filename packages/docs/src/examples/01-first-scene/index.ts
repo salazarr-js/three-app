@@ -1,5 +1,5 @@
-import { createThreeApp } from '@slzr/three-app'
 import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
+import { createThreeApp } from '@slzr/three-app'
 
 (async () => {
   const geometry = new BoxGeometry(1, 1, 1)

@@ -8,7 +8,7 @@ import type {
   Vector2,
   Vector3,
   Vector4,
-  WebGLRenderer
+  WebGLRenderer,
 } from 'three'
 
 /** Three object base type */

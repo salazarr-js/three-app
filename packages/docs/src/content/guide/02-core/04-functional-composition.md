@@ -7,8 +7,8 @@ build your scenes declaratively with re-usable, self-contained components that r
 ```ts
 /** */
 import type { ColorRepresentation } from 'three'
-import { applyProps, onRender } from '@slzr/three-app'
 import * as THREE from 'three'
+import { applyProps, onRender } from '@slzr/three-app'
 
 /** */
 type CubeProps = Partial<{ color: ColorRepresentation }>

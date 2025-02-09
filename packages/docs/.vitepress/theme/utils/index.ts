@@ -53,7 +53,6 @@ function getStyleTemplate(sandboxed = false) {
   }\n`
 }
 
-
 /**
  * https://codesandbox.io/docs/learn/sandboxes/cli-api#xhr-request
  */

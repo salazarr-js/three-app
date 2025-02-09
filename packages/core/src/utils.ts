@@ -83,7 +83,6 @@ export function applyProps<T extends ThreeAppObj>(obj: T, props: ThreeAppProps<T
 
       // Special treatment for objects with support for set/copy, and layers
       if (targetProp.set && (targetProp.copy || targetProp instanceof Layers)) {
-
         // TODO: if `targetProp` is `VectorLike` & `propValue` is number,
 
         // If `propValue` is array use `.fromArray()` or `.set()` functions
@@ -131,8 +130,7 @@ export function applyProps<T extends ThreeAppObj>(obj: T, props: ThreeAppProps<T
             targetProp.convertSRGBToLinear()
         }
       }
-    }
-    else {
+    } else {
       console.warn(`'${propKey}' prop has a 'nil' value, which can't be validated and will be overwritten`)
 
       // Overwrite `nil` values

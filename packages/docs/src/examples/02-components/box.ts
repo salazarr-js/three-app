@@ -1,5 +1,6 @@
 import { BoxGeometry, Mesh, MeshStandardMaterial } from 'three'
-import { applyProps, onClick, onPointerEnter, onPointerLeave, ThreeAppProps, useRender } from '@slzr/three-app'
+import type { ThreeAppProps } from '@slzr/three-app'
+import { applyProps, onClick, onPointerEnter, onPointerLeave, useRender } from '@slzr/three-app'
 
 /** */
 export function box(props: ThreeAppProps<Mesh>) {

@@ -1,6 +1,7 @@
-import { applyProps, createThreeApp, onClick, onPointerEnter, onPointerLeave, ThreeAppProps, useRender } from '@slzr/three-app'
-import { useOrbitControls } from '@slzr/three-app/components'
 import * as THREE from 'three'
+import type { ThreeAppProps } from '@slzr/three-app'
+import { applyProps, createThreeApp, onClick, onPointerEnter, onPointerLeave, useRender } from '@slzr/three-app'
+import { useOrbitControls } from '@slzr/three-app/components'
 
 /** */
 function box(props: ThreeAppProps<THREE.Mesh>) {
@@ -44,10 +45,10 @@ function box(props: ThreeAppProps<THREE.Mesh>) {
         applyProps(new THREE.SpotLight(), { position: [10, 10, 10], angle: 0.15, penumbra: 1, decay: 0, intensity: Math.PI }),
         applyProps(new THREE.PointLight(), { position: [-10, -10, -10], decay: 0, intensity: Math.PI }),
 
-        box({ position: [-1.2, 0, 0]}),
-        box({ position: [1.2, 0, 0]}),
+        box({ position: [-1.2, 0, 0] }),
+        box({ position: [1.2, 0, 0] }),
       )
-    }
+    },
   })
 
   threeApp.start()

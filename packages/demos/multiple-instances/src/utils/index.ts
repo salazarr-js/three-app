@@ -19,5 +19,5 @@ export function getHTMLTemplate(scriptUrl: string): string {
   <script type="module" src="${scriptUrl}"></script>
 </body>
 </html>
-  `;
+  `
 }

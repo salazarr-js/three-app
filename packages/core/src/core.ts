@@ -8,8 +8,16 @@ import {
   SRGBColorSpace,
   Vector2,
   Vector3,
-  WebGLRenderer
+  WebGLRenderer,
 } from 'three'
+import type {
+  ThreeApp,
+  ThreeAppCameraParams,
+  ThreeAppParams,
+  ThreeAppRendererParams,
+  ThreeAppSize,
+  ThreeAppState,
+} from './types'
 import {
   executeThreeAppEventHandler,
   getFullscreenCallbacks,
@@ -21,14 +29,6 @@ import {
   useFullscreen,
   useResize,
 } from './hooks'
-import type {
-  ThreeApp,
-  ThreeAppCameraParams,
-  ThreeAppParams,
-  ThreeAppRendererParams,
-  ThreeAppSize,
-  ThreeAppState
-} from './types'
 import { applyProps, getPixelRatio } from './utils'
 
 /** */
@@ -192,8 +192,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     if (isFullscreen) {
       pointer.x = (event.clientX / container.clientWidth) * 2 - 1
       pointer.y = -(event.clientY / container.clientHeight) * 2 + 1
-    }
-    else {
+    } else {
       const rect = container.getBoundingClientRect()
       pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
       pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1

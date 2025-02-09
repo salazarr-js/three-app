@@ -1,4 +1,4 @@
 export { createThreeApp } from './core'
-export { useFullscreen, useRender, useResize, useThreeApp, onClick, onPointerEnter, onPointerLeave, onPointerMove } from './hooks'
+export { onClick, onPointerEnter, onPointerLeave, onPointerMove, useFullscreen, useRender, useResize, useThreeApp } from './hooks'
 export * from './types'
 export { applyProps } from './utils'

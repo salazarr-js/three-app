@@ -7,11 +7,13 @@ title: First Scene - Three App Example
 
 <ThreeAppExample :path :scripts />
 
+> Based on [ThreeJs - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) example
+
+---
+
 ::: code-group
 <<< ../../examples/01-first-scene/index.ts
 :::
-
-> Based on [ThreeJs - Creating a scene](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene) example
 
 <script setup lang="ts">
 import { data } from './examples.data'

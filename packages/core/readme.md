@@ -39,8 +39,8 @@ npm install -D @types/three
 ### Basic Usage
 
 ```ts
-import { createThreeApp } from '@slzr/three-app'
 import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
+import { createThreeApp } from '@slzr/three-app'
 
 // It can be composed into `components`
 const geometry = new BoxGeometry(1, 1, 1)
