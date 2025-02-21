@@ -116,6 +116,8 @@
   - [ ] `onLoaded` event
 - [ ] Spanish version
   - [ ] https://lunaria.dev/getting-started/
+- [ ] Addd `drei-vanilla`
+  https://github.com/pmndrs/drei-vanilla
 
 ## Version **2.0**
 

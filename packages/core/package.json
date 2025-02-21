@@ -54,7 +54,7 @@
     "three": "catalog:"
   },
   "dependencies": {
-    "three-stdlib": "^2.35.6"
+    "three-stdlib": "catalog:"
   },
   "devDependencies": {
     "@types/three": "catalog:",

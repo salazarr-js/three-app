@@ -14,7 +14,8 @@
   "dependencies": {
     "@slzr/three-app": "workspace:*",
     "prettier": "^3.4.2",
-    "three": "catalog:"
+    "three": "catalog:",
+    "three-stdlib": "catalog:"
   },
   "devDependencies": {
     "@types/three": "catalog:",
