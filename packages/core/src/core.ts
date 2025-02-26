@@ -1,5 +1,6 @@
 import {
   ACESFilmicToneMapping,
+  Clock,
   OrthographicCamera,
   PCFSoftShadowMap,
   PerspectiveCamera,
@@ -132,6 +133,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
   /** Three app API State */
   const state: ThreeAppState = {
     container,
+    clock: new Clock(),
     scene: scene instanceof Scene ? scene : applyProps(new Scene(), { ...scene }),
     camera: getCamera(),
     renderer: renderer instanceof WebGLRenderer ? renderer : createThreeAppRenderer({ width: initialWidth, height: initialHeight, props: renderer }),
@@ -256,6 +258,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     container.addEventListener('click', onClick)
 
     state.renderer.setAnimationLoop(render)
+    state.clock.start()
   }
 
   /** */
@@ -267,6 +270,7 @@ export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> 
     container.removeEventListener('click', onClick)
 
     state.renderer.setAnimationLoop(null)
+    state.clock.stop()
   }
 
   /** */

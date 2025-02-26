@@ -1,4 +1,5 @@
 import type {
+  Clock,
   Intersection,
   Object3D,
   OrthographicCamera,
@@ -62,6 +63,8 @@ export type ThreeAppRendererParams = ThreeAppSize & { props?: ThreeAppProps<WebG
 
 /** */
 export interface ThreeAppState {
+  /** */
+  clock: Clock
   /** Root `scene` object */
   scene: Scene
   /** Default `camera` object */
