@@ -1,4 +1,5 @@
 import type { ThreeAppObj, ThreeAppProps } from '@/types'
+import type { Object3D } from 'three'
 import { Color, Layers } from 'three'
 
 /** Checks if value is `null` or `undefined`. */
@@ -52,6 +53,9 @@ export function isPlainObject(value: unknown): boolean {
 export function isFunction(value: unknown): boolean {
   return typeof value === 'function'
 }
+
+/** */
+export const isObject3D = (object: any): object is Object3D => object?.isObject3D
 
 /** Returns device pixel ratio */
 export function getPixelRatio(): number {

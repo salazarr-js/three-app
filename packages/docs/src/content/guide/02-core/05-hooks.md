@@ -46,3 +46,12 @@ function someComponent() {
 This hooks use the [ResizeObserver API](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) and the callback will have access to the entries and the `Three App State`
 
 ## 🖥️ `useFullscreen`
+
+## 📥 `useLoader()`
+
+```ts
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+```
+```ts
+import { GLTFLoader } from 'three-stdlib'
+```
