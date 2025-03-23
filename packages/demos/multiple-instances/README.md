@@ -2,9 +2,6 @@
 
 This demo shows how to have multiple `three-app` instances running safely using iframes.
 
-> [!NOTE]
-> This is just a temporary workaround.
-
 ## 📌 Considerations
 
 ✅ This project uses [PNPM](https://pnpm.io) as package manager <br />

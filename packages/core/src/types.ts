@@ -10,13 +10,12 @@ import type {
   Vector3,
   Vector4,
   WebGLRenderer,
+  Loader
 } from 'three'
 
 /** Three object base type */
-export type ThreeAppObj = Record<string, any> | Object3D
+export type ThreeAppObj = Record<string, any> | Object3D // TODO: remove
 
-/** */
-export interface ThreeAppSize { width: number, height: number }
 
 /** */
 export type ThreeAppFullscreenCallback = (ctx: { state: ThreeAppState, event: Event }) => void
@@ -51,6 +50,10 @@ export interface ThreeAppEventHandlerParams<EventType extends ThreeAppEvent = Th
 
 /** Raycaster related event handler. */
 export type ThreeAppEventHandler<EventType extends ThreeAppEvent = ThreeAppMouseEvent> = (params: ThreeAppEventHandlerParams<EventType>) => void
+
+
+/** */
+export interface ThreeAppSize { width: number, height: number }
 
 /** Initial width, height */
 export type ThreeAppCameraParams = ThreeAppSize & {
@@ -125,6 +128,38 @@ export interface ThreeApp extends ThreeAppState {
   /** Stop render loop */
   stop: () => void
 }
+
+
+/** */
+export type ConstructorRepresentation<T = any> = new (...args: any[]) => T
+/** */
+export type SceneGraph = {
+  nodes: Record<string, any>
+  materials: Record<string, any>
+}
+
+
+/** */
+export type InputLike = string | string[]
+/** */
+export type LoaderLike = Loader<any, InputLike>
+/** */
+export type GLTFLike = { scene: Object3D }
+
+/** */
+export type LoaderInstance<T extends LoaderLike | ConstructorRepresentation<LoaderLike>> =
+  T extends ConstructorRepresentation<LoaderLike> ? InstanceType<T> : T
+/** */
+export type LoaderResult<T extends LoaderLike | ConstructorRepresentation<LoaderLike>> =
+  Awaited<ReturnType<LoaderInstance<T>['loadAsync']>> extends infer R
+    ? R extends GLTFLike ? R & SceneGraph : R
+    : never
+
+/** */
+export type Extensions<T extends LoaderLike | ConstructorRepresentation<LoaderLike>> = (
+  loader: LoaderInstance<T>,
+) => void
+
 
 /** Union of all Three `Vector` types */
 type VectorLike = Vector2 | Vector3 | Vector4

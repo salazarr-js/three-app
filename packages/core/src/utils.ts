@@ -1,5 +1,5 @@
-import type { ThreeAppObj, ThreeAppProps } from '@/types'
-import type { Object3D } from 'three'
+import type { ConstructorRepresentation, SceneGraph, ThreeAppObj, ThreeAppProps } from '@/types'
+import type { Object3D, Loader } from 'three'
 import { Color, Layers } from 'three'
 
 /** Checks if value is `null` or `undefined`. */
@@ -8,17 +8,17 @@ export function isNil(value: unknown): boolean {
 }
 
 /** Checks if value is boolean primitive or an instance of `Boolean` */
-export function isBoolean(value: unknown): boolean {
+export function isBoolean(value: unknown): value is boolean {
   return typeof value === 'boolean' || value instanceof Boolean
 }
 
 /** Checks if value is an integer. */
-export function isInteger(value: unknown): boolean {
+export function isInteger(value: unknown): value is number {
   return Number.isInteger(value)
 }
 
 /** Checks if value is a string primitive or an instance of `String` */
-export function isString(value: unknown): boolean {
+export function isString(value: unknown): value is string {
   return typeof value === 'string' || value instanceof String
 }
 
@@ -57,10 +57,29 @@ export function isFunction(value: unknown): boolean {
 /** */
 export const isObject3D = (object: any): object is Object3D => object?.isObject3D
 
+/** */
+export function isConstructor<T>(value: unknown): value is ConstructorRepresentation<Loader<T, string | string[]>> {
+  return typeof value === 'function' && value?.prototype?.constructor === value
+}
+
+
 /** Returns device pixel ratio */
 export function getPixelRatio(): number {
   // Math.min(Math.max(1, window.devicePixelRatio), 2)
   return Math.min(window.devicePixelRatio, 2)
+}
+
+/** Traverse an object and return all the nodes and materials */
+/** Collects nodes and materials from a THREE.Object3D. */
+export function buildGraph(object: Object3D): SceneGraph {
+  const data: SceneGraph = { nodes: {}, materials: {} }
+  if (object) {
+    object.traverse((obj: any) => {
+      if (obj.name) data.nodes[obj.name] = obj
+      if (obj.material && !data.materials[obj.material.name]) data.materials[obj.material.name] = obj.material
+    })
+  }
+  return data
 }
 
 /**

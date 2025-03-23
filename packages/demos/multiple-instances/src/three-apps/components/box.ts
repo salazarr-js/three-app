@@ -1,12 +1,12 @@
-import type {
-  ThreeAppProps,
-} from '@slzr/three-app'
 import {
   BoxGeometry,
   type ColorRepresentation,
   Mesh,
   MeshStandardMaterial,
 } from 'three'
+import type {
+  ThreeAppProps,
+} from '@slzr/three-app'
 import {
   applyProps,
   onClick,
@@ -25,7 +25,7 @@ export function box(props: BoxProps) {
   const cube = new Mesh(geometry, material)
   let clicked = false
 
-  applyProps(cube, props)
+  applyProps(cube, props) // TODO: fix type
 
   useRender(() => (cube.rotation.x += 0.01))
 

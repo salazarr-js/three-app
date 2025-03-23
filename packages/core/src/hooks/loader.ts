@@ -1,98 +1,61 @@
-import type { Loader, Material, Object3D } from 'three'
-
-export interface ObjectMap {
-  nodes: { [name: string]: Object3D }
-  materials: { [name: string]: Material }
-}
-
-/** * Traverse an object and return all the nodes and materials */
-// export function traverseObjects(object: Object3D) {
-/** Collects nodes and materials from a THREE.Object3D. */
-export function buildGraph(object: Object3D) {
-  const data: ObjectMap = { nodes: {}, materials: {} }
-  if (object) {
-    object.traverse((obj: any) => {
-      if (obj.name) data.nodes[obj.name] = obj
-      if (obj.material && !data.materials[obj.material.name]) data.materials[obj.material.name] = obj.material
-    })
-  }
-  return data
-}
-
-/** */
-export interface ThreeAppLoader<T> extends Loader {
-  load: (
-    url: string,
-    onLoad: (result: T) => void,
-    onProgress?: (event: ProgressEvent) => void,
-    onError?: (event: ErrorEvent | unknown) => void
-  ) => void
-  loadAsync: (url: string, onProgress?: (event: ProgressEvent) => void) => Promise<T>
-}
-
-/** */
-// export type LoaderProto<T> = new (manager?: LoadingManager) => ThreeAppLoader<T>
-export type LoaderProto<T> = new (...args: any) => ThreeAppLoader<T extends unknown ? any : T>
-/** */
-export type LoaderReturnType<T, L extends LoaderProto<T>> = T extends unknown
-  ? Awaited<ReturnType<InstanceType<L>['loadAsync']>>
-  : T
-
-/** */
-export type BranchingReturn<T, Parent, Coerced> = T extends Parent ? Coerced : T
-/** */
-export type Extensions<T extends { prototype: LoaderProto<any> }> = (loader: T['prototype']) => void
-
-/** Memoizes loaders to avoid multiple instances. */
-const memoizedLoaders = new WeakMap<LoaderProto<any>, ThreeAppLoader<any>>()
-
 /**
- * ThreeApp hook to load resources using three.js loaders.
+ *  Heavily inspired by
  *
- * Heavily inspired by
  * [RTF](https://github.com/pmndrs/react-three-fiber/blob/master/packages/fiber/src/core/hooks.tsx),
  * [Tresjs](https://github.com/Tresjs/cientos/blob/main/src/core/loaders/useGLTF/index.ts) and
  * [Threlte](https://github.com/threlte/threlte/blob/main/packages/core/src/lib/hooks/useLoader.ts)
  * `useLoader` Hook
  */
-export async function useLoader<T, U extends string | string[], L extends LoaderProto<T>, R = LoaderReturnType<T, L>>(
-  Proto: L,
-  input: U,
+import { buildGraph, isConstructor, isObject3D } from '@/utils'
+import type {ConstructorRepresentation, Extensions, InputLike, LoaderLike, LoaderResult} from '@/types'
+
+
+
+/** Memoizes loaders to avoid multiple instances. */
+const memoizedLoaders = new WeakMap<ConstructorRepresentation<LoaderLike>, LoaderLike>()
+
+/** ThreeApp hook to load resources using three.js loaders. */
+export async function useLoader<
+  L extends LoaderLike | ConstructorRepresentation<LoaderLike>,
+  I extends InputLike,
+  R extends LoaderResult<L>
+>(
+  protoLoader: L,
+  input: I,
   options?: {
     extend?: Extensions<L>
     onProgress?: (event: ProgressEvent<EventTarget>) => void
-    transform?: (data: T) => T
+    transform?: (data: R) => R
   },
-): Promise<U extends any[] ? Promise<R[]> : Promise<R>> {
-  // Lazy Init loader
-  let loader: ThreeAppLoader<T> = memoizedLoaders.get(Proto)!
-  if (!loader) {
-    loader = new Proto()
-    memoizedLoaders.set(Proto, loader)
+) {
+  let loader: LoaderLike
+
+  if (isConstructor(protoLoader)) {
+    loader = memoizedLoaders.get(protoLoader)!
+    if (!loader) {
+      loader = new protoLoader()
+      memoizedLoaders.set(protoLoader, loader)
+    }
+  } else {
+    loader = protoLoader as any
   }
 
   // Extend loader
-  if (options?.extend) options.extend(loader)
+  if (options?.extend) options.extend(loader as any)
 
   //
   async function loadResource(url: string) {
-    // TODO: check auto transform
-    // if (isObject3D(data?.scene)) Object.assign(data, buildGraph(data.scene))
-    // if (data.scene) {
-    //   Object.assign(data, traverseObjects(data.scene))
-    // }
-
-    if (loader.loadAsync) {
-      const result = await loader.loadAsync(url, options?.onProgress)
-      return options?.transform?.(result) ?? result
-    }
-
-    return new Promise((resolve, reject) => {
+    return new Promise<LoaderResult<L>>((resolve, reject) => {
       loader.load(
         url,
-        data => resolve(options?.transform?.(data) ?? data),
+        (result) => {
+          const scene = (result as any)?.scene
+          const preTransformed = isObject3D(scene) ? { ...result, ...buildGraph(scene) } : result
+
+          resolve(options?.transform?.(preTransformed) ?? preTransformed)
+        },
         event => options?.onProgress?.(event),
-        reject,
+        error => reject(new Error(`[useLoader] Couldn't load ${input}: ${(error as ErrorEvent)?.message}`))
       )
     })
   }
@@ -102,5 +65,5 @@ export async function useLoader<T, U extends string | string[], L extends Loader
   //
   const results = await Promise.all(paths.map(loadResource))
 
-  return (Array.isArray(input) ? results : results[0]) as any
+  return (Array.isArray(input) ? results : results[0]) as I extends any[] ? R[] : R
 }

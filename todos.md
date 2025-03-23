@@ -68,6 +68,10 @@
 - [x] `useRender`
   - [ ] delta, elapsed, clock
 - [x] `useThreeApp`
+- [x] `useLoader`
+  - [ ] cache - https://threejs.org/docs/index.html#api/en/loaders/Cache
+  - [ ] preload
+  - [ ] Docs https://r3f.docs.pmnd.rs/api/hooks
 - [ ] `tweakpane`
 
 ### Events
@@ -89,7 +93,9 @@
 - [x] `useOrbitControls` using `three-stdlib`
 - [ ] Grid helper - https://github.com/pmndrs/drei/blob/master/src/core/Grid.tsx
 - [ ] sky
-- [ ] gltf
+- [x] `useGLTF`
+  - [ ] `ktx2Loader`
+  - [ ] `meshoptDecoder`
 - [ ] [contact shadows](https://threejs.org/examples/webgl_shadow_contact.html)
 - [ ] Camera Controls - https://github.com/yomotsu/camera-controls?tab=readme-ov-file
 

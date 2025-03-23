@@ -26,17 +26,19 @@ export default antfu(
           ['builtin', 'external'],
           ['@slzr-type', 'internal-type'],
           ['@slzr', 'internal'],
-          ['parent-type', 'sibling-type', 'index-type'],
-          ['parent', 'sibling', 'index'],
+          ['@/-type', 'parent-type', 'sibling-type', 'index-type'],
+          ['@/', 'parent', 'sibling', 'index'],
           ['side-effect', 'side-effect-style'],
           'object',
           'unknown',
         ],
         customGroups: {
           value: {
+            '@/': ['^@/'],
             '@slzr': ['^@slzr/.+']
           },
           type: {
+            '@/': ['^@/'],
             '@slzr-type': ['^@slzr/.+']
           }
         }
