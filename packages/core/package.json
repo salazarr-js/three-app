@@ -1,7 +1,7 @@
 {
   "name": "@slzr/three-app",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "ThreeJs but functional and declarative.",
   "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
   "license": "MIT",
@@ -29,10 +29,10 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
     },
-    "./components": {
-      "types": "./dist/components.d.ts",
-      "import": "./dist/components.js",
-      "require": "./dist/components.cjs"
+    "./extras": {
+      "types": "./dist/extras.d.ts",
+      "import": "./dist/extras.js",
+      "require": "./dist/extras.cjs"
     }
   },
   "main": "./dist/index.cjs",
