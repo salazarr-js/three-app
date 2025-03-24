@@ -1,6 +1,6 @@
 import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
 import { createThreeApp } from '@slzr/three-app'
-import { useOrbitControls } from '@slzr/three-app/components'
+import { useOrbitControls } from '@slzr/three-app/extras'
 
 (async () => {
   const geometry = new BoxGeometry(1, 1, 1)

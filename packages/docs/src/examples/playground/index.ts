@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import type { ThreeAppProps } from '@slzr/three-app'
 import { applyProps, createThreeApp, onClick, onPointerEnter, onPointerLeave, useRender } from '@slzr/three-app'
-import { useOrbitControls } from '@slzr/three-app/components'
+import { useOrbitControls } from '@slzr/three-app/extras'
 
 /** */
 function box(props: ThreeAppProps<THREE.Mesh>) {

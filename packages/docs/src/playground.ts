@@ -1,7 +1,7 @@
 import { AnimationMixer, Color, PMREMGenerator } from 'three'
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
 import { applyProps, createThreeApp } from '@slzr/three-app'
-import { useOrbitControls, useGLTF } from '@slzr/three-app/components'
+import { useOrbitControls, useGLTF } from '@slzr/three-app/extras'
 
 (async () => {
   const container = document.getElementById('three-app')!

@@ -4,7 +4,7 @@
 </ClientOnly>
 
 ```ts
-import { useOrbitControls } from '@slzr/three-app/components'
+import { useOrbitControls } from '@slzr/three-app/extras'
 
 const threeApp = await createThreeApp({
   container: document.getElementById('three-app')!,

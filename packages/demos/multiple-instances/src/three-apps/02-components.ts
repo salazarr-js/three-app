@@ -1,6 +1,6 @@
 import { AmbientLight, PointLight, SpotLight } from 'three'
 import { applyProps, createThreeApp } from '@slzr/three-app'
-import { useOrbitControls } from '@slzr/three-app/components'
+import { useOrbitControls } from '@slzr/three-app/extras'
 
 //
 import { box } from './components/box';
