@@ -20,9 +20,13 @@ pnpm run dev   # Start `tsup` in watch mode and `vite` dev server
 pnpm run build # Build all the three-apps scripts on `public` folder and generate a production build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances)
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/R-zine/stackr)
+---
 
-https://codesandbox.io/p/sandbox/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances
-
-https://github.com/R-zine/stackr
+<p align="center">
+  <a href="https://stackblitz.com/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances" target="_blank">
+    <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="Open in StackBlitz" height="32" />
+  </a>
+  <a href="https://codesandbox.io/p/sandbox/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances" target="_blank">
+    <img src="https://codesandbox.io/static/img/play-codesandbox.svg" alt="Edit in Codesandbox" height="32" />
+  </a>
+</p>
