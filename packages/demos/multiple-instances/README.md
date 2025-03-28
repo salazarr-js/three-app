@@ -9,7 +9,7 @@ This example shows how to run multiple `three-app` instances isolated with indep
 &nbsp;&nbsp;&nbsp;&nbsp;✅ All the `three-app` related code is bundled and compiled with [tsup](https://tsup.egoist.dev), which is configured via [`tsup.config.ts`](./tsup.config.ts) config file <br />
 &nbsp;&nbsp;&nbsp;&nbsp;✅ The compiled `three-app` output folder is ignored on the [.gitignore](./.gitignore#L27) <br />
 ✅ The content of the iframes is set via the `srcdoc` attribute <br />
-✅ [`getIframeTemplate()`](./src/utils/index.ts#L2-L23) util function helps to generate the template for the iframe using the compiled scripts
+✅ [`getIframeTemplate()`](./src/utils/index.ts#L2-L35) util function helps to generate the template for the iframe using the compiled scripts
 
 > Read more at [Three App - 🚨 Limitations](https://three.salazarjs.dev/guide/about#%F0%9F%9A%A8-limitations)
 
