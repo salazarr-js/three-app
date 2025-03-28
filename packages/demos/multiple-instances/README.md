@@ -13,6 +13,15 @@ This example shows how to run multiple `three-app` instances isolated with indep
 
 > Read more at [Three App - 🚨 Limitations](https://three.salazarjs.dev/guide/about#%F0%9F%9A%A8-limitations)
 
+## 🧰 Troubleshooting
+
+By default, the scripts are not split and are loaded inline to avoid issues with servers that cannot resolve iframe dependencies, which could result in 404 errors. If this is not your case, you can [enable code splitting again](./tsup.config.ts#L13) and [set the script injection to external](./src/main.ts#L6L10) (recommended).
+
+```ts
+getIframeTemplate('/script-path.js')        // ✅ Inline (default)
+getIframeTemplate('/script-path.js', false) // ✅ External (recommended)
+```
+
 ## ⚠️ Limitations & Recommendations
 
 Keep in mind that `three-app` is an experimental, not production-ready project, primarily designed for single-app experiences.

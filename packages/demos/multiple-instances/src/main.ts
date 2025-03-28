@@ -4,8 +4,8 @@ import './style.css';
 (async function () {
   // Load the three-app compiled scripts into the iframes
   (document.getElementById('three-app-one') as HTMLIFrameElement)
-    .srcdoc = await getIframeTemplate('/three-apps/app-one.js');
+    .srcdoc = await getIframeTemplate('/three-apps/app-one.js', true);
 
   (document.getElementById('three-app-two') as HTMLIFrameElement)
-    .srcdoc = await getIframeTemplate('/three-apps/app-two.js');
+    .srcdoc = await getIframeTemplate('/three-apps/app-two.js', true);
 })()
