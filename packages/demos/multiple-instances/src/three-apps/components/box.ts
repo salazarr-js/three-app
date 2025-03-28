@@ -1,47 +1,34 @@
-import {
-  BoxGeometry,
-  type ColorRepresentation,
-  Mesh,
-  MeshStandardMaterial,
-} from 'three'
-import type {
-  ThreeAppProps,
-} from '@slzr/three-app'
-import {
-  applyProps,
-  onClick,
-  onPointerEnter,
-  onPointerLeave,
-  useRender,
-} from '@slzr/three-app'
+import type { ColorRepresentation } from 'three'
+import { BoxGeometry, Mesh, MeshStandardMaterial,} from 'three'
+import type { ThreeAppProps } from '@slzr/three-app'
+import { applyProps, onClick, onPointerEnter, onPointerLeave, useRender } from '@slzr/three-app'
 
-/** */
-type BoxProps = ThreeAppProps<Mesh> & { color?: ColorRepresentation }
 
-/** */
-export function box(props: BoxProps) {
+/** Creates an animated clickable box (cube) mesh with basic interaction. */
+export function box(meshProps?: ThreeAppProps<Mesh>, color?: ColorRepresentation) {
   const geometry = new BoxGeometry(1, 1, 1)
-  const material = new MeshStandardMaterial({ color: props.color ?? 'orange' })
-  const cube = new Mesh(geometry, material)
+  const material = new MeshStandardMaterial({ color: color ?? 'orange' })
+  const box = new Mesh(geometry, material)
+
+  if (meshProps)
+    applyProps(box, meshProps)
+
+  useRender(() => (box.rotation.x += 0.01))
+
   let clicked = false
-
-  applyProps(cube, props) // TODO: fix type
-
-  useRender(() => (cube.rotation.x += 0.01))
-
-  onClick(cube, () => {
+  onClick(box, () => {
     clicked = !clicked
 
-    cube.scale.setScalar(clicked ? 1.5 : 1)
+    box.scale.setScalar(clicked ? 1.5 : 1)
   })
 
-  onPointerEnter(cube, () => {
+  onPointerEnter(box, () => {
     material.color.set('hotpink')
   })
 
-  onPointerLeave(cube, () => {
-    material.color.set(props.color ?? 'orange')
+  onPointerLeave(box, () => {
+    material.color.set(color ?? 'orange')
   })
 
-  return cube
+  return box
 }

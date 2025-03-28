@@ -7,9 +7,15 @@
     <title>Multiple instances | @slzr/three-app</title>
   </head>
   <body>
-    <div class="container">
-      <iframe class="three-app" id="three-app-1"></iframe>
-      <iframe class="three-app" id="three-app-2"></iframe>
+    <div id="main-app">
+      <a href="https://three.salazarjs.dev/" target="_blank">
+        <img src="/logo-simple.png" alt="Three App Logo" height="80px" class="logo" />
+      </a>
+
+      <h1>Three App - Multiple Instances</h1>
+
+      <iframe class="three-app" id="three-app-one"></iframe>
+      <iframe class="three-app" id="three-app-two"></iframe>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

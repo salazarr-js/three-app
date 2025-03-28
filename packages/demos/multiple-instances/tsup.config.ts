@@ -10,4 +10,5 @@ export default defineConfig({
   target: 'esnext',
   treeshake: true,
   noExternal: ['three', '@slzr/three-app'],
+  // splitting: false,
 })
