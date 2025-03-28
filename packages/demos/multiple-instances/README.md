@@ -15,11 +15,10 @@ This example shows how to run multiple `three-app` instances isolated with indep
 
 ## 🧰 Troubleshooting
 
-By default, the scripts are not split and are loaded inline to avoid issues with servers that cannot resolve iframe dependencies, which could result in 404 errors. If this is not your case, you can [enable code splitting again](./tsup.config.ts#L13) and [set the script injection to external](./src/main.ts#L6L10) (recommended).
+By default, scripts are split and loaded externally to improve performance and reduce bundle size. However, some servers may fail to resolve iframe dependencies, causing 404 errors. If this is your case, you can [disable code splitting](./tsup.config.ts#L13) and [switch to inline script injection](./src/main.ts#L6-L10) to avoid these issues.
 
 ```ts
-getIframeTemplate('/script-path.js')        // ✅ Inline (default)
-getIframeTemplate('/script-path.js', false) // ✅ External (recommended)
+getIframeTemplate('/script-path.js', true) // ✅ Inline script
 ```
 
 ## ⚠️ Limitations & Recommendations
@@ -39,5 +38,5 @@ npm run build # 📦 Build all three-apps into `/public` + production build
 
 ## 🌍 Try it online
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances)
 [![Edit in Codesandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/salazarr-js/three-app/tree/main/packages/demos/multiple-instances)
