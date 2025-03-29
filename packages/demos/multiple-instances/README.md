@@ -2,16 +2,16 @@
 
 This example shows how to run multiple `three-app` instances isolated with independent render loops using **iframes**.
 
-## 📌 Considerations
+## 📋 Considerations
 
-✅ This is a scaffolded [vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) project using the `vanilla-ts` template <br />
-✅ [`src/three-apps`](./src/three-apps) folder is where all the `three app` related code is located <br />
-&nbsp;&nbsp;&nbsp;&nbsp;✅ All the `three-app` related code is bundled and compiled with [tsup](https://tsup.egoist.dev), which is configured via [`tsup.config.ts`](./tsup.config.ts) config file <br />
-&nbsp;&nbsp;&nbsp;&nbsp;✅ The compiled `three-app` output folder is ignored on the [.gitignore](./.gitignore#L27) <br />
-✅ The content of the iframes is set via the `srcdoc` attribute <br />
-✅ [`getIframeTemplate()`](./src/utils/index.ts#L2-L35) util function helps to generate the template for the iframe using the compiled scripts
+- This is a scaffolded [vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) project using the `vanilla-ts` template
+- [`src/three-apps`](./src/three-apps) folder is where all the `three app` related code is located
+  - All the `three-app` related code is bundled and compiled with [tsup](https://tsup.egoist.dev), which is configured via [`tsup.config.ts`](./tsup.config.ts) config file
+  - The compiled `three-app` output folder is ignored on the [.gitignore](./.gitignore#L27)
+- The content of the iframes is set via the `srcdoc` attribute
+- [`getIframeTemplate()`](./src/utils/index.ts#L2-L35) util function helps to generate the template for the iframe using the compiled scripts
 
-> Read more at [Three App - 🚨 Limitations](https://three.salazarjs.dev/guide/about#%F0%9F%9A%A8-limitations)
+> 📌 Read more at [Three App - 🚨 Limitations](https://three.salazarjs.dev/guide/about#%F0%9F%9A%A8-limitations)
 
 ## 🧰 Troubleshooting
 
