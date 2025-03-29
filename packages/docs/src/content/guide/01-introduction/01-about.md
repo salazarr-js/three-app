@@ -1,4 +1,4 @@
-# ✨ About the project
+# ✨ About the Project
 
 `Three App` is a side project created to explore and experiment with different development tools and tech stacks for learning purposes.
 
@@ -22,16 +22,16 @@ The main goals for this project include:
 ✅ Use semantic commits and Semver. <br/>
 &emsp;&nbsp;&nbsp; Auto-generate changelogs. <br/>
 
-> 📌 You can check the full [TODO](https://github.com/salazarr-js/three-app/blob/main/todos.md) list to track the project's progress.
+> 📌 You can check the full [TODO](https://github.com/salazarr-js/three-app/blob/main/todos.md) list to follow the project's progress.
 
-## 🚀 `Three App` library
+## 🚀 `Three App` Library
 
-`Three App` is a lightweight wrapper and a set of utility functions that make it easier to build `three.js` applications with less boilerplate. It encapsulates common concepts and offers a developer experience similar to [React Three Fiber](https://r3f.docs.pmnd.rs), while keeping your code **functional**, **declarative**, and **framework-agnostic**.
+`Three App` is a lightweight wrapper and a set of utility functions designed to make building `three.js` applications easier and more efficient. It encapsulates common concepts and offers a developer experience similar to [React Three Fiber](https://r3f.docs.pmnd.rs), while keeping your code **functional**, **declarative**, and **framework-agnostic**.
 
 ### 🌟 Main Features
 
 ✅ Pre-configured [renderer](/guide/core-functionalities#%F0%9F%96%A5%EF%B8%8F-default-renderer) and [camera](/guide/core-functionalities#%F0%9F%8E%A5-default-camera). <br/>
-✅ Render loop with control methods. <br/>
+✅ Built-in render loop with control methods. <br/>
 ✅ Support for common [events](/guide/events). <br/>
 ✅ Simple and powerful ["hooks"](/guide/hooks) to run code at different stages of the app lifecycle. <br/>
 ✅ [Utility functions](/guide/functional-composition) to easily compose 3D scenes. <br/>
@@ -40,14 +40,14 @@ The main goals for this project include:
 
 ## 🚨 Limitations
 
-`Three App` includes a simple ["hook system"](/guide/hooks) inspired by [React](https://react.dev/reference/react/hooks) and [Vue](https://vuejs.org/guide/essentials/lifecycle.html) based on global variables. This makes it easy to handle lifecycle events but limits you to just **one instance per page**.
+`Three App` includes a simple ["hook system"](/guide/hooks) inspired by [React](https://react.dev/reference/react/hooks) and [Vue](https://vuejs.org/guide/essentials/lifecycle.html), which relies on global variables. While this makes it easy to handle lifecycle events, it limits you to just **one instance per page**.
 
-Since hooks are stored globally, they can't tell which `Three App` instance triggered a callback. As a result, if you have multiple instances on the same page, they end up sharing the same events — causing all registered callbacks to trigger simultaneously 🤦‍♂️.
+Since hooks are global, they can't tell which `Three App` instance triggered a callback. If you have multiple instances on the same page, they will share the same events — causing all registered callbacks to trigger at once 🤦‍♂️.
 
-In most cases, this won’t be a problem if you're working on an [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), [`MPA`](https://medium.com/@julianneagu/multi-page-application-mpa-a-good-business-fit-36029c7be9f0) project, or simply building a game or a single-app experience.
+This is usually not a problem when working on an [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), [`MPA`](https://medium.com/@julianneagu/multi-page-application-mpa-a-good-business-fit-36029c7be9f0), or a single-instance project such as a game or standalone app.
 
 ::: info 🛠️ Workaround
-If you need multiple `three-app` instances running on the same page, you can work around this limitation by bundling each one separately (e.g., using [tsup](https://tsup.egoist.dev)) and embedding them inside isolated iframes.
+If you need multiple `three-app` instances on the same page, you can bundle each one separately (e.g., using [tsup](https://tsup.egoist.dev)) and embed them inside isolated iframes.
 
 > 📌 Check out the [multiple-instances demo](https://github.com/salazarr-js/three-app/tree/main/packages/demos/multiple-instances) for a working example.
 :::
@@ -67,8 +67,6 @@ This project was made possible thanks to [React Three Fiber](https://r3f.docs.pm
 > Other sources: [TresJS](https://github.com/Tresjs/tres) — [Threlte](https://github.com/threlte/threlte) — [Spline](https://spline.design/)
 
 ## 📚 Resources
-
-Here are some of the resources that helped during the development of this project:
 
 ### 📺 Tutorials
 - [Crea un monorepositorio multipaquete con npm workspaces y releases de paquetes](https://youtu.be/2QSBXhuqSlI)
@@ -91,7 +89,7 @@ The `Three App` logo is inspired by [Oscar Reutersvärd's](https://wikipedia.org
 
 ## 🔗 Related Projects
 
-Building on the momentum of this project, I’ve started a few related repositories:
+Building on the momentum of this project, I’ve also started:
 
-- [slzr - vitepress-boilerplate](https://github.com/salazarr-js/vitepress-boilerplate) — Vitepress starter template.
-- [slzr - code-sandbox](https://github.com/salazarr-js/code-sandbox) — Vanilla / TypeScript sandbox.
+- [vitepress-boilerplate](https://github.com/salazarr-js/vitepress-boilerplate) — Vitepress starter template.
+- [code-sandbox](https://github.com/salazarr-js/code-sandbox) — Vanilla / TypeScript sandbox.
