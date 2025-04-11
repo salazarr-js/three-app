@@ -83,9 +83,9 @@ This project was made possible thanks to [React Three Fiber](https://r3f.docs.pm
 
 [![Oscar Reutersvärd](https://finelinegd.com/wp-content/uploads/2014/05/or_header.jpg)](https://finelinegd.com/oscar-reutersvard-the-father-of-impossible-figures/)
 
-The `Three App` logo is inspired by [Oscar Reutersvärd's](https://wikipedia.org/wiki/Oscar_Reutersv%C3%A4rd) optical illusions.
+The `Three App` logo is a modern take inspired by the impossible figures of [Oscar Reutersvärd](https://wikipedia.org/wiki/Oscar_Reutersv%C3%A4rd).
 
-> The Photoshop [.psd](https://github.com/salazarr-js/three-app/blob/main/three-app.psd) file is included in the repository.
+> The Illustrator [logo.ai](https://github.com/salazarr-js/three-app/blob/main/logo.ai) file is included in the repository.
 
 ## 🔗 Related Projects
 

@@ -7,7 +7,7 @@ hero:
   text: ""
   tagline: Set of utility helpers to use `ThreeJs` in a functional and declarative way
   image:
-    src: /logo-simple.png
+    src: /logo.svg
     alt: ThreeApp
   actions:
     - theme: brand
@@ -28,3 +28,18 @@ features:
   - title: Feature C
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
+
+<!--
+✨ Features at a glance
+🚀 Instant setup — Pre-configured renderer and camera ready out of the box.
+
+🎯 Event system included — Handle common pointer events like clicks, hovers, and more, without extra setup.
+
+🪝 Hooks-inspired API — Intuitive "hooks" to tap into the app lifecycle just like in modern frameworks.
+
+🧩 Composable utilities — Easily structure, organize, and extend your 3D scenes.
+
+🟣 Framework-agnostic — Works seamlessly with plain JavaScript, Vanilla projects, or any frontend setup.
+-->
+
+<!--   https://volta.net/ -->
