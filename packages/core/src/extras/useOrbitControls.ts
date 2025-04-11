@@ -1,7 +1,9 @@
 import type { ThreeAppProps } from '@/types'
 import { useRender, useThreeApp } from '@/hooks'
 import { applyProps } from '@/utils'
-import { OrbitControls } from 'three-stdlib'
+// import { OrbitControls } from 'three-stdlib'
+import { OrbitControls } from 'three/examples/jsm/Addons.js'
+
 
 /**
  * Three App compatible Orbit Controls

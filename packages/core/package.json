@@ -44,7 +44,7 @@
   ],
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
+    "build": "tsup --metafile",
     "test": "vitest",
     "tsc": "tsc",
     "publish": "pnpm publish --access public",
@@ -54,12 +54,11 @@
     "three": "catalog:"
   },
   "dependencies": {
-    "three-stdlib": "catalog:"
   },
   "devDependencies": {
     "@types/three": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:",
-    "vitest": "^2.1.8"
+    "vitest": "^3.1.1"
   }
 }

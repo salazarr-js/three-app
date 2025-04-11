@@ -1,6 +1,7 @@
 // https://github.com/threlte/threlte/blob/main/packages/extras/src/lib/hooks/useDraco.ts
 // https://github.dev/pmndrs/drei/blob/master/src/core/Gltf.tsx
-import { GLTF, GLTFLoader } from 'three-stdlib'
+import { GLTF, GLTFLoader } from 'three/examples/jsm/Addons.js'
+
 import { ConstructorRepresentation, Extensions, InputLike, SceneGraph, } from '@/types'
 import { isString } from '@/utils'
 import { useLoader } from '@/hooks'

@@ -5,7 +5,7 @@
  * - react-three-fiber https://github.dev/pmndrs/drei/blob/master/src/core/Gltf.tsx
  */
 
-import { DRACOLoader } from 'three-stdlib'
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js"
 
 let _defaultDecoderPath = 'https://www.gstatic.com/draco/versioned/decoders/1.5.7/'
 const loaderInstances = new Map<string, DRACOLoader>()
