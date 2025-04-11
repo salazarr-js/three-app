@@ -1,6 +1,5 @@
 packages:
   - packages/*
-  - packages/demos/*
 catalog:
   '@types/three': ^0.172.0
   three: ^0.172.0
