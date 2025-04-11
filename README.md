@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="80px" src="./packages/docs/src/content/public/logo-simple.png" alt="Three App logo">
+  <img height="80px" src="./packages/docs/src/content/public/logo.svg" alt="Three App logo">
 
   <h1 align="center">Three App</h1>
 </p>

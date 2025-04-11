@@ -5,7 +5,7 @@ export default defineConfig({
   title: 'Three App',
   description: 'Set of utility helpers to use `ThreeJs` in a functional and declarative way',
   head: [
-    ['link', { rel: 'icon', href: '/logo-simple.png' }],
+    ['link', { rel: 'icon', href: '/logo.svg' }],
   ],
   cleanUrls: true,
   rewrites: {
@@ -13,7 +13,7 @@ export default defineConfig({
     ':folder(.*)/:number([0-9]+)-:slug(.*)': ':folder/:slug', // api/01-create-three-app -> api/create-three-app
   },
   themeConfig: {
-    logo: '/logo-simple.png',
+    logo: '/logo.svg',
     search: {
       provider: 'local',
     },
