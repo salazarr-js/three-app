@@ -1,0 +1,31 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  padding: 32px 16px;
+  min-height: 100vh;
+  place-items: center;
+  background-color: #f3f4f6;
+}
+
+#three-app {
+  width: 100%;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  overflow: hidden;
+  max-height: calc(100vh - 32px);
+  user-select: none;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  background-color: white;
+
+  max-width: 1280px;
+}

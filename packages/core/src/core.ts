@@ -114,7 +114,11 @@ function createThreeAppRenderer(rendererParams: ThreeAppRendererParams) {
 export async function createThreeApp(params: ThreeAppParams): Promise<ThreeApp> {
   /** */
   const { container, onInit, onRender, scene, camera, renderer, orthographic, stopPropagation } = params
-  /** */
+
+  // TODO: check container
+  // if (container) throw new Error('`container` is required')
+
+    /** */
   const { clientWidth: initialWidth, clientHeight: initialHeight } = container
 
   /** Get camera from props */
