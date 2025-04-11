@@ -1,7 +1,7 @@
 {
   "name": "@slzr/three-app",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "ThreeJs but functional and declarative.",
   "author": "José Salazar <jsalazar3300@gmail.com> (https://salazarjs.dev)",
   "license": "MIT",
@@ -48,13 +48,12 @@
     "test": "vitest",
     "tsc": "tsc",
     "publish": "pnpm publish --access public",
-    "publish:patch": "npm version patch && pnpm publish --access public"
+    "publish:patch": "pnpm version patch && pnpm publish --access public"
   },
   "peerDependencies": {
     "three": "catalog:"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/three": "catalog:",
     "tsup": "catalog:",
