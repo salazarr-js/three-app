@@ -3,6 +3,7 @@
     "editorconfig.editorconfig",
     "vue.volar",
     "dbaeumer.vscode-eslint",
-    "tobermory.es6-string-html"
+    "tobermory.es6-string-html",
+    "bradlc.vscode-tailwindcss"
   ]
 }

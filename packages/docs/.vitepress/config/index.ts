@@ -1,9 +1,16 @@
 import { defineConfig } from 'vitepress'
+// Plugins
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   srcDir: './src/content',
   title: 'Three App',
   description: 'Set of utility helpers to use `ThreeJs` in a functional and declarative way',
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ]
+  },
   head: [
     ['link', { rel: 'icon', href: '/logo.svg' }],
   ],

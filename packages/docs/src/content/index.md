@@ -42,4 +42,5 @@ features:
 🟣 Framework-agnostic — Works seamlessly with plain JavaScript, Vanilla projects, or any frontend setup.
 -->
 
-<!--   https://volta.net/ -->
+<!-- https://volta.net/ -->
+<!-- https://clearbit.com/ -->

@@ -4,7 +4,7 @@ import DefaultTheme from 'vitepress/theme'
 import CodeSandboxButton from './components/CodeSandboxButton.vue'
 import ThreeAppExample from './components/ThreeAppExample.vue'
 
-import './main.scss'
+import './style.css'
 
 export default {
   extends: DefaultTheme,
