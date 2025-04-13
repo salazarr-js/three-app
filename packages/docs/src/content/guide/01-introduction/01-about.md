@@ -30,8 +30,8 @@ The main goals for this project include:
 
 ### 🌟 Main Features
 
-✅ Pre-configured [renderer](/guide/core-functionalities#%F0%9F%96%A5%EF%B8%8F-default-renderer) and [camera](/guide/core-functionalities#%F0%9F%8E%A5-default-camera). <br/>
-✅ Built-in render loop with control methods. <br/>
+✅ Pre-configured [renderer](/guide/core-functionalities#🖥️-default-renderer) and [camera](/guide/core-functionalities#🎥-default-camera). <br/>
+✅ Built-in render loop with [control methods](/guide/core-functionalities#🕹️-render-loop-controls). <br/>
 ✅ Support for common [events](/guide/events). <br/>
 ✅ Simple and powerful ["hooks"](/guide/hooks) to run code at different stages of the app lifecycle. <br/>
 ✅ [Utility functions](/guide/functional-composition) to easily compose 3D scenes. <br/>
@@ -42,7 +42,7 @@ The main goals for this project include:
 
 `Three App` includes a simple ["hook system"](/guide/hooks) inspired by [React](https://react.dev/reference/react/hooks) and [Vue](https://vuejs.org/guide/essentials/lifecycle.html), which relies on global variables. While this makes it easy to handle lifecycle events, it limits you to just **one instance per page**.
 
-Since hooks are global, they can't tell which `Three App` instance triggered a callback. If you have multiple instances on the same page, they will share the same events — causing all registered callbacks to trigger at once 🤦‍♂️.
+Since hooks are global, they can't tell which `Three App` instance triggered a callback. If you have multiple instances on the same page, they will share the same events — causing all registered callbacks to trigger at once.
 
 This is usually not a problem when working on an [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), [`MPA`](https://medium.com/@julianneagu/multi-page-application-mpa-a-good-business-fit-36029c7be9f0), or a single-instance project such as a game or standalone app.
 
@@ -50,6 +50,12 @@ This is usually not a problem when working on an [`SSR`](https://en.wikipedia.or
 If you need multiple `three-app` instances on the same page, you can bundle each one separately (e.g., using [tsup](https://tsup.egoist.dev)) and embed them inside isolated iframes.
 
 > 📌 Check out the [multiple-instances demo](https://github.com/salazarr-js/three-app/tree/main/packages/demos/multiple-instances) for a working example.
+:::
+
+::: warning 📢 Disclaimer
+Keep in mind that `three-app` is an experimental, not production-ready project, primarily designed for single-app experiences.
+
+If your project requires multiple instances and advanced features like communication between them, or has stricter security requirements where iframes are not suitable, you might want to consider alternatives like [React Three Fiber](https://r3f.docs.pmnd.rs), [TresJS](https://tresjs.org/), [Threlte](https://threlte.xyz/), [Three.EZ](https://agargaro.github.io/three.ez/) or any other recommended [wrappers/frameworks](https://threejs.org/manual/#en/libraries-and-plugins).
 :::
 
 ## 💡 Inspirations
