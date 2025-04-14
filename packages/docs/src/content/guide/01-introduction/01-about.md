@@ -1,6 +1,6 @@
 # ✨ About the Project
 
-`Three App` is a side project created to explore and experiment with different development tools and tech stacks for learning purposes.
+`Three App` is a side project built to explore and experiment with different dev tools and tech stacks for learning purposes.
 
 ::: warning ⚠️ Disclaimer
 This project/package is **experimental** and not production-ready.
@@ -8,7 +8,7 @@ This project/package is **experimental** and not production-ready.
 
 ## 📂 Project Scope
 
-The main goals for this project include:
+Main goals of this project:
 
 ✅ Use [fnm](https://github.com/Schniz/fnm) as the Node.js version manager. <br/>
 ✅ Use [PNPM](https://pnpm.io) as the package manager. <br/>
@@ -16,51 +16,51 @@ The main goals for this project include:
 ✅ Create a TypeScript library with type declarations using [tsup](https://tsup.egoist.dev). <br/>
 ✅ Publish on NPM under a personal [scope](https://docs.npmjs.com/creating-and-publishing-an-organization-scoped-package). <br/>
 ✅ Write tests with [Vitest](https://vitest.dev). <br/>
-✅ Build a documentation site using [Vitepress](https://vitepress.dev). <br/>
-&emsp;&nbsp;&nbsp; Auto-generate examples using [Stackblitz](https://developer.stackblitz.com/platform/api/javascript-sdk#generate-and-embed-new-projects) or [CodeSandbox](https://codesandbox.io/docs/learn/sandboxes/cli-api#xhr-request) APIs. <br/>
+✅ Build a documentation site with [VitePress](https://vitepress.dev). <br/>
+&emsp;&nbsp;&nbsp; Auto-generate examples using [StackBlitz](https://developer.stackblitz.com/platform/api/javascript-sdk#generate-and-embed-new-projects) or [CodeSandbox](https://codesandbox.io/docs/learn/sandboxes/cli-api#xhr-request) APIs. <br/>
 ✅ Implement linting with [ESLint](https://eslint.org). <br/>
 ✅ Use semantic commits and Semver. <br/>
 &emsp;&nbsp;&nbsp; Auto-generate changelogs. <br/>
 
-> 📌 You can check the full [TODO](https://github.com/salazarr-js/three-app/blob/main/todos.md) list to follow the project's progress.
+> 📌 See the full [TODO list](https://github.com/salazarr-js/three-app/blob/main/todos.md) for project progress.
 
 ## 🚀 `Three App` Library
 
-`Three App` is a lightweight wrapper and a set of utility functions designed to make building `three.js` applications easier and more efficient. It encapsulates common concepts and offers a developer experience similar to [React Three Fiber](https://r3f.docs.pmnd.rs), while keeping your code **functional**, **declarative**, and **framework-agnostic**.
+`Three App` is a lightweight wrapper and set of utility functions that make building `three.js` applications simpler and more efficient. It encapsulates common concepts and delivers a developer experience similar to [React Three Fiber](https://r3f.docs.pmnd.rs), while staying **functional**, **declarative**, and **framework-agnostic**.
 
 ### 🌟 Main Features
 
 ✅ Pre-configured [renderer](/guide/core-functionalities#🖥️-default-renderer) and [camera](/guide/core-functionalities#🎥-default-camera). <br/>
 ✅ Built-in render loop with [control methods](/guide/core-functionalities#🕹️-render-loop-controls). <br/>
 ✅ Support for common [events](/guide/events). <br/>
-✅ Simple and powerful ["hooks"](/guide/hooks) to run code at different stages of the app lifecycle. <br/>
-✅ [Utility functions](/guide/functional-composition) to easily compose 3D scenes. <br/>
+✅ Simple lifecycle ["hooks"](/guide/hooks). <br/>
+✅ Handy [utilities functions](/guide/functional-composition) to compose 3D scenes. <br/>
 
-> 📌 For more details, check out the [Core Functionalities](/guide/core-functionalities) page in the guide.
+> 📌 See [Core Functionalities](/guide/core-functionalities) for more details.
 
 ## 🚨 Limitations
 
-`Three App` includes a simple ["hook system"](/guide/hooks) inspired by [React](https://react.dev/reference/react/hooks) and [Vue](https://vuejs.org/guide/essentials/lifecycle.html), which relies on global variables. While this makes it easy to handle lifecycle events, it limits you to just **one instance per page**.
+`Three App` includes a simple ["hook system"](/guide/hooks) inspired by [React](https://react.dev/reference/react/hooks) and [Vue](https://vuejs.org/guide/essentials/lifecycle.html). It relies on *global variables*, which makes it easy to manage lifecycle events, but it limits you to running only **one instance per page**.
 
-Since hooks are global, they can't tell which `Three App` instance triggered a callback. If you have multiple instances on the same page, they will share the same events — causing all registered callbacks to trigger at once.
+Since hooks are global, they can't tell which `Three App` instance triggered a callback. If multiple instances exist on the same page, all their callbacks will run together.
 
-This is usually not a problem when working on an [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), [`MPA`](https://medium.com/@julianneagu/multi-page-application-mpa-a-good-business-fit-36029c7be9f0), or a single-instance project such as a game or standalone app.
+This isn't an issue for most [`SSR`](https://en.wikipedia.org/wiki/Server-side_scripting), [`SSG`](https://en.wikipedia.org/wiki/Static_site_generator), or [`MPA`](https://en.wikipedia.org/wiki/Multi-page_application) setups—or for standalone apps like games or interactive scenes.
 
 ::: info 🛠️ Workaround
-If you need multiple `three-app` instances on the same page, you can bundle each one separately (e.g., using [tsup](https://tsup.egoist.dev)) and embed them inside isolated iframes.
+If you need to run multiple `Three App` instances on the same page, you can bundle each one separately (e.g., with [tsup](https://tsup.egoist.dev)) and load them inside **isolated iframes**.
 
-> 📌 Check out the [multiple-instances demo](https://github.com/salazarr-js/three-app/tree/main/packages/demos/multiple-instances) for a working example.
+> 📌 See the [Multiple Instances Demo](https://github.com/salazarr-js/three-app/tree/main/packages/demos/multiple-instances)
 :::
 
-::: warning 📢 Disclaimer
-Keep in mind that `three-app` is an experimental, not production-ready project, primarily designed for single-app experiences.
+::: warning ⚠️ Disclaimer
+`Three App` is meant for **single-app** experiences.
 
-If your project requires multiple instances and advanced features like communication between them, or has stricter security requirements where iframes are not suitable, you might want to consider alternatives like [React Three Fiber](https://r3f.docs.pmnd.rs), [TresJS](https://tresjs.org/), [Threlte](https://threlte.xyz/), [Three.EZ](https://agargaro.github.io/three.ez/) or any other recommended [wrappers/frameworks](https://threejs.org/manual/#en/libraries-and-plugins).
+If your project needs multiple instances, communication between them, or stricter security requirements (where iframes aren't ideal), consider using tools like [React Three Fiber](https://r3f.docs.pmnd.rs), [TresJS](https://tresjs.org/), [Threlte](https://threlte.xyz/), [Three.EZ](https://agargaro.github.io/three.ez/), or other recommended [wrappers/frameworks](https://threejs.org/manual/#en/libraries-and-plugins).
 :::
 
 ## 💡 Inspirations
 
-This project was made possible thanks to [React Three Fiber](https://r3f.docs.pmnd.rs) and [Bruno Simon's Three.js Journey course](https://threejs-journey.com/).
+This project was heavily inspired by [React Three Fiber](https://r3f.docs.pmnd.rs) and [Bruno Simon's Three.js Journey](https://threejs-journey.com/).
 
 <a class="block mb-2" href="https://r3f.docs.pmnd.rs">
   <img class="rounded-lg" alt="React Three Fiber banner" src="https://github.com/pmndrs/react-three-fiber/raw/master/docs/banner-r3f.jpg"/>
@@ -70,7 +70,7 @@ This project was made possible thanks to [React Three Fiber](https://r3f.docs.pm
   <img class="rounded-lg" alt="Three.js Journey" src="https://github.com/pmndrs/react-three-fiber/raw/master/docs/banner-journey.jpg"/>
 </a>
 
-> Other sources: [TresJS](https://github.com/Tresjs/tres) — [Threlte](https://github.com/threlte/threlte) — [Spline](https://spline.design/)
+> Also influenced by: [TresJS](https://github.com/Tresjs/tres) — [Threlte](https://github.com/threlte/threlte) — [Spline](https://spline.design)
 
 ## 📚 Resources
 
@@ -81,7 +81,7 @@ This project was made possible thanks to [React Three Fiber](https://r3f.docs.pm
 - [How to make your own NPM package (Step-by-Step) 📦](https://youtu.be/xnfdm-s8adI)
 - [Create a library using Vite lib mode](https://youtu.be/XDip9onOTps)
 
-### 📄 Guides / Docs
+### 📄 Docs & Guides
 
 - [Web.dev — Sandboxed Iframes](https://web.dev/articles/sandboxed-iframes)
 
@@ -89,13 +89,13 @@ This project was made possible thanks to [React Three Fiber](https://r3f.docs.pm
 
 [![Oscar Reutersvärd](https://finelinegd.com/wp-content/uploads/2014/05/or_header.jpg)](https://finelinegd.com/oscar-reutersvard-the-father-of-impossible-figures/)
 
-The `Three App` logo is a modern take inspired by the impossible figures of [Oscar Reutersvärd](https://wikipedia.org/wiki/Oscar_Reutersv%C3%A4rd).
+The `Three App` logo is a modern take on the impossible figures of [Oscar Reutersvärd](https://wikipedia.org/wiki/Oscar_Reutersv%C3%A4rd).
 
-> The Illustrator [logo.ai](https://github.com/salazarr-js/three-app/blob/main/logo.ai) file is included in the repository.
+> The Illustrator file is available: [logo.ai](https://github.com/salazarr-js/three-app/blob/main/logo.ai)
 
 ## 🔗 Related Projects
 
-Building on the momentum of this project, I’ve also started:
+Following this project, I also created:
 
-- [vitepress-boilerplate](https://github.com/salazarr-js/vitepress-boilerplate) — Vitepress starter template.
-- [code-sandbox](https://github.com/salazarr-js/code-sandbox) — Vanilla / TypeScript sandbox.
+- [vitepress-boilerplate](https://github.com/salazarr-js/vitepress-boilerplate) — VitePress starter template.
+- [code-sandbox](https://github.com/salazarr-js/code-sandbox) — Vanilla/TypeScript sandbox.

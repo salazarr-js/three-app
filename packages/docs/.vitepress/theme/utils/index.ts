@@ -5,9 +5,9 @@ export type Scripts = Record<`${string}.ts`, string>
 
 /** TODO: get dependencies from package */
 const dependencies = {
-  '@slzr/three-app': '^0.2.1',
-  'three': '^0.172.0',
-  '@types/three': '^0.172.0',
+  '@slzr/three-app': '^0.3.2',
+  'three': '^0.175.0',
+  '@types/three': '^0.152.0',
 }
 
 /** */

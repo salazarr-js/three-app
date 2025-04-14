@@ -18,7 +18,7 @@ hero:
       link: /api/create-three-app
     - theme: alt
       text: Examples
-      link: /examples/first-scene
+      link: /examples/basic-demo
 
 features:
   - title: Feature A

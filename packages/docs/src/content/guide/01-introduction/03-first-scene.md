@@ -2,7 +2,7 @@
 
 <ThreeAppExample :path :scripts />
 
-> This is based on the [three.js - Creating a scene](https://threejs.org/manual/#en/creating-a-scene) tutorial.
+> This is a port based on the [three.js - Creating a scene](https://threejs.org/manual/#en/creating-a-scene) tutorial.
 
 ## 📝 Setup your template
 
@@ -29,22 +29,22 @@
 ## 📜 Write your awesome 3D script
 
 ::: code-group
-<<< @/../examples/01-first-scene/index.ts [main.ts]
+<<< @/../examples/00-first-scene/index.ts [main.ts]
 :::
 
-## 🧊 Let it rip
-
-And that is pretty much of it.
+## ✅ That's pretty much it.
 
 <img class="rounded-lg"
   src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp0M2RtbHg1YTI3cm5rd3d5bjNmMTY5emZkeTEzZW0yNzhtcmx5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ui1hpJSyBDWlG/giphy.gif"
 />
 
-> Take a look to the [🚦 Before You Start](guide/getting-started#🚦-before-you-start)) section for some inspiration and useful links.
+## ✨ Get Inspired
+
+Check out the [🚦Before You Start](/guide/getting-started#🚦-before-you-start) section and the available [examples](/examples/basic-demo) for inspiration and useful resources.
 
 <script setup lang="ts">
 import { data } from '../../examples/examples.data'
 
-const path= '01-first-scene'
+const path= '00-first-scene'
 const scripts = data[path]
 </script>

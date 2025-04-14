@@ -27,7 +27,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/about' },
       { text: 'API', link: '/api/create-three-app' },
-      { text: 'Examples', link: '/examples/first-scene' },
+      { text: 'Examples', link: '/examples/basic-demo' },
     ],
 
     sidebar: {
@@ -77,7 +77,7 @@ export default defineConfig({
       examples: {
         base: '/examples',
         items: [
-          { text: 'First Scene', link: '/first-scene' },
+          { text: 'Basic Demo', link: '/basic-demo' },
           { text: 'Reusable Components', link: '/components' },
           { text: 'Three Seed', link: '/three-seed' },
         ],
