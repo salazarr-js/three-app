@@ -1,3 +1,7 @@
+/**
+ * Three App - First Scene.
+ * This is a port based on the [three.js - Creating a scene](https://threejs.org/manual/#en/creating-a-scene) tutorial.
+ */
 import { BoxGeometry, Mesh, MeshBasicMaterial } from 'three'
 import { createThreeApp } from '@slzr/three-app'
 

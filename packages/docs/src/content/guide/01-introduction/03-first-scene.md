@@ -38,9 +38,7 @@
   src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp0M2RtbHg1YTI3cm5rd3d5bjNmMTY5emZkeTEzZW0yNzhtcmx5MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ui1hpJSyBDWlG/giphy.gif"
 />
 
-## ✨ Get Inspired
-
-Check out the [🚦Before You Start](/guide/getting-started#🚦-before-you-start) section and the available [examples](/examples/basic-demo) for inspiration and useful resources.
+> Check out the [🚦Before You Start](/guide/getting-started#🚦-before-you-start) section and the available [examples](/examples/basic-demo) for inspiration and useful resources.
 
 <script setup lang="ts">
 import { data } from '../../examples/examples.data'

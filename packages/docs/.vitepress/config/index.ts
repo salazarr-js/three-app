@@ -77,9 +77,9 @@ export default defineConfig({
       examples: {
         base: '/examples',
         items: [
-          { text: 'Basic Demo', link: '/basic-demo' },
-          { text: 'Reusable Components', link: '/components' },
-          { text: 'Three Seed', link: '/three-seed' },
+          { text: '🧱 Basic Demo', link: '/basic-demo' },
+          { text: '🏯 Littlest Tokyo', link: '/littlest-tokyo' },
+          { text: '🌱 Three Seed', link: '/three-seed' },
         ],
       },
     },

@@ -3,7 +3,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "pnpm run /dev:/",
+    "clean:examples": "rimraf src/public/examples",
+    "dev": "pnpm run clean:examples && pnpm run /dev:/",
     "dev:vitepress": "vitepress dev",
     "dev:examples": "tsup --watch",
     "build": "pnpm run /build:/",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.3",
     "@types/three": "catalog:",
+    "rimraf": "^6.0.1",
     "sass-embedded": "^1.86.3",
     "tailwindcss": "^4.1.3",
     "tsup": "catalog:",

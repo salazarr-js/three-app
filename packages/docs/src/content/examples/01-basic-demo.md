@@ -7,7 +7,7 @@ title: Basic Demo
 
 <ThreeAppExample :path :scripts />
 
-> Based on [React Three Fiber - Basic Demo](https://codesandbox.io/s/rrppl0y8l4) example.
+> Based on [React Three Fiber - Basic Demo](https://codesandbox.io/s/rrppl0y8l4).
 
 ---
 
