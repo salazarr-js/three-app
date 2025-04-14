@@ -2,58 +2,64 @@
 
 ## 📝 Overview
 
-`Three App` is a set of utility functions that makes using [three.js](https://threejs.org) more declarative and functional. It enhances the developer experience by providing an easy and solid starting point for any 3D project, reducing boilerplate code and helping you better organize your codebase.
+`Three App` is a set of utility functions that make using [three.js](https://threejs.org) more declarative and functional. It enhances the developer experience by providing a solid and easy starting point for any 3D project, reducing boilerplate code and helping you better organize your codebase.
 
-> [!INFO] 🚀
-> Using `Three App` you don't have to worry about manually setting up the `renderer`, `camera`, commons events, or the most complex part, the `render loop`.
+It is an experimental toolkit designed to simplify the creation of `three.js` applications through a collection of composable helpers. The goal is to offer a developer experience similar to [React Three Fiber](https://r3f.docs.pmnd.rs) but in a framework-agnostic, native, and minimalistic way.
 
-## 🌐 Trying it online
+## 🌍 Try it online
 
-You can try `Three App` online on [StackBlitz](https://stackblitz.com/edit/slzr-three-app-template?file=src%2Fmain.ts) or [CodeSandbox](https://codesandbox.io/p/sandbox/wzwnj7). It runs directly in the browser, and it is almost identical to the local setup but doesn't require installing anything on your machine.
+You can try `Three App` on a web-based editor. It runs fully in the browser and is almost identical to the local setup without needing to install anything.
 
-> Stackblitz template uses the official [Vite + ts template](https://vite.new/vanilla-ts)
->
-> CodeSandBox template uses a basic [Parcel setup](https://parceljs.org/getting-started/webapp/)
+<div class="flex gap-2">
+  <a href="https://stackblitz.com/github/salazarr-js/three-app/tree/main/packages/demos/vite-template" target="_blank">
+    <img alt="Open in StackBlitz" src="https://developer.stackblitz.com/img/open_in_stackblitz.svg"/>
+    </a>
+
+  <a href="https://codesandbox.io/p/sandbox/github/salazarr-js/three-app/tree/main/packages/demos/vite-template" target="_blank">
+    <img alt="Edit in Codesandbox" src="https://codesandbox.io/static/img/play-codesandbox.svg"/>
+  </a>
+</div>
 
 ## 📂 Scaffolding your project
 
-You can setup your project following the [Parcel](https://parceljs.org/getting-started/webapp/) instructions or scaffold it using [Create Vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) tool with a vanilla template.
+You can set up your project by following the [Parcel](https://parceljs.org/getting-started/webapp/) instructions or by scaffolding it using [Create Vite](https://vite.dev/guide/#scaffolding-your-first-vite-project) with your preferred vanilla template:
 
 ```bash
-$ npm create vite@latest my-three-app -- --template vanilla-ts
+npm create vite@latest my-three-app -- --template vanilla-ts
 ```
-
-> The `Create Vite` tool offers multiple templates, including `vanilla` and `vanilla-ts`.
 
 ## 📥 Installation
 
-```sh
+```bash
 npm i three @slzr/three-app
 ```
 
-> `Three App` is compatible and tested with three.js [r172](https://github.com/mrdoob/three.js/releases/tag/r172).
+### 🧩 Three.js Compatibility
 
-## 🔷 Typescript Support
+`Three App` is compatible and tested with three.js [r175](https://github.com/mrdoob/three.js/releases/tag/r175), and requires version [r158](https://github.com/mrdoob/three.js/releases/tag/r158) or newer to work properly.
 
-`Three App` is type-safe out of the box since it's written in TypeScript. However, `three.js` doesn’t include type declarations, so you’ll need to install them separately
+If you're using an older version, be sure to check the [release notes](https://github.com/mrdoob/three.js/releases) and [migration guide](https://github.com/mrdoob/three.js/wiki/Migration-Guide) for any breaking changes.
+
+## 🔷 TypeScript Support
+
+`Three App` is fully type-safe out of the box since it is written in TypeScript. However, `three.js` type declarations must be installed separately:
 
 ```bash
 npm i -D @types/three
-
 ```
 
-## 🚦 Before you start
+## 🚦 Before You Start
 
-> [!WARNING]
-> In order to use `three app` you should have some experience or at least basic knowledge of how `three.js` works.
+To use `Three App` effectively, you should have at least basic knowledge of how `three.js` works.
 
-### 📚 Useful material
+### 📚 Recommended Learning Material
 
-- [Three.js - Official documentation](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
-- [Three.js - Fundamentals ](https://threejs.org/manual/#en/fundamentals)
-- [Discover three.js](https://discoverthreejs.com)
-- [Bruno Simon's three.js Journey](https://threejs-journey.com)
+- [Three.js - Official Documentation](https://threejs.org/manual)
+- [Three.js - Fundamentals](https://threejs.org/manual/#en/fundamentals)
+- [Discover Three.js](https://discoverthreejs.com)
+- [Bruno Simon's Three.js Journey](https://threejs-journey.com)
 - [SB Code - Three.js and TypeScript Tutorials](https://sbcode.net/threejs/)
+- [Codrops - Threejs Posts](https://tympanus.net/codrops/?s=three&search-type=posts&type=all)
 
 ### 🌟 Inspiration
 
