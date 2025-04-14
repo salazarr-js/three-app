@@ -7,8 +7,9 @@
 </template>
 
 <script setup lang="ts">
+import type { Scripts } from '../utils'
 import { defineProps, onMounted, ref } from 'vue'
-import { defineCodeSandbox, getExampleTemplate, type Scripts } from '../utils'
+import { defineCodeSandbox, getExampleTemplate } from '../utils'
 
 const { scripts, path } = defineProps<{ scripts: Scripts, path: string }>()
 const sandboxId = ref<string>()
@@ -26,11 +27,11 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 .three-app-example {
+  margin: 16px 0;
   position: relative;
   iframe {
     width: 100%;
     border: none;
-    margin: 16px 0;
     overflow: hidden;
     user-select: none;
     aspect-ratio: 16 / 9;
