@@ -107,6 +107,7 @@
 - [ ] [Three Seed](https://github.com/edwinwebb/three-seed)
 
 - [ ] separate styles from template
+- [ ] https://codepen.io/foretoo/pen/xxeoJoq
 
 ### Tests
 - [ ] `applyProps`
