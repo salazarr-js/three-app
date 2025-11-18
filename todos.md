@@ -105,9 +105,9 @@
 - [x] orbit controls animated
 - [ ] pointer events
 - [ ] [Three Seed](https://github.com/edwinwebb/three-seed)
-
 - [ ] separate styles from template
 - [ ] https://codepen.io/foretoo/pen/xxeoJoq
+- [ ] https://codelabs.developers.google.com/codelabs/lit-brick-viewer#0
 
 ### Tests
 - [ ] `applyProps`
